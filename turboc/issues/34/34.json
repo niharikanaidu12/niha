@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I try to topic-search a keyword by pressing Ctrl+F1, the help window doesn't open. Instead something resembling a keyboard map opens.",
+    "LastUpdatedDate": "2017-01-22T10:33:45.177-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2017-01-22T10:33:45.07-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Topic search doesn't work",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 34
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1631680,
+      "FileName": "Untitled.png",
+      "DownloadUrl": ".\\1631680"
+    }
+  ],
+  "Comments": []
+}

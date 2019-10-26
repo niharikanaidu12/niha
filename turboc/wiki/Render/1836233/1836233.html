@@ -1,0 +1,102 @@
+<div class="wikidoc">
+<h2><strong>Formatting Output</strong></h2>
+<p>Creating cleanly formatted output is a common programming requirement--it improves your user interface and makes it easier to read any debugging messages that you might print to the screen. In C, formatted output works via the printf statement, but in C&#43;&#43;,
+ you can create nicely formatted output to streams such as cout. This tutorial covers a set of basic I/O manipulations possible in C&#43;&#43; from the iomanip header file. Note that all of the functions in the iomanip header are inside the std&nbsp;namespace, so you
+ will need to either prefix your calls with &quot;std::&quot; or put &quot;using namespace std;&quot; before using the functions.&nbsp;<br>
+</p>
+<h2>Dealing with Spacing Issues using iomanip</h2>
+<p>A principle aspect of nicely formatted output is that the spacing looks right. There aren't columns of text that are too long or too short, and everything is appropriately aligned. This section deals with ways of spacing output correctly.</p>
+<h3>Setting the field width with setw</h3>
+<p>The std::setw function allows you to set the minimum width of the next output via the insertion operator. setw takes, one argument, the width of the next output (insertion), an integer. if the next output is too short, then spaces will be used for padding.
+ There is no effect if the output is longer than the width--note that the output won't be truncated. The only strange thing about setw is that its return value must be inserted into the stream. The setw function has no effect if it is called without reference
+ to a stream. A simple example is</p>
+<pre>using namespace std;
+cout&lt;&lt;setw(10)&lt;&lt;&quot;ten&quot;&lt;&lt;&quot;four&quot;&lt;&lt;&quot;four&quot;;
+</pre>
+<p>The output from the above would look like this:</p>
+<pre>ten       fourfour
+</pre>
+<p>Note that since setw takes an argument, at runtime it would be possible to specify the width of a column of output so that it is slightly wider than the longest element of the column.&nbsp;<br>
+<br>
+You might wonder whether it is possible to change the padding character. It turns out that yes, you can, by using the setfill function, which takes a character to use for the padding. Note that setfill should also be used as a stream manipulator only, so it
+ must be inserted into the stream:</p>
+<pre>cout&lt;&lt;setfill('-')&lt;&lt;setw(80)&lt;&lt;&quot;-&quot;&lt;&lt;endl;
+</pre>
+<p>The above code sets the padding character to a dash, the width of the next output to be at least 80 characters, and then outputs a dash. This results in the rest of the line being filled with dashes too. The output would look like this:</p>
+<pre>--------------------------------------------------------------------------------
+</pre>
+<p>Note that the pad character is changed until the next time you call setfill to change it again.</p>
+<h3>Aligning text with iomanip</h3>
+<p>It's possible to specify whether output is left or right aligned by using the manipulator flags that are part of ios_bas. In particular, it is possible to specify that output should be either left or right aligned by passing in the stream manipulators std::left
+ and std::right.</p>
+<h2>Putting Your Knowledge of iomanip Together</h2>
+<p>Now that we know how to space and align text, we can correctly print formatted data in columns. For instance, if you had a&nbsp;<a href="http://www.cprogramming.com/tutorial/lesson7.html">struct</a>&nbsp;containing the names of individuals:</p>
+<pre>using namespace std;
+
+struct person
+{
+    string firstname;
+    string lastname;
+};
+</pre>
+<p>If you then had a vector of persons, then you could output them in a nice way with evenly spaced columns for the first and last name as follows:</p>
+<pre>// given the above code, we could write this
+vector&lt;person&gt; people;
+// fill the vector somehow
+
+int field_one_width = 0, field_two_width = 0;
+
+// get the max widths
+
+for ( vector&lt;person&gt;::iterator iter = people.begin();
+      iter != people.end();
+      &#43;&#43;iter )
+{
+    if ( iter-&gt;firstname.length() &gt; field_one_width )
+    {
+        field_one_width = iter-&gt;firstname.length();
+    }
+    if ( iter-&gt;lastname.length() &gt; field_two_width )
+    {
+        field_two_width = iter-&gt;lastname.length();
+    }
+}
+
+// print the elements of the vector
+for ( vector&lt;person&gt;::iterator iter = people.begin();
+      iter != people.end();
+      &#43;&#43;iter )
+{
+    cout&lt;&lt;setw(field_one_width)&lt;&lt;left&lt;&lt;iter-&gt;firstname;
+    cout&lt;&lt;&quot; &quot;;
+    cout&lt;&lt;setw(field_two_width)&lt;&lt;left&lt;&lt;iter-&gt;lastname;
+}
+</pre>
+<p>Note that the space output between the two fields wasn't strictly necessary because we could have added it by changing the first call to setw to set the width to one more than the longest first name (since it would use a space as the padding for the extra
+ character).</p>
+<h3>Printing Numbers</h3>
+<p>Another challenge in creating nice output is correctly formatting numbers; for instance, when printing out a hexadecimal value, it would be nice if it were preceded by the &quot;0x&quot; prefix. More generally, it's nice to correctly set the number of trailing zeros
+ after a decimal place.</p>
+<h3>Setting the precision of numerical output with setprecision</h3>
+<p>The setprecision function can be used to set the maximum number of digits that are displayed for a number. Like setw, it should be inserted into the stream. In fact, its usage is very similar to setw in all respects. For instance, to print the number 2.71828
+ to 3 decimal places:</p>
+<pre>std::cout &lt;&lt; setprecision(3) &lt;&lt; 2.71828;
+</pre>
+<p>Note that setprecision will change the precision until the next time it is passed into a given stream. So changing the above example to also print out 1.412 would result in the output of</p>
+<pre>2.71 1.41
+</pre>
+<h3>Output in different bases</h3>
+<p>In computer science, frequently numbers need to be printed in octal or hexadecimal. The setbase function returns a value that can be passed into a stream to set the base of numbers to either base 8, 10, or 16. The input number is still read as a number in
+ base ten, but it is printed in the given base. For instance,</p>
+<pre>std::cout &lt;&lt; setbase(16) &lt;&lt; 32;
+</pre>
+<p>will print out &quot;20&quot;, which is 32 written in base 16. Note that you can use dec, oct, and hex as shorthand for setbase(10), setbase(8), and setbase(16) respectively when inserting into a stream. If you wish to include an indication of the base along with
+ the printed number, you can use the setiosflags function, again passed into a stream, with an input of ios_base::showbase. Using the ios_base::showbase flag will append a &quot;0x&quot; in front of hexadecimal numbers and a 0 in front of octal numbers. Decimal numbers
+ will be printed as normal.</p>
+<pre>std::cout &lt;&lt; setbase(16) &lt;&lt; 32;
+</pre>
+<p>This should get you started with the ability to create nicely formatted output in C&#43;&#43; without having to resort to returning to printf!&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>

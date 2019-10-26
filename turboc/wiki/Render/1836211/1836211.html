@@ -1,0 +1,295 @@
+<div class="wikidoc">
+<p>This tutorial series is designed for everyone: even if you've never programmed before or if you have extensive experience programming in other languages and want to expand into C&#43;&#43;! It is for everyone who wants the feeling of accomplishment from a working
+ program.&nbsp;<br>
+<br>
+What do I mean? C&#43;&#43; is a programming language--it will allow you to control your computer, making it do what you want it to do. This programming tutorial series is all about helping you take advantage of C&#43;&#43;Getting.</p>
+<h2>Intro to the C&#43;&#43; Language</h2>
+<p>A C&#43;&#43; program is a collection of commands, which tell the computer to do &quot;something&quot;. This collection of commands is usually called&nbsp;<strong>C&#43;&#43; source code</strong>,&nbsp;<strong>source code</strong>&nbsp;or just&nbsp;<strong>code</strong>. Commands
+ are either &quot;functions&quot; or &quot;keywords&quot;. Keywords are a basic building block of the language, while functions are, in fact, usually written in terms of simpler functions--you'll see this in our very first program, below. (Confused? Think of it a bit like an outline
+ for a book; the outline might show every chapter in the book; each chapter might have its own outline, composed of sections. Each section might have its own outline, or it might have all of the details written up.) Thankfully, C&#43;&#43; provides a great many common
+ functions and keywords that you can use.&nbsp;<br>
+<br>
+But how does a program actually start? Every program in C&#43;&#43; has one function, always named&nbsp;<strong>main</strong>, that is always called when your program first executes. From main, you can also call other functions whether they are written by us or, as
+ mentioned earlier, provided by the compiler.&nbsp;<br>
+<br>
+So how do you get access to those prewritten functions? To access those standard functions that comes with the compiler, you include a header with the #include directive. What this does is effectively take everything in the header and paste it into your program.
+ Let's look at a working program:</p>
+<div>
+<div id="highlighter_194243">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div>7</div>
+<div>8</div>
+<div>9</div>
+</td>
+<td>
+<div>
+<div><code>#include &lt;iostream&gt;</code></div>
+<div>&nbsp;</div>
+<div><code>using</code>&nbsp;<code>namespace</code>&nbsp;<code>std;</code></div>
+<div>&nbsp;</div>
+<div><code>int</code>&nbsp;<code>main()</code></div>
+<div><code>{</code></div>
+<div><code>&nbsp;&nbsp;</code><code>cout&lt;&lt;</code><code>&quot;HEY, you, I'm alive! Oh, and Hello World!\n&quot;</code><code>;</code></div>
+<div><code>&nbsp;&nbsp;</code><code>cin.get();</code></div>
+<div><code>}</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Let's look at the elements of the program. The #include is a &quot;preprocessor&quot; directive that tells the compiler to put code from the header called iostream into our program before actually creating the executable. By including header files, you gain access
+ to many different functions. For example, the cout function requires iostream. Following the include is the statement, &quot;using namespace std;&quot;. This line tells the compiler to use a group of functions that are part of the standard library (std). By including
+ this line at the top of a file, you allow the program to use functions such as cout. The semicolon is part of the syntax of C&#43;&#43;. It tells the compiler that you're at the end of a command. You will see later that the semicolon is used to end most commands in
+ C&#43;&#43;.&nbsp;<br>
+<br>
+The next important line is int main(). This line tells the compiler that there is a function named main, and that the function returns an integer, hence int. The &quot;curly braces&quot; ({ and }) signal the beginning and end of functions and other code blocks. You can
+ think of them as meaning BEGIN and END.&nbsp;<br>
+<br>
+The next line of the program may seem strange. If you have programmed in another language, you might expect that print would be the function used to display text. In C&#43;&#43;, however, the cout object is used to display text (pronounced &quot;C out&quot;). It uses the &lt;&lt;
+ symbols, known as &quot;insertion operators&quot;, to indicate what to output. cout&lt;&lt; results in a function call with the ensuing text as an argument to the function. The quotes tell the compiler that you want to output the literal string as-is. The '\n' sequence
+ is actually treated as a single character that stands for a newline (we'll talk about this later in more detail). It moves the cursor on your screen to the next line. Again, notice the semicolon: it is added onto the end of most lines, such as function calls,
+ in C&#43;&#43;.&nbsp;<br>
+<br>
+The next command is cin.get(). This is another function call: it reads in input and expects the user to hit the return key. Many compiler environments will open a new console window, run the program, and then close the window. This command keeps that window
+ from closing because the program is not done yet because it waits for you to hit enter. Including that line gives you time to see the program run.&nbsp;<br>
+<br>
+Upon reaching the end of main, the closing brace, our program will return the value of 0 (and integer, hence why we told main to return an int) to the operating system. This return value is important as it can be used to tell the OS whether our program succeeded
+ or not. A return value of 0 means success and is returned automatically (but only for main, other functions require you to manually return a value), but if we wanted to return something else, such as 1, we would have to do it with a return statement:</p>
+<div>
+<div id="highlighter_9115">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div>7</div>
+<div>8</div>
+<div>9</div>
+<div>10</div>
+<div>11</div>
+</td>
+<td>
+<div>
+<div><code>#include &lt;iostream&gt;</code></div>
+<div>&nbsp;</div>
+<div><code>using</code>&nbsp;<code>namespace</code>&nbsp;<code>std;</code></div>
+<div>&nbsp;</div>
+<div><code>int</code>&nbsp;<code>main()</code></div>
+<div><code>{</code></div>
+<div><code>&nbsp;&nbsp;</code><code>cout&lt;&lt;</code><code>&quot;HEY, you, I'm alive! Oh, and Hello World!\n&quot;</code><code>;</code></div>
+<div><code>&nbsp;&nbsp;</code><code>cin.get();</code></div>
+<div>&nbsp;</div>
+<div><code>&nbsp;&nbsp;</code><code>return</code>&nbsp;<code>1;</code></div>
+<div><code>}</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The final brace closes off the function. You should try compiling this program and running it. You can cut and paste the code into a file, save it as a .cpp file.&nbsp;</p>
+<p><br>
+Once you've got your first program running, why don't you try playing around with the cout function to get used to writing C&#43;&#43;?<br>
+</p>
+<h2>An Aside on Commenting Your Programs</h2>
+<p>As you are learning to program, you should also start to learn how to explain your programs (for yourself, if no one else). You do this by adding comments to code; I'll use them frequently to help explain code examples.&nbsp;<br>
+<br>
+When you tell the compiler a section of text is a comment, it will ignore it when running the code, allowing you to use any text you want to describe the real code. To create a comment use either //, which tells the compiler that the rest of the line is a comment,
+ or /* and then */ to block off everything between as a comment. Certain compiler environments will change the color of a commented area, but some will not. Be certain not to accidentally comment out code (that is, to tell the compiler part of your code is
+ a comment) you need for the program. When you are learning to program, it is useful to be able to comment out sections of code in order to see how the output is affected.&nbsp;<br>
+</p>
+<h2>User interaction and Saving Information with Variables</h2>
+<p>So far you've learned how to write a simple program to display information typed in by you, the programmer, and how to describe your program with comments. That's great, but what about interacting with your user? Fortunately, it is also possible for your
+ program to accept input. The function you use is known as cin, and is followed by the extraction operator &gt;&gt;.&nbsp;<br>
+<br>
+Of course, before you try to receive input, you must have a place to store that input. In programming, input and data are stored in variables. There are several different types of variables which store different kinds of information (e.g. numbers versus letters);
+ when you tell the compiler you are declaring a variable, you must include the data type along with the name of the variable. Several basic types include char, int, and float.&nbsp;<br>
+<br>
+A variable of type char stores a single character, variables of type int store integers (numbers without decimal places), and variables of type float store numbers with decimal places. Each of these variable types - char, int, and float - is each a keyword
+ that you use when you&nbsp;<strong>declare</strong>&nbsp;a variable.</p>
+<h3>What's with all these variable types?</h3>
+<p>Sometimes it can be confusing to have multiple variable types when it seems like some variable types are redundant (why have integer numbers when you have floats?). Using the right variable type can be important for making your code readable and for efficiency--some
+ variables require more memory than others. Moreover, because of the way the numbers are actually stored in memory, a float is &quot;inexact&quot;, and should not be used when you need to store an &quot;exact&quot; integer value.&nbsp;<br>
+</p>
+<h3>Declaring Variables in C&#43;&#43;</h3>
+<p>To declare a variable you use the syntax &quot;type &lt;name&gt;;&quot;. Here are some variable declaration examples:</p>
+<div>
+<div id="highlighter_297678">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+</td>
+<td>
+<div>
+<div><code>int</code>&nbsp;<code>x;</code></div>
+<div><code>char</code>&nbsp;<code>letter;</code></div>
+<div><code>float</code>&nbsp;<code>the_float;</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>It is permissible to declare multiple variables of the same type on the same line; each one should be separated by a comma.</p>
+<div>
+<div id="highlighter_964795">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+</td>
+<td>
+<div>
+<div><code>int</code>&nbsp;<code>a, b, c, d;</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>If you were watching closely, you might have seen that declaration of a variable is always followed by a semicolon (note that this is the same procedure used when you call a function).</p>
+<h4>Common Errors when Declaring Variables in C&#43;&#43;</h4>
+<p>If you attempt to use a variable that you have not declared, your program will not be compiled or run, and you will receive an error message informing you that you have made a mistake. Usually, this is called an&nbsp;<strong>undeclared variable</strong>.</p>
+<h4>Case Sensitivity</h4>
+<p>Now is a good time to talk about an important concept that can easily throw you off: case sensitivity. Basically, in C&#43;&#43;, whether you use uppercase or lowercase letters matters. The words Cat and cat mean different things to the compiler. In C&#43;&#43;, all language
+ keywords, all functions and all variables are case sensitive. A difference in case between your variable declaration and the use of the variable is one reason you might get an undeclared variable error.</p>
+<h3>Using Variables</h3>
+<p>Ok, so you now know how to tell the compiler about variables, but what about using them?&nbsp;<br>
+<br>
+Here is a sample program demonstrating the use of a variable:</p>
+<div>
+<div id="highlighter_114228">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div>7</div>
+<div>8</div>
+<div>9</div>
+<div>10</div>
+<div>11</div>
+<div>12</div>
+<div>13</div>
+<div>14</div>
+</td>
+<td>
+<div>
+<div><code>#include &lt;iostream&gt;</code></div>
+<div>&nbsp;</div>
+<div><code>using</code>&nbsp;<code>namespace</code>&nbsp;<code>std;</code></div>
+<div>&nbsp;</div>
+<div><code>int</code>&nbsp;<code>main()</code></div>
+<div><code>{</code></div>
+<div><code>&nbsp;&nbsp;</code><code>int</code>&nbsp;<code>thisisanumber;</code></div>
+<div>&nbsp;</div>
+<div><code>&nbsp;&nbsp;</code><code>cout&lt;&lt;</code><code>&quot;Please enter a number: &quot;</code><code>;</code></div>
+<div><code>&nbsp;&nbsp;</code><code>cin&gt;&gt; thisisanumber;</code></div>
+<div><code>&nbsp;&nbsp;</code><code>cin.ignore();</code></div>
+<div><code>&nbsp;&nbsp;</code><code>cout&lt;&lt;</code><code>&quot;You entered: &quot;</code><code>&lt;&lt; thisisanumber &lt;&lt;</code><code>&quot;\n&quot;</code><code>;</code></div>
+<div><code>&nbsp;&nbsp;</code><code>cin.get();</code></div>
+<div><code>}</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Let's break apart this program and examine it line by line. The keyword int declares thisisanumber to be an integer. The function cin&gt;&gt; reads a value into thisisanumber; the user must press enter before the number is read by the program. cin.ignore()
+ is another function that reads and discards a character. Remember that when you type input into a program, it takes the enter key too. We don't need this, so we throw it away. Keep in mind that the variable was declared an integer; if the user attempts to
+ type in a decimal number, it will be truncated (that is, the decimal component of the number will be ignored). Try typing in a sequence of characters or a decimal number when you run the example program; the response will vary from input to input, but in no
+ case is it particularly pretty. Notice that when printing out a variable quotation marks are not used. Were there quotation marks, the output would be &quot;You Entered: thisisanumber.&quot; The lack of quotation marks informs the compiler that there is a variable,
+ and therefore that the program should check the value of the variable in order to replace the variable name with the variable when executing the output function. Do not be confused by the inclusion of two separate insertion operators on one line. Including
+ multiple insertion operators on one line is perfectly acceptable and all of the output will go to the same place. In fact, you&nbsp;<strong>must</strong>&nbsp;separate string literals (strings enclosed in quotation marks) and variables by giving each its own
+ insertion operators (&lt;&lt;). Trying to put two variables together with only one &lt;&lt; will give you an error message, do not try it. Do not forget to end functions and declarations with a semicolon. If you forget the semicolon, the compiler will give
+ you an error message when you attempt to compile the program.</p>
+<h4>Changing and Comparing Variables</h4>
+<p>Of course, no matter what type you use, variables are uninteresting without the ability to modify them. Several operators used with variables include the following: *, -, &#43;, /, =, ==, &gt;, &lt;. The * multiplies, the - subtracts, and the &#43; adds. It is of
+ course important to realize that to modify the value of a variable inside the program it is rather important to use the equal sign. In some languages, the equal sign compares the value of the left and right values, but in C&#43;&#43; == is used for that task. The
+ equal sign is still extremely useful. It sets the left input to the equal sign, which must be one, and only one, variable equal to the value on the right side of the equal sign. The operators that perform mathematical functions should be used on the right
+ side of an equal sign in order to assign the result to a variable on the left side.&nbsp;<br>
+<br>
+Here are a few examples:</p>
+<div>
+<div id="highlighter_783563">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+</td>
+<td>
+<div>
+<div><code>a = 4 * 6;&nbsp;</code><code>// (Note use of comments and of semicolon) a is 24</code></div>
+<div><code>a = a &#43; 5;&nbsp;</code><code>// a equals the original value of a with five added to it</code></div>
+<div><code>a == 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>// Does NOT assign five to a. Rather, it checks to see if a equals 5.</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The other form of equal, ==, is not a way to assign a value to a variable. Rather, it checks to see if the variables are equal. It is useful in other areas of C&#43;&#43;; for example, you will often use == in such constructions as conditional statements and loops.
+ You can probably guess how &lt; and &gt; function. They are greater than and less than operators.&nbsp;<br>
+<br>
+For example:</p>
+<div>
+<div id="highlighter_511444">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+</td>
+<td>
+<div>
+<div><code>a &lt; 5&nbsp;&nbsp;</code><code>// Checks to see if a is less than five</code></div>
+<div><code>a &gt; 5&nbsp;&nbsp;</code><code>// Checks to see if a is greater than five</code></div>
+<div><code>a == 5&nbsp;</code><code>// Checks to see if a equals five, for good measure</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Comparing variables isn't really useful until you have some way of using the results</p>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>

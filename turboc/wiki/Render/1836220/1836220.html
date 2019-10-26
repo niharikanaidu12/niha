@@ -1,0 +1,62 @@
+<div class="wikidoc">
+<h2><strong>File Input-Output</strong></h2>
+<p>This is a slightly more advanced topic than what I have covered so far, but I think that it is useful. File I/O is reading from and writing to files. This lesson will only cover text files, that is, files that are composed only of ASCII text.&nbsp;<br>
+<br>
+C&#43;&#43; has two basic classes to handle files, ifstream and ofstream. To use them, include the header file fstream. Ifstream handles file input (reading from files), and ofstream handles file output (writing to files). The way to declare an instance of the ifstream
+ or ofstream class is:</p>
+<pre>ifstream a_file;
+</pre>
+<p>or</p>
+<pre>ifstream a_file ( &quot;filename&quot; );</pre>
+<p><br>
+The constructor for both classes will actually open the file if you pass the name as an argument. As well, both classes have an open command (a_file.open()) and a close command (a_file.close()). You aren't required to use the close command as it will automatically
+ be called when the program terminates, but if you need to close the file long before the program ends, it is useful.&nbsp;<br>
+<br>
+The beauty of the C&#43;&#43; method of handling files rests in the simplicity of the actual functions used in basic input and output operations. Because C&#43;&#43; supports overloading operators, it is possible to use &lt;&lt; and &gt;&gt; in front of the instance of the
+ class as if it were cout or cin. In fact, file streams can be used exactly the same as cout and cin after they are opened.&nbsp;<br>
+<br>
+For example:</p>
+<pre>#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+  char str[10];
+
+  //Creates an instance of ofstream, and opens example.txt
+  ofstream a_file ( &quot;example.txt&quot; );
+  // Outputs to example.txt through a_file
+  a_file&lt;&lt;&quot;This text will now be inside of example.txt&quot;;
+  // Close the file stream explicitly
+  a_file.close();
+  //Opens for reading the file
+  ifstream b_file ( &quot;example.txt&quot; );
+  //Reads one string from the file
+  b_file&gt;&gt; str;
+  //Should output 'this'
+  cout&lt;&lt; str &lt;&lt;&quot;\n&quot;;
+  cin.get();    // wait for a keypress
+  // b_file is closed implicitly here
+}
+</pre>
+<p>The default mode for opening a file with ofstream's constructor is to create it if it does not exist, or delete everything in it if something does exist in it. If necessary, you can give a second argument that specifies how the file should be handled. They
+ are listed below:</p>
+<pre>ios::app   -- Append to the file
+ios::ate   -- Set the current position to the end
+ios::trunc -- Delete everything in the file
+</pre>
+<p>For example:</p>
+<pre>ofstream a_file ( &quot;test.txt&quot;, ios::app );
+</pre>
+<p>This will open the file without destroying the current contents and allow you to append new data. When opening files, be very careful not to use them if the file could not be opened. This can be tested for very easily:</p>
+<pre>ifstream a_file ( &quot;example.txt&quot; );
+
+if ( !a_file.is_open() ) {
+  // The file could not be opened
+}
+else {
+  // Safely use the file stream
+}<br><br><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source code and an active message board.&quot;&nbsp;</strong></pre>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,92 @@
+<div class="wikidoc">
+<h2><strong>Switch</strong></h2>
+<p>Switch case statements are a substitute for long if statements that compare a variable to several &quot;integral&quot; values (&quot;integral&quot; values are simply values that can be expressed as an integer, such as the value of a char). The basic format for using switch
+ case is outlined below. The value of the variable given into switch is compared to the value following each of the cases, and when one value matches the value of the variable, the computer continues executing the program from that point.</p>
+<pre><code>switch ( &lt;variable&gt; ) {
+case this-value:
+  Code to execute if &lt;variable&gt; == this-value
+  break;
+case that-value:
+  Code to execute if &lt;variable&gt; == that-value
+  break;
+...
+default:
+  Code to execute if &lt;variable&gt; does not equal the value following any of the cases
+  break;
+}</code></pre>
+<p>The condition of a switch statement is a value. The case says that if it has the value of whatever is after that case then do whatever follows the colon. The break is used to break out of the case statements. Break is a keyword that breaks out of the code
+ block, usually surrounded by braces, which it is in. In this case, break prevents the program from falling through and executing the code in all the other case statements. An important thing to note about the switch statement is that the case values may only
+ be constant integral expressions. Sadly, it isn't legal to use case like this:</p>
+<pre><code>int a = 10;
+int b = 10;
+int c = 20;
+
+switch ( a ) {
+case b:
+  /* Code */
+  break;
+case c:
+  /* Code */
+  break;
+default:
+  /* Code */
+  break;
+}
+</code></pre>
+<p>The default case is optional, but it is wise to include it as it handles any unexpected cases. It can be useful to put some kind of output to alert you to the code entering the default case if you don't expect it to. Switch statements serve as a simple way
+ to write long if statements when the requirements are met. Often it can be used to process input from a user.&nbsp;<br>
+<br>
+Below is a sample program, in which not all of the proper functions are actually declared, but which shows how one would use switch in a program.</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+void playgame()
+{
+    printf( &quot;Play game called&quot; );
+}
+void loadgame()
+{
+    printf( &quot;Load game called&quot; );
+}
+void playmultiplayer()
+{
+    printf( &quot;Play multiplayer game called&quot; );
+}
+	
+int main()
+{
+    int input;
+
+    printf( &quot;1. Play game\n&quot; );
+    printf( &quot;2. Load game\n&quot; );
+    printf( &quot;3. Play multiplayer\n&quot; );
+    printf( &quot;4. Exit\n&quot; );
+    printf( &quot;Selection: &quot; );
+    scanf( &quot;%d&quot;, &amp;input );
+    switch ( input ) {
+        case 1:            /* Note the colon, not a semicolon */
+            playgame();
+            break;
+        case 2:          
+            loadgame();
+            break;
+        case 3:         
+            playmultiplayer();
+            break;
+        case 4:        
+            printf( &quot;Thanks for playing!\n&quot; );
+            break;
+        default:            
+            printf( &quot;Bad input, quitting!\n&quot; );
+            break;
+    }
+    getchar();
+
+}
+</code></pre>
+<p>This program will compile, but cannot be run until the undefined functions are given bodies, but it serves as a model (albeit simple) for processing input. If you do not understand this then try mentally putting in if statements for the case statements.
+ Default simply skips out of the switch case construction and allows the program to terminate naturally. If you do not like that, then you can make a loop around the whole thing to have it wait for valid input. You could easily make a few small functions if
+ you wish to test the code.&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>

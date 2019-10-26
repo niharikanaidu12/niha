@@ -1,0 +1,14 @@
+//WAP to calculate the area & circumstance of circle.
+
+#include<stdio.h>
+#include<conio.h>
+Void main()
+{
+    float r,area,cir;
+    printf("Enter radius of circle:");
+    scanf("%f",&r);
+    area=3.14*r*r;
+    cir=2*3.14*r;
+    printf("The area of circle is %f\n The circumstance of circle is %f",area,cir);
+    getch();
+}

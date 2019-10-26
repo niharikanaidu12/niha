@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Duplicate of this issues https://turboc.codeplex.com/workitem/6 ",
+    "ClosedDate": "2016-09-28T21:42:08.137-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "some keys are not working that are important for programming \r\n\" \"{}\\ \" and many more plz look uoto it",
+    "LastUpdatedDate": "2016-09-28T21:42:08.137-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-08-01T11:24:21.353-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Duplicate"
+    },
+    "Summary": "keys are not working",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 19
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

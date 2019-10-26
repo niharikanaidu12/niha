@@ -1,0 +1,135 @@
+<div class="wikidoc">
+<p><strong>4.WAP to check whether the given number is even or odd.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int n;</code><br><code>printf(&quot;Enter the number&quot;);</code><br><code>scanf(&quot;%d&quot;,&amp;n);</code><br><code>if(n%2==0)</code><br><code>printf(&quot;The given number is even&quot;);</code><br><code>else</code><br><code>printf(&quot;The given number is odd&quot;);</code><br><code>getch();</code><br><code>}</code></pre>
+<p><strong>5.WAP to enter two number &amp; find largest among them.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int a,b;</code><br><code>printf(&quot;Enter two number:&quot;);</code><br><code>scanf(&quot;%d%d&quot;,&amp;a,&amp;b);</code><br><code>if(a&gt;b)</code><br><code>printf(&quot;The largest number is %d&quot;);</code><br><code>else</code><br><code>printf(&quot;The largest number is %d &quot;,b);</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>6.WAP to find largest number among three number.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int a,b,c;</code><br><code>printf(&quot;Enter three number:&quot;);</code><br><code>scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);</code><br><code>if(a&gt;b&amp;&amp;a&gt;c)</code><br><code>printf(&quot;The largest number is %d&quot;,a);</code><br><code>else if(b&gt;c)</code><br><code>printf(&quot;The largest number is % d&quot;,b);</code><br><code>else</code><br><code>printf(&quot;The largest number is %d&quot;,c);</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>7.WAP to find middle number among three number.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int a,b,c;</code><br><code>printf(&quot;Enter three number:&quot;);</code><br><code>scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);</code><br><code>if((a&gt;b&amp;&amp;a&lt;c)||(a&gt;c&amp;&amp;a&lt;b))</code><br><code>printf(&quot;The middle number is %d&quot;,a)</code><br><code>else if((b&gt;a&amp;&amp;b&lt;c)||(b&gt;c&amp;&amp;b&lt;a))</code><br><code>printf(&quot;The middle number is % d&quot;,b);</code><br><code>else</code><br><code>printf(&quot;The largest number is %d&quot;,c);</code><br><code>getch();</code><br><code>}</code></pre>
+<p><strong>8. WAP that reads marks of five subject &amp; calculate total marks, percent and&nbsp;</strong><strong>find division.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int s1,s2,s3,s4,s5,total;</code><br><code>float per;</code><br><code>printf(&quot;Enter five subjects marks:&quot;);</code><br><code>scanf(&quot;%d%d%d%d%d&quot;,&amp;s1,&amp;s2,&amp;s3,&amp;s4,&amp;s5);</code><br><code>total=s1&#43;s2&#43;s3&#43;s4&#43;s5;</code><br><code>per=total/5;</code><br><code>if(s1&gt;=35&amp;&amp;s2&gt;=35&amp;&amp;s3&gt;=35&amp;&amp;s4&gt;=35&amp;&amp;s5&gt;=35)</code><br><code>{</code><br><code>if(per&gt;=75&amp;&amp;per&lt;=100)</code><br><code>printf(&quot;Congratulation : Distinction&quot;);</code><br><code>else if(per&gt;=60)</code><br><code>printf(&quot;First Division&quot;);</code><br><code>else if(per&gt;=45)</code><br><code>printf(&quot;Second Division&quot;);</code><br><code>else</code><br><code>printf(&quot;Third Division&quot;);</code><br><code>}</code><br><code>else</code><br><code>printf(&quot;Failed : Try again later&quot;);</code><br><code>gerch();</code><br><code>}</code></pre>
+<p><strong>9. WAP which reads two number and calculate sum, different &amp; product of&nbsp;</strong><strong>those number by using switch case.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int a,b,c,ch;</code><br><code>printf(&quot;Enter two number:&quot;);</code><br><code>scanf(&quot;%d%d&quot;,&amp;a,&amp;b);</code><br><code>printf(&quot;\n1.Sum&quot;);</code><br><code>printf(&quot;\n2.Different&quot;);</code><br><code>printf(&quot;\n3.Product&quot;);</code><br><code>printf(&quot;Enter your choice from above Manu:&quot;);</code><br><code>scanf(&quot;%d&quot;,&amp;ch);</code><br><code>switch(ch)</code><br><code>{</code><br><code>case 1:</code><br><code>c=a&#43;b;</code><br><code>printf(&quot;Sum of given number is %d&quot;,c);</code><br><code>break;</code><br><code>case 2:</code><br><code>c=a-b;</code><br><code>printf(&quot;Different of given number is %d&quot;,c);</code><br><code>break;</code><br><code>case 3:</code><br><code>c=a*b;</code><br><code>printf(&quot;Product of given number is %d&quot;,c);</code><br><code>break;</code><br><code>default:</code><br><code>printf(&quot;Wrong choice. Please enter only 1-3&quot;);</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>10.WAP to display your name 30 times using three types of loop.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int i=1;</code><br><code>while(i&lt;=30)</code><br><code>{</code><br><code>printf(&quot;\n My name is HARI&quot;);</code><br><code>i&#43;&#43;;</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>11.WAP to calculate factorial of given number.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int n,i,fact=1;</code><br><code>printf(&quot;Enter a number&quot;);</code><br><code>scanf(&quot;%d&quot;,&amp;n);</code><br><code>for(i=1;i&lt;=n;i&#43;&#43;)</code><br><code>fact=fact*i;</code><br><code>printf(&quot;The factorial of %d is %d&quot;,n,fact);</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>12.WAP to display multiplication table of given number.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int n,i;</code><br><code>printf(&quot;Enter a number&quot;);</code><br><code>scanf(&quot;%d&quot;,&amp;n);</code><br><code>for(i=1;i&lt;=10;i&#43;&#43;)</code><br><code>printf(&quot;%d*%d=%d&quot;,n,i,n*i);</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>13.WAP to calculate X*Y using loop.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int x,y,i,sum=o;</code><br><code>printf(&quot;Enter the value of x and y&quot;);</code><br><code>scanf(&quot;%d%d&quot;,&amp;x,&amp;y);</code><br><code>for(i=1;i&lt;=y;i&#43;&#43;)</code><br><code>{</code><br><code>sum=sum&#43;x;</code><br><code>}</code><br><code>printf(&quot;Sum = %d&quot;,sum);</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>14.WAP to calculate Xn using loop.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int x,n,i,sum=1;</code><br><code>printf(&quot;Enter the value of x and n&quot;);</code><br><code>scanf(&quot;%d%d&quot;,&amp;x,&amp;n);</code><br><code>for(i=1;i&lt;=n;i&#43;&#43;)</code><br><code>{</code><br><code>sum=sum*x;</code><br><code>}</code><br><code>printf(&quot;Answer = %d&quot;,sum);</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>15.WAP to display the series 3 5 7 9 &hellip;&hellip;&hellip;nth terms.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int n,i,a=3;</code><br><code>printf(&quot;Enter how many terms&quot;);</code><br><code>scanf(&quot;%d&quot;,&amp;n);</code><br><code>for(i=1;i&lt;=n;i&#43;&#43;)</code><br><code>{</code><br><code>printf(&quot;%d\t&quot;,a);</code><br><code>a&#43;2;</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>16.WAP to display the following.</strong><br>
+<strong>1</strong><br>
+<strong>12</strong><br>
+<strong>123</strong><br>
+<strong>1234</strong><br>
+<strong>12345</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int i,j;</code><br><code>for(i=1;i&lt;=5;i&#43;&#43;)</code><br><code>{</code><br><code>for(j=1;j&lt;=i;j&#43;&#43;)</code><br><code>{</code><br><code>printf(&quot;%d\t&quot;,j);</code><br><code>}</code><br><code>printf(&quot;\n&quot;);</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>17. WAP to display the following.</strong><br>
+<strong>1</strong><br>
+<strong>22</strong><br>
+<strong>333</strong><br>
+<strong>4444</strong><br>
+<strong>55555</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int i,j;</code><br><code>for(i=1;i&lt;=5;i&#43;&#43;)</code><br><code>{</code><br><code>for(j=1;j&lt;=i;j&#43;&#43;)</code><br><code>{</code><br><code>printf(&quot;%d\t&quot;,i);</code><br><code>}</code><br><code>printf(&quot;\n&quot;);</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><strong>18.WAP to display following.</strong><br>
+<strong>1 2 3 4 5&hellip;&hellip;10</strong><br>
+<strong>2 4 . . . . 3 6 . . . . 4 8 . . . . 5 10 . . . .</strong><br>
+<strong>. . . . . .</strong><br>
+<strong>. . . . . . 10 20 . . . 100</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int i,j;</code><br><code>for(i=1;i&lt;=5;i&#43;&#43;)</code><br><code>{</code><br><code>for(j=1;j&lt;=i;j&#43;&#43;)</code><br><code>{</code><br><code>printf(&quot;%d\t&quot;,i*j);</code><br><code>}</code><br><code>printf(&quot;\n&quot;);</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><strong>19.WAP to display following.</strong><br>
+<strong>*</strong><br>
+<strong>**</strong><br>
+<strong>***</strong><br>
+<strong>****</strong><br>
+<strong>*****</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int i,j,k;</code><br><code>for(i=1;i&lt;=5;i&#43;&#43;)</code><br><code>{</code><br><code>for(k=i;k&lt;=4;i&#43;&#43;)</code><br><code>printf(&quot; &quot;);</code><br><code>for(j=1;j&lt;=i;j&#43;&#43;)</code><br><code>printf(&quot;*&quot;);</code><br><code>printf(&quot;\n&quot;);</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>20.WAP to display following.</strong><br>
+<strong>*</strong><br>
+<strong>* * *</strong><br>
+<strong>* * * * *</strong><br>
+<strong>* * * * * * *</strong><br>
+<strong>* * * * * * * * *</strong></p>
+<pre><br><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int i,j,k;</code><br><code>for(i=1;i&lt;=5;i&#43;&#43;)</code><br><code>{</code><br><code>for(k=i;k&lt;=4;i&#43;&#43;)</code><br><code>printf(&quot; &quot;);</code><br><code>for(j=1;j&lt;=2*i-1;j&#43;&#43;)</code><br><code>{</code><br><code>printf(&quot;*&quot;);</code><br><code>printf(&quot; &quot;);</code><br><code>}</code><br><code>printf(&quot;\n&quot;);</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>21.WAP to display following.</strong><br>
+<strong>1 2 3 4 5</strong><br>
+<strong>2 3 4 5 6</strong><br>
+<strong>3 4 5 6 7</strong><br>
+<strong>4 5 6 7 8</strong><br>
+<strong>5 6 7 8 9</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int i,j;</code><br><code>for(i=0;i&lt;5;i&#43;&#43;)</code><br><code>{</code><br><code>for(j=1;j&lt;=5;j&#43;&#43;)</code><br><code>{</code><br><code>printf(&quot;%d\t&quot;,i*j);</code><br><code>}</code><br><code>printf(&quot;\n&quot;);</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><strong>22.WAP to display following.</strong><br>
+<strong>5 10 15 20 25</strong><br>
+<strong>10 15 20 25 30</strong><br>
+<strong>15 20 25 30 35</strong><br>
+<strong>20 25 30 35 40</strong><br>
+<strong>25 30 35 40 45</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int i,j;</code><br><code>for(i=0;i&lt;5;i&#43;&#43;)</code><br><code>{</code><br><code>for(j=1;j&lt;=5;j&#43;&#43;)</code><br><code>{</code><br><code>printf(&quot;%d\t&quot;,(i*j)*5);</code><br><code>}</code><br><code>printf(&quot;\n&quot;);</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>23.WAP to display following.</strong><br>
+<strong>A</strong><br>
+<strong>A B</strong><br>
+<strong>A B C</strong><br>
+<strong>A B C D</strong><br>
+<strong>A B C D E</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>char i,j,k;</code><br><code>for(i=65;i&lt;=69;i&#43;&#43;)</code><br><code>{</code><br><code>for(k=i;k&lt;=68;i&#43;&#43;)</code><br><code>printf(&quot; &quot;);</code><br><code>for(j=65;j&lt;=i;j&#43;&#43;)</code><br><code>{</code><br><code>printf(&quot;%d&quot;,i);</code><br><code>printf(&quot; &quot;);</code><br><code>}</code><br><code>printf(&quot;\n&quot;);</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>24.WAP to display Pascal triangle.</strong><br>
+<strong>1</strong><br>
+<strong>1 1</strong><br>
+<strong>1 2 1</strong><br>
+<strong>1 3 3 1</strong><br>
+<strong>1 4 6 4 1</strong></p>
+<pre><br><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>char i,j,k,n,a;</code><br><code>printf(&quot;Enter row sizes:&quot;);</code><br><code>scanf(&quot;%d&quot;,&amp;n);</code><br><code>for(i=0;i&lt;=n;i&#43;&#43;)</code><br><code>{</code><br><code>for(k=i;k&lt;=n-1;i&#43;&#43;)</code><br><code>printf(&quot; &quot;);</code><br><code>a=1;</code><br><code>for(j=0;j&lt;=i;j&#43;&#43;)</code><br><code>{</code><br><code>printf(&quot; %d&quot;,a);</code><br><code>a=a*(i-j)/(j&#43;1);</code><br><code>}</code><br><code>printf(&quot;\n&quot;);</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p>&nbsp;</p>
+<p><strong>25.WAP to display following.</strong><br>
+<strong>1</strong><br>
+<strong>2 3</strong><br>
+<strong>4 5 6</strong><br>
+<strong>7 8 9 10</strong><br>
+<strong>11 12 13 14 15</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int i,j,a=1;</code><br><code>for(i=1;i&lt;=5;i&#43;&#43;)</code><br><code>{</code><br><code>for(j=1;j&lt;=i;j&#43;&#43;)</code><br><code>{</code><br><code>printf(&quot;%d\t&quot;,a);</code><br><code>a&#43;&#43;;</code><br><code>}</code><br><code>printf(&quot;\n&quot;);</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>26.WAP to print fibonacci series 0 1 1 2 3 5 8&hellip;&hellip;&hellip;n terms.</strong></p>
+<pre><br><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int a=0,b,=1,c,n,i;</code><br><code>printf(&quot;Enter how many terms:&quot;);</code><br><code>scanf(&quot;%d&quot;,&amp;n);</code><br><code>printf(&quot;The Fibonacci series is : %d&quot;,a);</code><br><code>for(i=1;i&lt;n;i&#43;&#43;)</code><br><code>{</code><br><code>c=a&#43;b;</code><br><code>a=b;</code><br><code>b=c;</code><br><code>prinrf(&quot;\t%d&quot;,a);</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><strong>27.WAP to calculate sum of given digit number.(Take 4 digit number)</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int n,d,sum=0;</code><br><code>printf(&quot;Enter a number&quot;);</code><br><code>scanf(&quot;%d&quot;,&amp;n);</code><br><code>while(n!=0)</code><br><code>{</code><br><code>if(n&gt;=1000&amp;&amp;n&lt;=9999)</code><br><code>{</code><br><code>d=n%10;</code><br><code>sum=sum&#43;d;</code><br><code>n=n/10;</code><br><code>}</code><br><code>}</code><br><code>printf(&quot;Sum =%d&quot;,sum);</code><br><code>getch();</code><br><code>}</code></pre>
+<p><strong>28.WAP to check the given number is palindrome or not.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int n,d,sum=0,temp;</code><br><code>printf(&quot;Enter a number&quot;);</code><br><code>scanf(&quot;%d&quot;,&amp;n);</code><br><code>temp=n;</code><br><code>while(n!=0)</code><br><code>{</code><br><code>d=n%10;</code><br><code>sum=sum*10&#43;d;</code><br><code>n=n/10;</code><br><code>}</code><br><code>if(temp==sum)</code><br><code>printf(&quot;The given number is palindrome&quot;);</code><br><code>else</code><br><code>printf(&quot;The given number is not palindrome&quot;);</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>29.WAP to check the given number is Armstrong number or not.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int n,d,sum=0,temp;</code><br><code>printf(&quot;Enter a number&quot;);</code><br><code>scanf(&quot;%d&quot;,&amp;n);</code><br><code>temp=n;</code><br><code>while(n!=0)</code><br><code>{</code><br><code>d=n%10;</code><br><code>sum=sum&#43;d*d*d;</code><br><code>n=n/10;</code><br><code>}</code><br><code>if(temp==sum)</code><br><code>printf(&quot;The given number is Armstrong number &quot;);</code><br><code>else</code><br><code>printf(&quot;The given number is not Armstrong number &quot;);</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>30.WAP to convert the given binary number into equivalent decimal number.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>#include&lt;math.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int n,d,sum=0,p=0;</code><br><code>printf(&quot;Enter a number&quot;);</code><br><code>scanf(&quot;%d&quot;,&amp;n);</code><br><code>while(n!=0)</code><br><code>{</code><br><code>d=n%10;</code><br><code>sum=sum&#43;d*pow(2,p);</code><br><code>n=n/10;</code><br><code>p&#43;&#43;;</code><br><code>}</code><br><code>printf(&quot;The decimal number is %d&quot;,sum);</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>31.WAP to convert from decimal to binary number.</strong></p>
+<pre><br><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int n,d,sum=0,i=1;</code><br><code>printf(&quot;Enter a number&quot;);</code><br><code>scanf(&quot;%d&quot;,&amp;n);</code><br><code>while(n!=0)</code><br><code>{</code><br><code>d=n%2;</code><br><code>sum=sum&#43;d*i;</code><br><code>n=n/2;</code><br><code>i*10;</code><br><code>}</code><br><code>printf(&quot;The binary number is %d&quot;,sum);</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>32.WAP to check whether given number is prime or not (composite).</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int n,i;</code><br><code>printf(&quot;Enter a number&quot;);</code><br><code>scanf(&quot;%d&quot;,&amp;n);</code><br><code>for(i=2;i&lt;n;i&#43;&#43;)</code><br><code>{</code><br><code>if(n%i==0)</code><br><code>{</code><br><code>printf(&quot;Not Prime&quot;);</code><br><code>break;</code><br><code>}</code><br><code>else</code><br><code>{</code><br><code>printf(&quot;Prime&quot;);</code><br><code>break;</code><br><code>}</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>33.WAP to print all prime number from 1 to 100.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int i,j;</code><br><code>for(i=1;i&lt;=100;i&#43;&#43;)</code><br><code>{</code><br><code>for(j=2;j&lt;i;j&#43;&#43;)</code><br><code>{</code><br><code>if(i%j==0)</code><br><code>{</code><br><code>break;</code><br><code>}</code><br><code>}</code><br><code>if(i==j)</code><br><code>printf(&quot;%d\t&quot;,i);</code><br><code>}</code><br><code>getch();</code><br><code>}</code></pre>
+<p><br>
+<strong>34.WAP to HCF and LCM of two numbers.</strong></p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;conio.h&gt;</code><br><code>void main()</code><br><code>{</code><br><code>int a,b,x,y,s,t,result;</code><br><code>printf(&quot;Enter two number:&quot;);</code><br><code>scanf(&quot;%d%d&quot;,&amp;a,&amp;b);</code><br><code>s=a;</code><br><code>t=b;</code><br><code>while(a!=b)</code><br><code>{</code><br><code>if(a&gt;b)</code><br><code>{</code><br><code>x=a-b;</code><br><code>a=b;</code><br><code>b=x;</code><br><code>continue;</code><br><code>}</code><br><code>if(b&gt;a)</code><br><code>{</code><br><code>x=b-a;</code><br><code>b=a;</code><br><code>a=x;</code><br><code>continue;</code><br><code>}</code><br><code>}</code><br><code>printf(&quot;HCF=%d&quot;,a);</code><br><code>x=s/a;</code><br><code>y=t/a;</code><br><code>result=a*x*y;</code><br><code>printf(&quot;LCM=%d&quot;,result);</code><br><code>getch();</code><br><code>}</code></pre>
+</div><div class="ClearBoth"></div>

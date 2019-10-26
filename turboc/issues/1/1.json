@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "![Image](http://download-codeplex.sec.s-msft.com/Download?ProjectName=turboc&DownloadId=1508258)",
+    "LastUpdatedDate": "2017-12-01T03:26:40.287-08:00",
+    "PlannedForRelease": "Turbo C++ 3.2",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2015-11-27T07:38:04.973-08:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Unable to open include file....",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This problem occurs due to wrong configuration in Turbo C++ directories.\n\n__Solution__\nPlease follow the steps to fix the problem\nStep 1. Go in Options menu.\nStep 2. Then in Directories...\n\n![Image](http://download-codeplex.sec.s-msft.com/Download?ProjectName=turboc&DownloadId=1508259)\n\nStep 3. Edit the directories show in following images\n \nInclude Directories -> C:\\TURBOC3\\INCLUDE\nLibrary Directories -> C:\\TURBOC3\\LIB\nOutput Directory -> C:\\TURBOC3\\SOURCE\nSource Directories -> C:\\TURBOC3\\SOURCE                [Wrong in image]\n\n![Image](http://download-codeplex.sec.s-msft.com/Download?ProjectName=turboc&DownloadId=1508260)\n\nStep 4. Click on OK button\n \nDone. Problem Solve.\n \n[Solution also available here](https://turboc.codeplex.com/wikipage?title=%5berror%5d%20unable%20to%20open%20include%20file)",
+      "PostedDate": "2015-11-27T07:40:11.693-08:00",
+      "Id": 194043
+    }
+  ]
+}

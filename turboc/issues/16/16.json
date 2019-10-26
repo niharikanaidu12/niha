@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "i have downloaded SDK Microsoft framework 4.0 & install it on my PC with win 7 OS \r\n\r\nNow Any oneher ewho can tell me the how to include window.h file and use window API\r\n",
+    "LastUpdatedDate": "2016-09-28T21:58:32.587-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-07-16T12:00:38.56-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "how to include window.h file in turbo c++3.0",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 16
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "windows.h is not the part Turbo C++. So, you can't use windows.h in Turbo C++.\n\nAlternatively, you could look into any of several alternatives such as Dev-C++, Visual Studio Express, Cygwin, or Digital Mars. Edit: Or Code::Blocks, Ultimate++/TheIDE, NetBeans, or Eclipse CDT.",
+      "PostedDate": "2016-09-28T21:58:32.587-07:00",
+      "Id": 204404
+    }
+  ]
+}

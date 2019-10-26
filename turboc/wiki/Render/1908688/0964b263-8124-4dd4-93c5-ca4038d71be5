@@ -1,0 +1,13 @@
+//WAP to square of a given number.
+
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+    int a,square;
+    printf("Enter a number:");
+    scanf("%d",&a);
+    suare =a*a;
+    printf("The square of given number is %d",square);
+    getch();
+}

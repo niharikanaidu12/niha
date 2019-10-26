@@ -1,0 +1,63 @@
+<div class="wikidoc">
+<h3>6.&nbsp;Do you know memory representation of int a = 7 ?</h3>
+<p><strong>Memory representation of:</strong></p>
+<p>signed int a=7; (In Turbo c compiler)</p>
+<p>signed short int a=7 (Both turbo c and Linux gcc compiler)</p>
+<p>Binary equivalent of data 7 in 16 bit: 00000000 00000111</p>
+<p>Data bit: 0000000 00000111 (Take first 15 bit form right side)</p>
+<p>Sign bit: 0 (Take leftmost one bit)</p>
+<p>First eight bit of data bit from right side i.e. 00000111 will store in the leftmost byte from right to left side and rest seven bit of data bit i.e. 0000000 will store in rightmost byte from right to left side as shown in the following figure:&nbsp;</p>
+<p><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=turboc&DownloadId=1524099" alt="" width="640" height="166"></p>
+<h3>7.&nbsp;What is and why array in c?</h3>
+<p><strong>Array</strong></p>
+<p>An array is derived data type in c programming language which can store similar type of data in continuous memory location. Data may be primitive type (int, char, float, double&hellip;), address of union, structure, pointer, function or another array.<br>
+Example of array declaration:</p>
+<pre><code>int arr[5];</code><br><code>char arr[5];</code><br><code>float arr[5];</code><br><code>long double arr[5];</code><br><code>char * arr[5];</code><br><code>int (arr[])();</code><br><code>double ** arr[5];</code></pre>
+<p><strong>Array is useful when:</strong></p>
+<p>(a) We have to store large number of data of similar type. If we have large number of similar kind of variable then it is very difficult to remember name of all variables and write the program. For example:</p>
+<pre><code>//PROCESS ONE</code><br><code>int main(){</code><br><code> int ax=1;</code><br><code> int b=2;</code><br><code> int cg=5;</code><br><code> int dff=7;</code><br><code> int am=8;</code><br><code> int raja=0;</code><br><code> int rani=11;</code><br><code> int xxx=5;</code><br><code> int yyy=90;</code><br><code> int p;</code><br><code> int q;</code><br><code> int r;</code><br><code> int avg;</code><br><code> avg=(ax&#43;b&#43;cg&#43;dff&#43;am&#43;raja&#43;rani&#43;xxx&#43;yyy&#43;p&#43;q&#43;r)/12;</code><br><code> printf(&quot;%d&quot;,avg);</code><br><code> return 0;</code><br><code>}</code></pre>
+<p><br>
+If we will use array then above program can be written as:</p>
+<pre><code>//PROCESS TWO</code><br><code>int main(){</code><br><code> int arr[]={1,2,5,7,8,0,11,5,50};</code><br><code> int i,avg;</code><br><code> for(int i=0;i&lt;12;i&#43;&#43;){</code><br><code> avg=avg&#43;arr[i];</code><br><code> }</code><br><code>printf(&quot;%d&quot;,avg/12);</code><br><code>return 0;</code><br><code>}</code></pre>
+<p><strong>Question:</strong> Write a C program to find out average of 200 integer number using process one and two.</p>
+<p>(b) We want to store large number of data in continuous memory location. Array always stores data in continuous memory location.</p>
+<p>What will be output when you will execute the following program?</p>
+<pre><code>int main(){</code><br><code>int arr[]={0,10,20,30,40};</code><br><code> char *ptr=arr;</code><br><code> arr=arr&#43;2;</code><br><code> printf(&quot;%d&quot;,*arr);</code><br><code> return 0;</code><br><code>}</code></pre>
+<p><strong>Advantage of using array:</strong></p>
+<p>1. An array provides singe name .So it easy to remember the name of all element of an array.<br>
+2. Array name gives base address of an array .So with the help increment operator we can visit one by one all the element of an array.<br>
+3. Array has many application data structure.</p>
+<p><strong>Array of pointers in c:</strong></p>
+<p>Array whose content is address of another variable is known as array pointers. For example:</p>
+<pre><code>int main(){</code><br><code>float a=0.0f,b=1.0f,c=2.0f;</code><br><code>float * arr[]={&amp;a,&amp;b,&amp;c};</code><br><code> b=a&#43;c;</code><br><code>printf(&quot;%f&quot;,arr[1]);</code><br><code> return 0;</code><br><code>}</code></pre>
+<h3>8.&nbsp;Why we use do-while loop in c? Also tell any properties which you know? &nbsp;</h3>
+<p><strong>Explanation:</strong><br>
+It is also called as post tested loop. It is used when it is necessary to execute the loop at least one time. Syntax:</p>
+<pre><code>do {</code><br><code>Loop body</code><br><code>} while (Expression);</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code>int main(){</code><br><code> int num,i=0;</code><br><code>do{</code><br><code> printf(&quot;To enter press 1\n&quot;);</code><br><code> printf(&quot;To exit press 2&quot;);</code><br><code> scanf(&quot;%d&quot;,&amp;num);</code><br><code> &#43;&#43;i;</code><br><code> switch(num){</code><br><code> case 1:printf(&quot;You are welcome\n&quot;);break;</code><br><code> default : exit(0);</code><br><code> }</code><br><code> }</code><br><code> while(i&lt;=10);</code><br><code> return 0;</code><br><code>}</code></pre>
+<pre><code>Output: 3 3 4 4</code></pre>
+<p>If there is only one statement in the loop body then braces is optional. For example:</p>
+<pre>(a)<br><code>int main(){</code><br><code> double i=5.5678;</code><br><code> do</code><br><code> printf(&quot;hi&quot;);</code><br><code> while(!i);</code><br><code> return 0;</code><br><code>}</code></pre>
+<pre><code>Output: 3 3 4 4</code></pre>
+<pre>(b)<br><code>int main(){</code><br><code> double i=5.63333;</code><br><code> do</code><br><code> printf(&quot;hi&quot;);</code><br><code> while(!i);</code><br><code> return 0;</code><br><code>}</code></pre>
+<pre><code>Output: hi</code></pre>
+<pre>(c)<br><code>int main(){</code><br><code> int x=25,y=1;</code><br><code> do</code><br><code> if(x&gt;5)</code><br><code> printf(&quot; ONE&quot;);</code><br><code> else if(x&gt;10)</code><br><code> printf(&quot; TWO&quot;);</code><br><code> else if(x==25)</code><br><code> printf(&quot; THREE&quot;);</code><br><code> else</code><br><code> printf(&quot; FOUR&quot;);</code><br><code> while(y--);</code><br><code>return 0;</code><br><code>}</code></pre>
+<pre><code>Output: ONE ONE</code></pre>
+<h3>9.&nbsp;What is the meaning of prototype of a function?</h3>
+<p><strong>Prototype of a function</strong></p>
+<p>Declaration of function is known as prototype of a function. Prototype of a function means</p>
+<p>(1) What is return type of function?<br>
+(2) What parameters are we passing?<br>
+(3) For example prototype of printf function is:</p>
+<pre><code>int printf(const char *, &hellip;);</code></pre>
+<p>I.e. its return type is int data type, its first parameter constant character pointer and second parameter is ellipsis i.e. variable number of arguments.</p>
+<h3>10.&nbsp;Write a c program to modify the constant variable in c?</h3>
+<p>Explanation:<br>
+You can modify constant variable with the help of pointers. For example:</p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>int main(){</code><br><code> const int i=10;</code><br><code> int *ptr=&amp;i;</code><br><code> *ptr=(int *)20;</code><br><code> printf(&quot;%d&quot;,i);</code><br><code> return 0;</code><br><code>}</code></pre>
+<pre><code>Output: 20 <br><br></code></pre>
+<h2><a href="https://turboc.codeplex.com/wikipage?title=C%20Programming%20Interview%20Question%201">&lt;&lt;C Programming Interview Question Part&nbsp;1</a></h2>
+<h2 style="text-align:right"><a href="https://turboc.codeplex.com/wikipage?title=C%20Programming%20Interview%20Question%20Part%203">C Programming Interview Question Part 3 &gt;&gt;</a></h2>
+<pre><code>&nbsp;</code></pre>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,30 @@
+<div class="wikidoc">
+<h2><strong>Modulus Operator</strong></h2>
+<p>Take a simple arithmetic problem: what's left over when you divide 11 by 3? The answer is easy to compute: divide 11 by 3 and take the remainder: 2. But how would you compute this in a programming language like C or C&#43;&#43;? It's not hard to come up with a formula,
+ but the language provides a built-in mechanism, the&nbsp;<strong>modulus operator</strong>&nbsp;('<strong>%</strong>'), that computes the remainder that results from performing integer division.</p>
+<p><br>
+The modulus operator is useful in a variety of circumstances. It is commonly used to take a randomly generated number and reduce that number to a random number on a smaller range, and it can also quickly tell you if one number is a factor of another.&nbsp;<br>
+<br>
+If you wanted to know if a number was odd or even, you could use modulus to quickly tell you by asking for the remainder of the number when divided by 2.</p>
+<pre>#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+    int num;
+    cin &gt;&gt; num;
+    // num % 2 computes the remainder when num is divided by 2
+    if ( num % 2 == 0 )
+    {
+        cout &lt;&lt; num &lt;&lt; &quot; is even &quot;;
+    }
+
+    return 0;
+}
+</pre>
+<p>The key line is the one that performs the modulus operation: &quot;num % 2 == 0&quot;. A number is even if and only if it is divisible by two, and a number is divisible by another only if there is no remainder.&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>

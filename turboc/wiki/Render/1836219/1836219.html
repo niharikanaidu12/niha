@@ -1,0 +1,119 @@
+<div class="wikidoc">
+<h2><strong>Strings</strong></h2>
+<p>In C&#43;&#43; there are two types of strings, C-style strings, and&nbsp;C&#43;&#43;-style strings. This lesson will discuss C-style strings. C-style strings are really arrays, but there are some different functions that are used for strings, like adding to strings, finding
+ the length of strings, and also of checking to see if strings match. The definition of a string would be anything that contains more than one character strung together. For example, &quot;This&quot; is a string. However, single characters will not be strings, though
+ they can be used as strings.&nbsp;</p>
+<p><br>
+<br>
+Strings are arrays of chars. String literals are words surrounded by double quotation marks.</p>
+<pre>&quot;This is a static string&quot;
+</pre>
+<p>To declare a string of 49 letters, you would want to say:</p>
+<pre>char string[50];
+</pre>
+<p>This would declare a string with a length of 50 characters. Do not forget that arrays begin at zero, not 1 for the index number. In addition, a string ends with a null character, literally a '\0' character. However, just remember that there will be an extra
+ character on the end on a string. It is like a period at the end of a sentence, it is not counted as a letter, but it still takes up a space. Technically, in a fifty char array you could only hold 49 letters and one null character at the end to terminate the
+ string.&nbsp;<br>
+<br>
+TAKE NOTE: char *arry; Can also be used as a string. If you have read the tutorial on pointers, you can do something such as:</p>
+<pre>arry = new char[256];
+</pre>
+<p>which allows you to access arry just as if it were an array. Keep in mind that to use delete you must put [] between delete and arry to tell it to free all 256 bytes of memory allocated.&nbsp;<br>
+<br>
+For example:</p>
+<pre>delete [] arry.
+</pre>
+<p>Strings are useful for holding all types of long input. If you want the user to input his or her name, you must use a string. Using cin&gt;&gt; to input a string works, but it will terminate the string after it reads the first space. The best way to handle
+ this situation is to use the function cin.getline. Technically cin is a class (a beast similar to a structure), and you are calling one of its member functions. The most important thing is to understand how to use the function however.&nbsp;<br>
+<br>
+The prototype for that function is:</p>
+<pre>istream&amp; getline(char *buffer, int length, char terminal_char);
+</pre>
+<p>The char *buffer is a pointer to the first element of the character array, so that it can actually be used to access the array. The int length is simply how long the string to be input can be at its maximum (how big the array is). The char terminal_char
+ means that the string will terminate if the user inputs whatever that character is. Keep in mind that it will discard whatever the terminal character is.&nbsp;<br>
+<br>
+It is possible to make a function call of cin.getline(arry, 50); without the terminal character. Note that '\n' is the way of actually telling the compiler you mean a new line, i.e. someone hitting the enter key.&nbsp;<br>
+<br>
+For a example:</p>
+<pre>#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+  char string[256];                               // A nice long string
+
+  cout&lt;&lt;&quot;Please enter a long string: &quot;;
+  cin.getline ( string, 256, '\n' );              // Input goes into string
+  cout&lt;&lt;&quot;Your long string was: &quot;&lt;&lt; string &lt;&lt;endl;
+  cin.get();
+}
+</pre>
+<p>Remember that you are actually passing the address of the array when you pass string because arrays do not require an address operator (&amp;) to be used to pass their address. Other than that, you could make '\n' any character you want (make sure to enclose
+ it with single quotes to inform the compiler of its character status) to have the getline terminate on that character.&nbsp;<br>
+<br>
+cstring is a header file that contains many functions for manipulating strings. One of these is the string comparison function.</p>
+<pre>int strcmp ( const char *s1, const char *s2 );
+</pre>
+<p>strcmp will accept two strings. It will return an integer. This integer will either be:</p>
+<pre>Negative if s1 is less than s2.
+Zero if s1 and s2 are equal.
+Positive if s1 is greater than s2.
+</pre>
+<p>Strcmp is case sensitive. Strcmp also passes the address of the character array to the function to allow it to be accessed.</p>
+<pre>char *strcat ( char *dest, const char *src );
+</pre>
+<p>strcat is short for string concatenate, which means to add to the end, or append. It adds the second string to the first string. It returns a pointer to the concatenated string. Beware this function, it assumes that dest is large enough to hold the entire
+ contents of src as well as its own contents.</p>
+<pre>char *strcpy ( char *dest, const char *src );
+</pre>
+<p>strcpy is short for string copy, which means it copies the entire contents of src into dest. The contents of dest after strcpy will be exactly the same as src such that strcmp ( dest, src ) will return 0.</p>
+<pre>size_t strlen ( const char *s );
+</pre>
+<p>strlen will return the length of a string, minus the terminating character ('\0'). The size_t is nothing to worry about. Just treat it as an integer that cannot be negative, which it is.&nbsp;<br>
+<br>
+Here is a small program using many of the previously described functions:</p>
+<pre>#include &lt;iostream&gt; //For cout
+#include &lt;cstring&gt;  //For the string functions
+
+using namespace std;
+
+int main()
+{
+  char name[50];
+  char lastname[50];
+  char fullname[100]; // Big enough to hold both name and lastname
+  
+  cout&lt;&lt;&quot;Please enter your name: &quot;;
+  cin.getline ( name, 50 );
+  if ( strcmp ( name, &quot;Julienne&quot; ) == 0 ) // Equal strings
+    cout&lt;&lt;&quot;That's my name too.\n&quot;;
+  else                                    // Not equal
+    cout&lt;&lt;&quot;That's not my name.\n&quot;;
+  // Find the length of your name
+  cout&lt;&lt;&quot;Your name is &quot;&lt;&lt; strlen ( name ) &lt;&lt;&quot; letters long\n&quot;;
+  cout&lt;&lt;&quot;Enter your last name: &quot;;
+  cin.getline ( lastname, 50 );
+  fullname[0] = '\0';            // strcat searches for '\0' to cat after
+  strcat ( fullname, name );     // Copy name into full name
+  strcat ( fullname, &quot; &quot; );      // We want to separate the names by a space
+  strcat ( fullname, lastname ); // Copy lastname onto the end of fullname
+  cout&lt;&lt;&quot;Your full name is &quot;&lt;&lt; fullname &lt;&lt;&quot;\n&quot;;
+  cin.get();
+}
+</pre>
+<h2>Safe Programming</h2>
+<p>The above string functions all rely on the existence of a null terminator at the end of a string. This isn't always a safe bet. Moreover, some of them, noticeably strcat, rely on the fact that the destination string can hold the entire string being appended
+ onto the end. Although it might seem like you'll never make that sort of mistake, historically, problems based on accidentally writing off the end of an array in a function like strcat, have been&nbsp;a major problem.&nbsp;<br>
+<br>
+Fortunately, in their infinite wisdom, the designers of C have included functions designed to help you avoid these issues. Similar to the way that fgets takes the maximum number of characters that fit into the buffer, there are string functions that take an
+ additional argument to indicate the length of the destination buffer. For instance, the strcpy function has an analogous strncpy function</p>
+<pre>char *strncpy ( char *dest, const char *src, size_t len );
+</pre>
+<p>which will only copy len bytes from src to dest (len should be less than the size of dest or the write could still go beyond the bounds of the array). Unfortunately, strncpy can lead to one niggling issue: it doesn't guarantee that dest will have a null
+ terminator attached to it (this might happen if the string src is longer than dest). You can avoid this problem by using strlen to get the length of src and make sure it will fit in dest. Of course, if you were going to do that, then you probably don't need
+ strncpy in the first place, right? Wrong. Now it forces you to pay attention to this issue, which is a big part of the battle.&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>

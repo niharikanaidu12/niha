@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Duplicate of this issues https://turboc.codeplex.com/workitem/6 ",
+    "ClosedDate": "2016-09-28T21:47:48.65-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "My mouse is working with it but the keyboard is not.\r\nI have windows 10.",
+    "LastUpdatedDate": "2016-09-28T21:47:48.65-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-05-02T08:52:38.853-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "my keyboard is not working with the software",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 3,
+    "Id": 8
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

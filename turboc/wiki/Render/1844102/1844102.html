@@ -1,0 +1,379 @@
+<div class="wikidoc">
+<div>
+<p>A namespace is a declarative region that provides a scope to the identifiers (the names of types, functions, variables, etc) inside it. Namespaces are used to organize code into logical groups and to prevent name collisions that can occur especially when
+ your code base includes multiple libraries. All identifiers at namespace scope are visible to one another without qualification.&nbsp;Identifiers outside the namespace can access the members by using the fully qualified name for each identifier, for example&nbsp;std::vector&lt;std::string&gt;
+ vec;, or else by a&nbsp;using Declaration&nbsp;for a single identifier (using std::string), or a&nbsp;using Directive (C&#43;&#43;)&nbsp;for all the identifiers in the namespace (using namespace std;). Code in header files should always use the fully qualified namespace
+ name.</p>
+<p>The following example shows a namespace declaration and three ways that code outside the namespace can accesses their members.</p>
+<div id="code-snippet-1">
+<div>
+<div id="CodeSnippetContainerCode_61266afb-9a76-4a7e-97be-2f9544636bae" dir="ltr">
+<div>
+<pre>namespace ContosoData
+{    
+    class ObjectManager 
+    {
+    public:
+        void DoSomething() {}
+    };
+    void Func(ObjectManager) {}
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Use the fully qualified name:</p>
+<div id="code-snippet-2">
+<div>
+<div id="CodeSnippetContainerCode_3714de38-7b97-4160-8bd1-8f37393ef0f4" dir="ltr">
+<div>
+<pre>ContosoData::ObjectManager mgr;
+mgr.DoSomething();
+ContosoData::Func(mgr);
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Use a using declaration to bring one identifier into scope:</p>
+<div id="code-snippet-3">
+<div>
+<div id="CodeSnippetContainerCode_144d4f69-d057-4487-a7c3-72ca692fb7a9" dir="ltr">
+<div>
+<pre>using WidgetsUnlimited::ObjectManager;
+ObjectManager mgr;
+mgr.DoSomething();
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Use a using directive to bring everything in the namespace into scope:</p>
+<div id="code-snippet-4">
+<div>
+<div id="CodeSnippetContainerCode_16f5d9b8-225c-458e-871b-604f836e9e74" dir="ltr">
+<div>
+<pre>using namespace WidgetsUnlimited;
+ObjectManager mgr;
+mgr.DoSomething();
+Func(mgr);
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h2><a title="">using directives</a></h2>
+<div>
+<div>
+<p>The&nbsp;<strong>using</strong>&nbsp;directive allows all the names in a&nbsp;<strong>namespace</strong>&nbsp;to be used without the&nbsp;<em>namespace-name</em>&nbsp;as an explicit qualifier. Use a using directive in an implementation file (i.e. *.cpp)
+ if you are using several different identifiers in a namespace; if you are just using one or two identifiers, then consider a using declaration to only bring those identifiers into scope and not all the identifiers in the namespace. If a local variable has
+ the same name as a namespace variable, the namespace variable is hidden. It is an error to have a namespace variable with the same name as a global variable.</p>
+<div>
+<div>
+<table>
+<tbody>
+<tr>
+<th align="left"><img id="s-e6f6a65cf14f462597b64ac058dbe1d0-system-media-system-caps-note" title="System_CAPS_note" src="https://i-msdn.sec.s-msft.com/dynimg/IC101471.jpeg" alt="System_CAPS_note">Note</th>
+</tr>
+<tr>
+<td>
+<p>A using directive can be placed at the top of a .cpp file (at file scope), or inside a class or function definition.</p>
+<p>In general, avoid putting using directives in header files (*.h) because any file that includes that header will bring everything in the namespace into scope, which can cause name hiding and name collision problems that are very difficult to debug. Always
+ use fully qualified names in a header file. If those names get too long, you can use a namespace alias to shorten them. (See below.)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h2><a title="">Declaring namespaces and namespace members</a></h2>
+<div>
+<p>Typically, you declare a namespace in a header file. If your function implementations are in a separate file, then qualify the function names, as in this example.</p>
+<div id="code-snippet-5">
+<div>&nbsp;</div>
+<div>
+<div>&nbsp;</div>
+<div id="CodeSnippetContainerCode_5a1a3bc3-1727-4c56-9425-ede7a8d6acb9" dir="ltr">
+<div>
+<pre>//contosoData.h 
+#pragma once
+namespace ContosoDataServer
+{
+    void Foo();
+    int Bar();
+
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Function implementations in contosodata.cpp should use the fully qualified name, even if you place a using directive at the top of the file:</p>
+<div id="code-snippet-6">
+<div>
+<div id="CodeSnippetContainerCode_1e5f6dad-964c-4020-a329-eed5841ba19f" dir="ltr">
+<div>
+<pre>#include &quot;contosodata.h&quot;
+using namespace ContosoDataServer; 
+
+void ContosoDataServer::Foo()
+{
+   //no qualification because using directive above
+   Bar(); 
+}
+
+int ContosoDataServer::Bar(){return 0;}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>A namespace can be declared in multiple blocks in a single file, and in multiple files. The compiler joins the parts together during preprocessing and the resulting namespace contains all the members declared in all the parts. An example of this is the std
+ namespace which is declared in each of the header files in the standard library.</p>
+<p>Members of a named namespace can be defined outside the namespace in which they are declared by&nbsp;explicit qualification&nbsp;of the name being defined. However, the definition must appear after the point of declaration in a namespace that encloses the
+ declaration's namespace. For example:</p>
+<div id="code-snippet-7">
+<div>
+<div id="CodeSnippetContainerCode_ea19f7f6-3842-4801-b8ac-db6d156f5232" dir="ltr">
+<div>
+<pre>// defining_namespace_members.cpp
+// C2039 expected
+namespace V {
+        void f();
+    }
+
+    void V::f() { }        // ok
+    void V::g() { }        // C2039, g() is not yet a member of V
+
+    namespace V {
+        void g();
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>This error can occur when namespace members are declared across multiple header files, and you have not included those headers in the correct order.</p>
+</div>
+</div>
+<div>
+<h2><a title="">The global namespace</a></h2>
+<div>
+<div>
+<p>If an identifier is not declared in an explicit namespace, it is part of the implicit global namespace. In general, try to avoid making declarations at global scope when possible, except for the entry point&nbsp;main Function, which is required to be in
+ the global namespace. To explicitly qualify a global identifier, use the scope resolution operator with no name, as in&nbsp;::SomeFunction(x);. This will differentiate the identifier from anything with the same name in any other namespace, and it will also
+ help to make your code easier for others to understand.</p>
+</div>
+</div>
+</div>
+<div>
+<h2><a title="">The std namespace</a></h2>
+<div>
+<div>
+<p>All C&#43;&#43; standard library types and functions are declared in the std namespace or namespaces nested inside std.</p>
+</div>
+</div>
+</div>
+<div>
+<h2><a title="">Nested namespaces</a></h2>
+<div>
+<p>Namespaces may be nested. An ordinary nested namespace has unqualified access to its parent&rsquo;s members, but the parent members do not have unqualified access to the nested namespace (unless it is declared as inline), as shown in the following example:</p>
+<div id="code-snippet-8">
+<div>
+<div id="CodeSnippetContainerCode_d87eebb9-d20b-4400-a2cf-467988ba4734" dir="ltr">
+<div>
+<pre>namespace ContosoDataServer
+{
+    void Foo(); 
+
+    namespace Details
+    {
+        int CountImpl;
+        void Ban() { return Foo(); }
+    }
+
+    int Bar(){...};
+    int Baz(int i) { return Details::CountImpl; }    
+
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Ordinary nested namespaces can be used to encapsulate internal implementation details that are not part of the public interface of the parent namespace.</p>
+</div>
+</div>
+<div>
+<h2><a title="">Inline namespaces (C&#43;&#43; 11)</a></h2>
+<div>
+<p>In contrast to an ordinary nested namespace, members of an inline namespace are treated as members of the parent namespace. This characteristic enables argument dependent lookup on overloaded functions to work on functions that have overloads in a parent
+ and a nested inline namespace. It also enables you to declare a specialization in a parent namespace for a template that is declared in the inline namespace. The following example shows how external code binds to the inline namespace by default:</p>
+<div id="code-snippet-9">
+<div>
+<div id="CodeSnippetContainerCode_ad4d4345-f07c-4a81-9a33-1336783a166f" dir="ltr">
+<div>
+<pre>//Header.h
+#include &lt;string&gt;
+
+
+namespace Test
+{
+    namespace old_ns
+    {
+        std::string Func() { return std::string(&quot;Hello from old&quot;); }
+    }
+
+    inline namespace new_ns
+    {
+        std::string Func() { return std::string(&quot;Hello from new&quot;); }
+    }
+}
+
+#include &quot;header.h&quot;
+#include &lt;string&gt;
+#include &lt;iostream&gt;
+
+int main()
+{
+    using namespace Test;
+    using namespace std;
+
+    string s = Func();
+    std::cout &lt;&lt; s &lt;&lt; std::endl; // &quot;Hello from new&quot;
+    return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>The following example shows how you can declare a specialization in a parent of a template that is declared in an inline namespace:</p>
+<div id="code-snippet-10">
+<div>&nbsp;</div>
+<div>
+<div>&nbsp;</div>
+<div id="CodeSnippetContainerCode_6154c225-9adc-46c6-8ab9-256b4d33aaa0" dir="ltr">
+<div>
+<pre>namespace Parent
+{
+    inline namespace new_ns
+    {
+         template &lt;typename T&gt;
+         struct C
+         {
+             T member;
+         };
+    }
+     template&lt;&gt;
+     class C&lt;int&gt; {};
+}
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>You can use inline namespaces as a versioning mechanism to manage changes to the public interface of a library. For example, you can create a single parent namespace, and encapsulate each version of the interface in its own namespace nested inside the parent.
+ The namespace that holds the most recent or preferred version is qualified as inline, and is therefore exposed as if it were a direct member of the parent namespace. Client code that invokes the Parent::Class will automatically bind to the new code. Clients
+ that prefer to use the older version can still access it by using the fully qualified path to the nested namespace that has that code.</p>
+<p>The inline keyword must be applied to the first declaration of the namespace in a compilation unit.</p>
+<p>The following example shows two versions of an interface, each in a nested namespace. The&nbsp;v_20&nbsp;namespace has some modification from the&nbsp;v_10interface and is marked as inline. Client code that uses the new library and calls&nbsp;Contoso::Funcs::Add&nbsp;will
+ invoke the v_20 version. Code that attempts to call&nbsp;Contoso::Funcs::Divide&nbsp;will now get a compile time error. If they really need that function, they can still access the&nbsp;v_10version by explicitly calling&nbsp;Contoso::v_10::Funcs::Divide.</p>
+<div id="code-snippet-11">
+<div>
+<div id="CodeSnippetContainerCode_707192a2-b62c-46cb-8723-97d43dc8292e" dir="ltr">
+<div>
+<pre>namespace Contoso
+{
+    namespace v_10
+    {
+        template &lt;typename T&gt;
+        class Funcs
+        {
+        public:
+            Funcs(void);
+            T Add(T a, T b);
+            T Subtract(T a, T b);
+            T Multiply(T a, T b);
+            T Divide(T a, T b);
+        };
+    }
+
+
+    inline namespace v_20
+    {
+        template &lt;typename T&gt;
+        class Funcs
+        {
+        public:
+            Funcs(void);
+            T Add(T a, T b);
+            T Subtract(T a, T b);
+            T Multiply(T a, T b);
+            std::vector&lt;double&gt; Log(double);
+            T Accumulate(std::vector&lt;T&gt; nums);
+      };
+    }
+}
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h2><a title="">Namespace aliases</a></h2>
+<div>
+<p>Namespace names need to be unique, which means that often they should not be too short. If the length of a name makes code difficult to read, or is tedious to type in a header file where using directives can&rsquo;t be used, then you can make a namespace
+ alias which serves as an abbreviation for the actual name. For example:</p>
+<div id="code-snippet-12">
+<div>
+<div id="CodeSnippetContainerCode_7f4f9715-924d-4499-bc1e-e93a192b2fbc" dir="ltr">
+<div>
+<pre>namespace a_very_long_namespace_name { class Foo {}; }
+namespace AVLNN = a_very_long_namespace_name;
+void Bar(AVLNN::Foo foo){ }
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+</div>
+</div>
+<div>
+<h2><a title="">anonymous or unnamed namespaces</a></h2>
+<div>
+<p>You can create an explicit namespace but not give it a name:</p>
+<div id="code-snippet-13">
+<div>
+<div id="CodeSnippetContainerCode_73c32ed2-9331-4cf8-9dc3-b59e4bb6a828" dir="ltr">
+<div>
+<pre>namespace
+{
+    int MyFunc(){}
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>This is called an unnamed or anonymous namespace and it is useful when you want to make variable declarations invisible to code in other files (i.e. give them internal linkage) without having to create a named namespace. All code in the same file can see
+ the identifiers in an unnamed namespace but the identifiers, along with the namespace itself, are not visible outside that file&mdash;or more precisely outside the translation unit.</p>
+</div>
+</div>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1453890",
+    "ThreadId": "648098",
+    "Html": "<div style=\"color:Black;background-color:White;\"><pre>\r\n#include&lt;iostream.h&gt;\n#include&lt;conio.h&gt;\n#include&lt;math.h&gt;\n\n<span style=\"color:Blue;\">class</span> Circle\n{\n    <span style=\"color:Blue;\">float</span> radius;\n    <span style=\"color:Blue;\">public</span>:\n    <span style=\"color:Blue;\">void</span> setRadius(<span style=\"color:Blue;\">float</span> <span style=\"color:Blue;\">value</span>)\n    {\n        radius = <span style=\"color:Blue;\">value</span>;\n    }\n    <span style=\"color:Blue;\">float</span> areaOfCircle()\n    {\n        <span style=\"color:Blue;\">return</span> 3.14 * pow(radius,2);\n    }\n};\n\n<span style=\"color:Blue;\">void</span> main()\n{\n    Circle circle;\n    clrscr();\n    <span style=\"color:Blue;\">float</span> radius, area;\n    cout&lt;&lt;<span style=\"color:#A31515;\">&quot;Enter the radius of a circle\\n&quot;</span>;\n    cin&gt;&gt;radius;\n    circle.setRadius(radius);\n    area = circle.areaOfCircle();\n    cout&lt;&lt;<span style=\"color:#A31515;\">&quot;Area of a circle = &quot;</span>&lt;&lt;area;\n    getch();\n}\r\n</pre></div>",
+    "PostedDate": "2015-11-27T07:26:01.237-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

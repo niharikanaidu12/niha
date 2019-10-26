@@ -1,0 +1,88 @@
+<div class="wikidoc">
+<p>This style guide is different from others you may see, because the focus is centered on readability and understandability.</p>
+<p><a href="https://turboc.codeplex.com/downloads/get/1526028">Download Complete C Language Style Guide by NASA (National Aeronautics and Space Administration)</a></p>
+<ul>
+<li><strong>Variable and method/function names that contain multiple characters must&nbsp;<em>not</em>&nbsp;start with an uppercase letter.</strong>
+<p>Further, each &quot;word&quot; within a variable name should start with an uppercase letter. For example,&nbsp;<code>importantMessage</code>&nbsp;and&nbsp;<code>campusMonitor</code>&nbsp;are both appropriate variable names.</p>
+<ul>
+<li>
+<p><strong>Preferred:</strong></p>
+<pre><code>int maximumStudentSize&nbsp;= 100;</code></pre>
+</li><li>
+<p><strong>Not-Preferred:</strong></p>
+<pre><code>int max =&nbsp;100;</code></pre>
+<pre><code>int maxsize = 100;</code></pre>
+</li></ul>
+</li><li><strong>Variable names that consist of a single character&nbsp;<em>may</em>&nbsp;be uppercase.</strong>
+<p>In general, even single-character variable names should be lowercase. However, in some situations, mathematical notation uses uppercase letters. In such situations, uppercase variable names may be used. For example, matrices are often written using uppercase
+ letters. So, an expression like (b = A*x) would be appropriate.</p>
+</li><li><strong>Variable and method/function names must be descriptive.</strong>
+<p>Variable names like&nbsp;<code>aaa</code>&nbsp;are not appropriate. Index variables and counters can, however, have names like&nbsp;<code>i</code>&nbsp;and&nbsp;<code>j</code>.</p>
+<ul>
+<li>
+<p><strong>Preferred:</strong></p>
+<pre><code>int getSumOfTwoNumber(int number1, int number2);</code></pre>
+<pre><code>void printSumOfTwoNumber(int number1, int number2);</code></pre>
+<p>Or you can use as</p>
+<pre><code>int getSumOfTwoNumber(int num1, int num2);</code></pre>
+<pre><code>void printSumOfTwoNumber(int num1, int num2);</code></pre>
+</li><li>
+<p><strong>Not-Preferred:</strong></p>
+<pre><code>int sum(int a, int b);</code></pre>
+</li></ul>
+</li><li><strong>User-defined constants must be entirely in uppercase.</strong>
+<ul>
+<li><strong><strong>Preferred:&nbsp;</strong></strong>
+<pre><code>#define MAXIMUM_STUDENT_SIZE 100;</code></pre>
+<pre><code>const int SIZE 32;</code></pre>
+</li><li>
+<p><code></code><strong>Not-Preferred:</strong></p>
+<pre><code>#define MAXIMUMSTUDENTSIZE 100;</code></pre>
+<pre><code>#define MaximumStudentSize 100;</code></pre>
+<pre><code>#define max 100;</code></pre>
+<pre><code>const int size 32;</code></pre>
+</li></ul>
+</li><li><strong>All variables must be declared at the top of the relevant function</strong>&nbsp;(with one exception).
+<p>The only exception to this rule is index variables in loops, which may be declared locally.</p>
+</li><li><strong>All variables must be declared alphabetically by their type.</strong>
+<p>For example, variables of type&nbsp;<code>double</code>&nbsp;should be declared before variables of type&nbsp;<code>int</code>&nbsp;which should, in turn, be declared before variables of type&nbsp;<code>Node</code>.</p>
+</li><li><strong>Block comments must start with<code>/*</code>&nbsp;and end with&nbsp;<code>*/</code>.</strong>
+</li><li><strong>Comments in the body of a class should use&nbsp;<code>//</code>&nbsp;rather than&nbsp;<code>/* ... */</code>.</strong>
+<p>This isn't a requirement but it will make your life easier since you can't nest comments inside of&nbsp;<code>/* ... */</code>. There is nothing more annoying then trying to &quot;comment out&quot; a section of code while you are debugging and being unable to because
+ it contains block comments.</p>
+</li><li><strong>Use indentation and use it consistently.</strong>
+<p>No particular indentation scheme is required but you must indent your code in a meaningful and consistent way.</p>
+</li><li><strong>Every file must begin with an appropriate comment block.</strong>
+<p>It must contain, at a minimum, the name of the file, its purpose, its author, the author's affiliation, and the date it was completed. It must also attest to your compliance with the JMU Honor Code. For example:</p>
+<pre><code>	 /**
+	  * vectormath
+	  *
+	  * Purpose:   This file contains functions for
+          *            performing vector arithmetic.
+	  *
+	  * Author:    Prof. David Bernstein, James Madison University
+	  *
+	  * Version:   15 January 1999
+	  *
+	  * This work complies with the JMU Honor Code.
+	  */
+	 </code></pre>
+</li><li><strong>Every function must begin with an appropriate comment block.</strong>
+<p>It must contain, at a minimum, the name of the method/function, its arguments (if any), side effects (if any), and what is returned (if anything).</p>
+<pre><code>	 /**
+	  * innerproduct
+	  *
+	  * Purpose:      Calculate the inner product of two vectors.
+	  *
+	  * Arguments:    a  One vector of doubles
+	  *               b  The other  vector of doubles
+	  *
+	  * Side Effects: None
+	  *
+	  * Returns:      The inner (or dot) product
+	  */</code></pre>
+</li><li>
+<h2><a href="https://turboc.codeplex.com/downloads/get/1526028">Download Complete C Language Style Guide by NASA (National Aeronautics and Space Administration)</a></h2>
+</li></ul>
+<p><img src="https://ga-beacon.appspot.com/UA-83723395-1/style-guide-c-page" alt=""></p>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,48 @@
+<div class="wikidoc">
+<h2><strong>Command Line Arguments</strong></h2>
+<p>In C&#43;&#43; it is possible to accept command line arguments. Command-line arguments are given after the name of a program in command-line operating systems like DOS or Linux, and are passed in to the program from the operating system. To use command line arguments
+ in your program, you must first understand the full declaration of the main function, which previously has accepted no arguments. In fact, main can actually accept two arguments: one argument is number of command line arguments, and the other argument is a
+ full list of all of the command line arguments.&nbsp;</p>
+<p><br>
+The full declaration of main looks like this:</p>
+<pre>int main ( int argc, char *argv[] )
+</pre>
+<p>The integer, argc is the ARGument Count (hence argc). It is the number of arguments passed into the program from the command line, including the name of the program.&nbsp;<br>
+<br>
+The array of character pointers is the listing of all the arguments. argv[0] is the name of the program, or an empty string if the name is not available. After that, every element number less than argc is a command line argument. You can use each argv element
+ just like a string, or use argv as a two dimensional array. argv[argc] is a null pointer.&nbsp;<br>
+<br>
+How could this be used? Almost any program that wants its parameters to be set when it is executed would use this. One common use is to write a function that takes the name of a file and outputs the entire text of it onto the screen.</p>
+<pre>#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main ( int argc, char *argv[] )
+{
+  if ( argc != 2 ) // argc should be 2 for correct execution
+    // We print argv[0] assuming it is the program name
+    cout&lt;&lt;&quot;usage: &quot;&lt;&lt; argv[0] &lt;&lt;&quot; &lt;filename&gt;\n&quot;;
+  else {
+    // We assume argv[1] is a filename to open
+    ifstream the_file ( argv[1] );
+    // Always check to see if file opening succeeded
+    if ( !the_file.is_open() )
+      cout&lt;&lt;&quot;Could not open file\n&quot;;
+    else {
+      char x;
+      // the_file.get ( x ) returns false if the end of the file
+      //  is reached or an error occurs
+      while ( the_file.get ( x ) )
+        cout&lt;&lt; x;
+    }
+    // the_file is closed implicitly here
+  }
+}
+</pre>
+<p>This program is fairly simple. It incorporates the full version of main. Then it first checks to ensure the user added the second argument, theoretically a file name. The program then checks to see if the file is valid by trying to open it. This is a standard
+ operation that is effective and easy. If the file is valid, it gets opened in the process.</p>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>

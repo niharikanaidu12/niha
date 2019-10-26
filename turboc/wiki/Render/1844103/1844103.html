@@ -1,0 +1,87 @@
+<div class="wikidoc">
+<h2><strong>Array</strong></h2>
+<p>Arrays are useful critters because they can be used in many ways to store large amounts of data in a structured way. For example, a tic-tac-toe board can be held in an array. Arrays are essentially a way to store many values under the same name. You can
+ make an array out of any data-type including&nbsp;structures&nbsp;and&nbsp;classes.&nbsp;<br>
+<br>
+Think about arrays like this:</p>
+<pre>[][][][][][] 
+</pre>
+<p>Each of the bracket pairs is a slot(element) in the array, and you can put information into each one of them. It is almost like having a group of variables side by side.&nbsp;</p>
+<p><br>
+Let's look at the syntax for declaring an array.</p>
+<p>&nbsp;</p>
+<pre>int examplearray[100]; // This declares an array
+</pre>
+<p>This would make an integer array with 100 slots, or places to store values(also called elements). To access a specific part element of the array, you merely put the array name and, in brackets, an index number. This corresponds to a specific element of the
+ array. The one trick is that the first index number, and thus the first element, is zero, and the last is the number of elements minus one. 0-99 in a 100 element array, for example.&nbsp;<br>
+<br>
+What can you do with this simple knowledge? Let's say you want to store a string, because C had no built-in datatype for strings, it was common to use arrays of characters to simulate strings.&nbsp;<br>
+<br>
+For example:</p>
+<pre>char astring[100]; 
+</pre>
+<p>will allow you to declare a char array of 100 elements, or slots. Then you can receive input into it from the user, and if the user types in a long string, it will go in the array. The neat thing is that it is very easy to work with strings in this way,
+ and there is even a header file called cstring. There is another lesson on the uses of strings, so it's not necessary to discuss here.&nbsp;<br>
+<br>
+The most useful aspect of arrays is multidimensional arrays. How I think about multi-dimensional arrays:</p>
+<pre>[][][][][]
+[][][][][]
+[][][][][]
+[][][][][]
+[][][][][]
+</pre>
+<p>This is a graphic of what a two-dimensional array looks like when I visualize it.&nbsp;<br>
+<br>
+For example:</p>
+<pre>int twodimensionalarray[8][8];
+</pre>
+<p>declares an array that has two dimensions. Think of it as a chessboard. You can easily use this to store information about some kind of game or to write something like tic-tac-toe. To access it, all you need are two variables, one that goes in the first
+ slot and one that goes in the second slot. You can even make a three dimensional array, though you probably won't need to. In fact, you could make a four-hundred dimensional array. It would be confusing to visualize, however. Arrays are treated like any other
+ variable in most ways. You can modify one value in it by putting:</p>
+<pre>arrayname[arrayindexnumber] = whatever; 
+</pre>
+<p>or, for two dimensional arrays</p>
+<pre>arrayname[arrayindexnumber1][arrayindexnumber2] = whatever;
+</pre>
+<p>However, you should never attempt to write data past the last element of the array, such as when you have a 10 element array, and you try to write to the [10] element. The memory for the array that was allocated for it will only be ten locations in memory,
+ but the next location could be anything, which could crash your computer.&nbsp;<br>
+<br>
+You will find lots of useful things to do with arrays, from storing information about certain things under one name, to making games like tic-tac-toe. One suggestion I have is to use for loops when accessing arrays.</p>
+<pre>#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+  int x;
+  int y;
+  int array[8][8]; // Declares an array like a chessboard
+  
+  for ( x = 0; x &lt; 8; x&#43;&#43; ) {
+    for ( y = 0; y &lt; 8; y&#43;&#43; )
+      array[x][y] = x * y; // Set each element to a value
+  }
+  cout&lt;&lt;&quot;Array Indices:\n&quot;;
+  for ( x = 0; x &lt; 8;x&#43;&#43; ) {
+    for ( y = 0; y &lt; 8; y&#43;&#43; )
+      cout&lt;&lt;&quot;[&quot;&lt;&lt;x&lt;&lt;&quot;][&quot;&lt;&lt;y&lt;&lt;&quot;]=&quot;&lt;&lt; array[x][y] &lt;&lt;&quot; &quot;;
+    cout&lt;&lt;&quot;\n&quot;;
+  }
+  cin.get();
+}
+</pre>
+<p>Here you see that the loops work well because they increment the variable for you, and you only need to increment by one. It's the easiest loop to read, and you access the entire array.&nbsp;<br>
+<br>
+One thing that arrays don't require that other variables do, is a reference operator when you want to have a pointer to the string. For example:</p>
+<pre>char *ptr;
+char str[40];
+ptr = str;  // Gives the memory address without a reference operator(&amp;)
+</pre>
+<p>As opposed to</p>
+<pre>int *ptr;
+int num;
+ptr = &amp;num; // Requires &amp; to give the memory address to the ptr
+</pre>
+<p>The reason for this is that when an array name is used as an expression, it refers to a pointer to the first element, not the entire array. This rule causes a great deal of confusion</p>
+<p>&nbsp;</p>
+</div><div class="ClearBoth"></div>

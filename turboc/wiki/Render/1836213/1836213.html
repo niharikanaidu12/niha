@@ -1,0 +1,96 @@
+<div class="wikidoc">
+<h2><strong>Loops</strong></h2>
+<p>Loops are used to repeat a block of code. Being able to have your program repeatedly execute a block of code is one of the most basic but useful tasks in programming -- many programs or websites that produce extremely complex output (such as a message board)
+ are really only executing a single task many times. (They may be executing a small number of tasks, but in principle, to produce a list of messages only requires repeating the operation of reading in some data and displaying it.) Now, think about what this
+ means: a loop lets you write a very simple statement to produce a significantly greater result simply by repetition.</p>
+<p><br>
+One Caveat: before going further, you should understand the concept of C&#43;&#43;'s true and false, because it will be necessary when working with loops (the conditions are the same as with if statements). There are three types of loops: for, while, and do..while.
+ Each of them has their specific uses. They are all outlined below.&nbsp;<br>
+<br>
+FOR - for loops are the most useful type. The syntax for a for loop is&nbsp;<br>
+</p>
+<pre>for ( variable initialization; condition; variable update ) {
+  Code to execute while the condition is true
+}
+</pre>
+<p>The variable initialization allows you to either declare a variable and give it a value or give a value to an already existing variable. Second, the condition tells the program that while the conditional expression is true the loop should continue to repeat
+ itself. The variable update section is the easiest way for a for loop to handle changing of the variable. It is possible to do things like x&#43;&#43;, x = x &#43; 10, or even x = random ( 5 ), and if you really wanted to, you could call other functions that do nothing
+ to the variable but still have a useful effect on the code. Notice that a semicolon separates each of these sections, that is important. Also note that every single one of the sections may be empty, though the semicolons still have to be there. If the condition
+ is empty, it is evaluated as true and the loop will repeat until something else stops it.&nbsp;<br>
+<br>
+Example:</p>
+<pre>#include &lt;iostream&gt;
+
+using namespace std; // So the program can see cout and endl
+
+int main()
+{
+  // The loop goes while x &lt; 10, and x increases by one every loop
+  for ( int x = 0; x &lt; 10; x&#43;&#43; ) {
+    // Keep in mind that the loop condition checks 
+    //  the conditional statement before it loops again.
+    //  consequently, when x equals 10 the loop breaks.
+    // x is updated before the condition is checked.    
+    cout&lt;&lt; x &lt;&lt;endl;
+  }
+  cin.get();
+}
+</pre>
+<p>This program is a very simple example of a for loop. x is set to zero, while x is less than 10 it calls cout&lt;&lt; x &lt;&lt;endl; and it adds 1 to x until the condition is met. Keep in mind also that the variable is incremented after the code in the loop
+ is run for the first time.&nbsp;<br>
+<br>
+WHILE - WHILE loops are very simple. The basic structure is&nbsp;<br>
+<br>
+while ( condition ) { Code to execute while the condition is true } The true represents a boolean expression which could be x == 1 or while ( x != 7 ) (x does not equal 7). It can be any combination of boolean statements that are legal. Even, (while x ==5 ||
+ v == 7) which says execute the code while x equals five or while v equals 7. Notice that a while loop is the same as a for loop without the initialization and update sections. However, an empty condition is not legal for a while loop as it is with a for loop.&nbsp;<br>
+<br>
+Example:</p>
+<pre>#include &lt;iostream&gt;
+
+using namespace std; // So we can see cout and endl
+
+int main()
+{ 
+  int x = 0;  // Don't forget to declare variables
+  
+  while ( x &lt; 10 ) { // While x is less than 10 
+    cout&lt;&lt; x &lt;&lt;endl;
+    x&#43;&#43;;             // Update x so the condition can be met eventually
+  }
+  cin.get();
+}
+</pre>
+<p>This was another simple example, but it is longer than the above FOR loop. The easiest way to think of the loop is that when it reaches the brace at the end it jumps back up to the beginning of the loop, which checks the condition again and decides whether
+ to repeat the block another time, or stop and move to the next statement after the block.&nbsp;<br>
+<br>
+DO..WHILE - DO..WHILE loops are useful for things that want to loop at least once. The structure is</p>
+<pre>do {
+} while ( condition );
+</pre>
+<p>Notice that the condition is tested at the end of the block instead of the beginning, so the block will be executed at least once. If the condition is true, we jump back to the beginning of the block and execute it again. A do..while loop is basically a
+ reversed while loop. A while loop says &quot;Loop while the condition is true, and execute this block of code&quot;, a do..while loop says &quot;Execute this block of code, and loop while the condition is true&quot;.&nbsp;<br>
+<br>
+Example:</p>
+<pre>#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+  int x;
+
+  x = 0;
+  do {
+    // &quot;Hello, world!&quot; is printed at least one time
+    //  even though the condition is false
+    cout&lt;&lt;&quot;Hello, world!\n&quot;;
+  } while ( x != 0 );
+  cin.get();
+}
+</pre>
+<p>Keep in mind that you must include a trailing semi-colon after the while in the above example. A common error is to forget that a do..while loop must be terminated with a semicolon (the other loops should not be terminated with a semicolon, adding to the
+ confusion). Notice that this loop will execute once, because it automatically executes before checking the condition.&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>

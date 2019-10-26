@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1467400",
+    "ThreadId": "652720",
+    "Html": "Hi\r<br />\nI installed Turbo C++ and was just trying a simple program to print a nmber that I enter. It does print a different number, regardless of what I enter.\r<br />\n<br />\n/<em>program to find add and sub of two numbers</em>/<br />\n<h1>include &lt;iostream.h&gt;</h1>\n<h1>include &lt;conio.h&gt;</h1>\nvoid main()\r<br />\n{\r<br />\nclrscr();\r<br />\nint a;\r<br />\ncout&lt;&lt;&quot;enter the number&quot;;\r<br />\ncin&gt;&gt;a;\r<br />\ncout&lt;&lt;&quot;you entry&quot;&lt;&lt;a;\r<br />\ncout&lt;&lt;&quot;add&quot;&lt;&lt;(a+a);\r<br />\ngetch();\r<br />\n}\r<br />\n<br />\nCan I get some help.. Not sure if I am missing something very obvious or something to do with installation etc<br />\n",
+    "PostedDate": "2016-03-20T03:37:25.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1471751",
+    "ThreadId": "652720",
+    "Html": "Hi - I ran your code and found a few mistakes that may have been with the code paste into the forum\r<br />\nI have corrected these error as follows<br />\n<pre><code>//program to find add and sub of two numbers/\n// note comments need 2 slashes at front\n#include &lt;iostream.h&gt;\n#include &lt;conio.h&gt;\n// include needs a # infront\nvoid main()\n{\nclrscr();\nint a;\ncout&lt;&lt;&quot;enter the number to double :&quot;;\ncin&gt;&gt;a;\ncout&lt;&lt;&quot;you entered &quot;&lt;&lt;a &lt;&lt; endl;\n// put spaces after your text\n// use &lt;&lt; endl; to get new line\ncout&lt;&lt;&quot;result =&quot;&lt;&lt;(a+a) &lt;&lt; endl;\ngetch();\n}</code></pre>\n\n",
+    "PostedDate": "2016-04-29T05:31:55.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The popular bug of turbo C ++ is keyboard problem\r\nWhen we download the latest version then also keyboard get disabled when we open the Turbo C++\r\nThis Problem is being Faced by many Peoples\r\n\r\nWhen I upgrade to windows 10 the problem was solved __but after__ some DAYS ,\r\nThe problem again rises\r\nSo,\r\nI request __DEVELOPER__ to Sort out The problem\r\n\r\n\r\n\r\n\r\n\r\nPlease __VOTE__ if Your are facing same kind of PROBLEM\r\nThank You !",
+    "LastUpdatedDate": "2017-11-06T20:57:38.97-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2017-04-05T18:57:35.877-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Turbo C++ Keyboard issue",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 6,
+    "Id": 44
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

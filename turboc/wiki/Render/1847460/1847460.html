@@ -1,0 +1,11 @@
+<div class="wikidoc">
+<p>The C standard defines the Array Subscript Operator&nbsp;<code>[]</code>&nbsp; as follows:</p>
+<pre><code>a[b] == *(a &#43; b)</code></pre>
+<p>Therefore&nbsp;<code>a[5]</code>&nbsp;will evaluate to:</p>
+<pre><code>*(a &#43; 5)</code></pre>
+<p>and&nbsp;<code>5[a]</code>&nbsp;will evaluate to:</p>
+<pre><code>*(5 &#43; a)</code></pre>
+<p>and from elementary math we know those are equal.&nbsp;</p>
+<p>This is the direct artifact of arrays behaving as pointers, &quot;<code>a</code>&quot; is a memory address. &quot;<code>a[5]</code>&quot; is the value that's 5&nbsp;<strong>elements</strong>&nbsp;further from &quot;<code>a</code>&quot;. The address of this element is &quot;<code>a &#43; 5</code>&quot;.
+ This is equal to offset &quot;<code>a</code>&quot; from &quot;<code>5</code>&quot; elements at the beginning of the address space (<code>5 &#43; a</code>).</p>
+</div><div class="ClearBoth"></div>

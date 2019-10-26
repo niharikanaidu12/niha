@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Whatever program i type i receive ambiguous output. For instance for below program :\r\n#include<stdio.h> \r\n#include<conio.h>\r\nint main()\r\n{\r\nclrscr();\r\nfloat gs,bs,da,hra;\r\nprintf(\"Enter basic salary\");\r\nscanf(\"%f\",&bs);\r\nda=(40/100)*bs;\r\nprintf(\"Da is %f\",da);\r\nhra=(20/100)*bs;\r\nprintf(\"hra is %f\",hra);\r\ngs=bs+da+hra;\r\nprintf(\"Gross salary is %f\",gs);\r\ngetch();\r\nreturn 0;\r\n}\r\nAnd for this i receive below as output(bs i enter is 100):\r\n4000.000\r\n0\r\n4100.000",
+    "LastUpdatedDate": "2017-01-23T18:45:18.17-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2017-01-23T18:45:18.017-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Ambiguous output",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 35
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1631842,
+      "FileName": "error.PNG",
+      "DownloadUrl": ".\\1631842"
+    }
+  ],
+  "Comments": []
+}

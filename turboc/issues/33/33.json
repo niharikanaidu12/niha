@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "when i open the watch window to observe changes in variables, the f8 button(step over shortcut) doesn't work and after some time of manually using the mouse again and again to step over, the prog stops responding. alt+x works but the mouse stops responding so the program is unkillable until i press the start button and do it from outside\r\nplease help",
+    "LastUpdatedDate": "2017-01-19T07:41:32.32-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2017-01-19T07:40:17.067-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "the program starts to hang",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 33
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "i have lost many different programs to this",
+      "PostedDate": "2017-01-19T07:41:32.32-08:00",
+      "Id": 206095
+    }
+  ]
+}

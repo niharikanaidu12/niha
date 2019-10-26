@@ -1,0 +1,46 @@
+
+Host Name:                 VEDANT-PC
+OS Name:                   Microsoft Windows 7 Ultimate 
+OS Version:                6.1.7600 N/A Build 7600
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Standalone Workstation
+OS Build Type:             Multiprocessor Free
+Registered Owner:          Vedant
+Registered Organization:   
+Product ID:                00426-OEM-8992662-00006
+Original Install Date:     14-Dec-16, 5:55:29 PM
+System Boot Time:          31-Dec-16, 11:47:30 AM
+System Manufacturer:       System manufacturer
+System Model:              System Product Name
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: AMD64 Family 21 Model 1 Stepping 2 AuthenticAMD ~3800 Mhz
+BIOS Version:              American Megatrends Inc. 1001   , 18-Jul-12
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume2
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi
+Total Physical Memory:     4,078 MB
+Available Physical Memory: 2,424 MB
+Virtual Memory: Max Size:  8,154 MB
+Virtual Memory: Available: 5,850 MB
+Virtual Memory: In Use:    2,304 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    WORKGROUP
+Logon Server:              \\VEDANT-PC
+Hotfix(s):                 2 Hotfix(s) Installed.
+                           [01]: KB971033
+                           [02]: KB958488
+Network Card(s):           2 NIC(s) Installed.
+                           [01]: Realtek RTL8139/810x Family Fast Ethernet NIC
+                                 Connection Name: Local Area Connection
+                                 DHCP Enabled:    Yes
+                                 DHCP Server:     192.168.1.1
+                                 IP address(es)
+                                 [01]: 192.168.1.5
+                                 [02]: fe80::d0fc:b598:16bb:5b67
+                           [02]: TAP-Windows Adapter V9
+                                 Connection Name: Local Area Connection 2
+                                 Status:          Media disconnected

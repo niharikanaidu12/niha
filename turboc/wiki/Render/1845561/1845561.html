@@ -1,0 +1,69 @@
+<div class="wikidoc">
+<h3>11.&nbsp;What is pointer to a function?&nbsp;</h3>
+<pre><strong>Explanation:</strong><br><code>(1) What will be output if you will execute following code?</code><br><code>int * function();</code><br><code>int main(){</code><br><code>auto int *x;</code><br><code>int *(*ptr)();</code><br><code>ptr=&amp;function;</code><br><code>x=(*ptr)();</code><br><code>printf(&quot;%d&quot;,*x);</code><br><code>}</code><br><code>int *function(){</code><br><code>static int a=10;</code><br><code>return &amp;a;</code><br><code>}<br><br></code>Output: 10</pre>
+<p><strong>Explanation:</strong> Here function is function whose parameter is void data type and return type is pointer to int data type.</p>
+<pre><code>x=(*ptr)()</code><br><code>=&gt; x=(*&amp;functyion)() //ptr=&amp;function</code><br><code>=&gt; x=function() //From rule *&amp;p=p</code><br><code>=&gt; x=&amp;a</code><br><code>So, *x = *&amp;a = a =10</code></pre>
+<p>(2) What will be output if you will execute following code?</p>
+<pre><code>int find(char);</code><br><code>int(*function())(char);</code><br><code>int main(){</code><br><code>int x;</code><br><code>int(*ptr)(char);</code><br><code>ptr=function();</code><br><code>x=(*ptr)('A');</code><br><code>printf(&quot;%d&quot;,x);</code><br><code>return 0;</code><br><code>}</code><br><code>int find(char c){</code><br><code>return c;</code><br><code>}</code><br><code>int(*function())(char){</code><br><code>return find;</code><br><code>}</code></pre>
+<pre><code>Output: 65</code></pre>
+<p><strong>Explanation:</strong> Here function whose name is function which passing void data type and returning another function whose parameter is char data type and return type is int data type.</p>
+<pre><code>x=(*ptr)(&lsquo;A&rsquo;)</code><br><code>=&gt; x= (*function ()) (&lsquo;A&rsquo;) //ptr=function ()</code><br><code>//&amp;find=function () i.e. return type of function ()</code><br><code>=&gt; x= (* &amp;find) (&lsquo;A&rsquo;)</code><br><code>=&gt; x= find (&lsquo;A&rsquo;) //From rule*&amp;p=p</code><br><code>=&gt; x= 65</code></pre>
+<p>(3) What will be output if you will execute following code?</p>
+<pre><code>char * call(int *,float *);</code><br><code>int main(){</code><br><code>char *string;</code><br><code>int a=2;</code><br><code>float b=2.0l;</code><br><code>char *(*ptr)(int*,float *);</code><br><code>ptr=&amp;call;</code><br><code>string=(*ptr)(&amp;a,&amp;b);</code><br><code>printf(&quot;%s&quot;,string);</code><br><code>return 0;</code><br><code>}</code><br><code>char *call(int *i,float *j){</code><br><code>static char *str=&quot;turboc.codeplex.com&quot;;</code><br><code>str=str&#43;*i&#43;(int)(*j);</code><br><code>return str;</code><br><code>}</code></pre>
+<pre><code>Output:&nbsp;turboc.codeplex.com</code></pre>
+<pre><strong>Explanation:</strong> Here call is function whose return type is pointer to character and one parameter is pointer to int data type and second parameter is pointer to float data type and ptr is pointer to such function.<br><code>str= str&#43;*i&#43; (int) (*j)</code><br><code>=&rdquo;turboc.codeplex.com&rdquo; &#43; *&amp;a&#43; (int) (*&amp;b)</code><br><code>//i=&amp;a, j=&amp;b</code><br><code>=&rdquo;turboc.codeplex.com&rdquo; &#43; a&#43; (int) (b)</code><br><code>=&rdquo;turboc.codeplex.com&rdquo; &#43;2 &#43; (int) (2.0)</code><br><code>=&rdquo;turboc.codeplex.com&rdquo; &#43;4</code><br><code>=&rdquo;turboc.codeplex.com&rdquo;</code></pre>
+<p>(4) What will be output if you will execute following code?</p>
+<pre><code>char far * display(char far*);</code><br><code>int main(){</code><br><code>char far* string=&quot;turboc.codeplex.com&quot;;</code><br><code>char far *(*ptr)(char far *);</code><br><code>ptr=&amp;display;</code><br><code>string=(*ptr)(string);</code><br><code>printf(&quot;%s&quot;,string);</code><br><code>}</code><br><code>char far *display(char far * str){</code><br><code>char far * temp=str;</code><br><code>temp=temp&#43;13;</code><br><code>*temp='\0';</code><br><code>return str;</code><br><code>}</code></pre>
+<pre><code>Output: turboc.codep</code></pre>
+<p><strong>Explanation:</strong> Here display is function whose parameter is pointer to character and return type is also pointer to character and ptr is its pointer.</p>
+<pre><code>temp is char pointer</code><br><code>temp=temp&#43;13</code><br><code>temp=&rsquo;\0&rsquo;</code></pre>
+<pre><code>Above two lines replaces first dot character by null character of string of variable string i.e.</code><br><code>&quot;turboc.codepl\0ex.com&quot;</code></pre>
+<p>As we know %s print the character of stream up to null character.</p>
+<h3>12.&nbsp;Write a c program to find size of structure&nbsp;without&nbsp;using sizeof operator?</h3>
+<pre><code>struct ABC{</code><br><code> int a;</code><br><code> float b;</code><br><code> char c;</code><br><code>};</code><br><code>int main(){</code><br><code> struct ABC *ptr=(struct ABC *)0;</code><br><code> ptr&#43;&#43;;</code><br><code> printf(&quot;Size of structure is: %d&quot;,*ptr);</code><br><code> return 0;</code><br><code>}</code></pre>
+<pre>&nbsp;</pre>
+<h3>13.&nbsp;What is NULL pointer?&nbsp;</h3>
+<p><strong>Explanation:</strong><br>
+Literal meaning of NULL pointer is a pointer which is pointing to nothing. NULL pointer points the base address of segment.</p>
+<p><strong>Examples of NULL pointer:</strong></p>
+<pre><code>1. int *ptr=(char *)0;</code><br><code>2. float *ptr=(float *)0;</code><br><code>3. char *ptr=(char *)0;</code><br><code>4. double *ptr=(double *)0;</code><br><code>5. char *ptr=&rsquo;\0&rsquo;;</code><br><code>6. int *ptr=NULL;</code></pre>
+<p><strong>What is meaning of NULL?</strong><br>
+<strong>Answer:</strong></p>
+<pre>NULL is macro constant which has been defined in the heard file stdio.h, alloc.h, mem.h, stddef.h and stdlib.h as<br><code>#define NULL 0</code></pre>
+<p><strong>Examples:</strong></p>
+<p>(1)What will be output of following c program?</p>
+<pre><code>#include &quot;stdio.h&quot;</code><br><code>int main(){</code><br><code>if(!NULL)</code><br><code>printf(&quot;I know preprocessor&quot;);</code><br><code>else</code><br><code>printf(&quot;I don't know preprocessor&quot;);</code><br><code>}</code></pre>
+<pre><code>Output: I know preprocessor</code></pre>
+<p><strong>Explanation:</strong><br>
+!NULL = !0 = 1<br>
+In if condition any non zero number mean true.</p>
+<p>(2)What will be output of following c program?</p>
+<pre><code>#include &quot;stdio.h&quot;</code><br><code>int main(){</code><br><code>int i;</code><br><code>static int count;</code><br><code>for(i=NULL;i&lt;=5;){</code><br><code>count&#43;&#43;;</code><br><code>i&#43;=2;</code><br><code>}</code><br><code>printf(&quot;%d&quot;,count);</code><br><code>}</code></pre>
+<pre><code>Output: 3</code></pre>
+<p>(3)What will be output of following c program?</p>
+<pre><code>#include &quot;stdio.h&quot;</code><br><code>int main(){</code><br><code>#ifndef NULL</code><br><code>#define NULL 5</code><br><code>#endif</code><br><code>printf(&quot;%d&quot;,NULL&#43;sizeof(NULL));</code><br><code>}</code></pre>
+<pre><code>Output: 2</code></pre>
+<p><strong>Explanation:</strong><br>
+NULL &#43; sizeof(NULL)<br>
+=0 &#43; sizeoof(0)<br>
+=0&#43;2 //size of int data type is two byte.</p>
+<p>We cannot copy anything in the NULL pointer.</p>
+<p>Example:</p>
+<p>(4)What will be output of following c program?</p>
+<pre><code>#include &quot;string.h&quot;</code><br><code>int main(){</code><br><code>char *str=NULL;</code><br><code>strcpy(str,&quot;c-pointer.blogspot.com&quot;);</code><br><code>printf(&quot;%s&quot;,str);</code><br><code>return 0;</code><br><code>}</code></pre>
+<pre><code>Output: (null)</code></pre>
+<h3>14.&nbsp;What is difference between pass by value and pass by reference?&nbsp;&nbsp;</h3>
+<p><strong>Explanation:</strong><br>
+In c we can pass the parameters in a function in two different ways.</p>
+<p><strong>(a)Pass by value:</strong> In this approach we pass copy of actual variables in function as a parameter. Hence any modification on parameters inside the function will not reflect in the actual variable. For example:</p>
+<pre><code>#include&lt;stdio.h&gt;</code><br><code>int main(){</code><br><code> int a=5,b=10;</code><br><code> swap(a,b);</code><br><code> printf(&quot;%d %d&quot;,a,b);</code><br><code> return 0;</code><br><code>} </code><br><code>void swap(int a,int b){</code><br><code> int temp;</code><br><code> temp =a;</code><br><code> a=b;</code><br><code> b=temp;</code><br><code>}</code><br><code>Output: 5 10</code></pre>
+<p><strong>(b)Pass by reference:</strong> In this approach we pass memory address actual variables in function as a parameter. Hence any modification on parameters inside the function will reflect in the actual variable. For example:</p>
+<pre><code>#incude&lt;stdio.h&gt;</code><br><code>int main(){</code><br><code> int a=5,b=10;</code><br><code> swap(&amp;a,&amp;b);</code><br><code> printf(&quot;%d %d&quot;,a,b);</code><br><code> return 0;</code><br><code>} </code><br><code>void swap(int *a,int *b){</code><br><code> int *temp;</code><br><code> *temp =*a;</code><br><code> *a=*b;</code><br><code> *b=*temp;</code><br><code>}</code></pre>
+<pre><code>Output: 10 5</code></pre>
+<h3>15.&nbsp;What is size of void pointer?&nbsp;</h3>
+<p>Size of any type of pointer in c is independent of data type which is pointer is pointing i.e. size of all type of pointer (near) in c is two byte either it is char pointer, double pointer, function pointer or null pointer. Void pointer is not exception
+ of this rule and size of void pointer is also two byte.</p>
+<p>&nbsp;</p>
+<h2><a href="https://turboc.codeplex.com/wikipage?title=C%20Programming%20Interview%20Question%202">&lt;&lt;C Programming Interview Question Part 2</a></h2>
+<h2 style="text-align:right"><a href="https://turboc.codeplex.com/wikipage?title=C%20Programming%20Interview%20Question%204">C Programming Interview Question Part 4 &gt;&gt;</a></h2>
+</div><div class="ClearBoth"></div>

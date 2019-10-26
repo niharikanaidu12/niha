@@ -1,0 +1,63 @@
+<div class="wikidoc">
+<h2><strong>Inheritance Syntax</strong></h2>
+<p>This lesson will consist of an overview of the syntax of inheritance, the use of the keywords public, private, and protected, and then an example program following to demonstrate each.&nbsp;</p>
+<p><br>
+The syntax to denote one class as inheriting from another is simple. It looks like the following: class Bear : public Animal, in place of simply the keyword class and then the class name. The &quot;: public&nbsp;<em>base_class_name</em>&quot; is the essential syntax
+ of inheritance; the function of this syntax is that the class will contain all public and protected variables of the base class. Do not confuse the idea of a derived class having access to data members of a base class and specific instances of the derived
+ class possessing data. The data members - variables and functions - possessed by the derived class are specific to the type of class, not to each individual object of that type. So, two different Bear objects, while having the same member variables and functions,
+ may have different information stored in their variables; furthermore, if there is a class Animal with an object, say object BigAnimal, of that type, and not of a more specific type inherited from that class, those two bears will not have access to the data
+ within BigAnimal. They will simply possess variables and functions with the same name and of the same type.&nbsp;<br>
+<br>
+A quick example of inheritance:</p>
+<pre>class Animal
+{
+  public:
+  Animal();
+  ~Animal();
+  void eat();
+  void sleep();
+  void drink();
+
+private:
+  int legs;
+  int arms;
+  int age;
+};
+//The class Animal contains information and functions
+//related to all animals (at least, all animals this lesson uses)
+class Cat : public Animal
+{
+  public:
+  int fur_color;
+  void purr();
+  void fish();
+  void markTerritory();
+};
+//each of the above operations is unique
+//to your friendly furry friends
+//(or enemies, as the case may be)
+</pre>
+<p>A discussion of the keywords public, private, and protected is useful when discussing inheritance. The three keywords are used to control access to functions and variables stored within a class.</p>
+<h4>public:</h4>
+<p>The most open level of&nbsp;<em>data hiding</em>&nbsp;is public. Anything that is public is available to all derived classes of a base class, and the public variables and data for each object of both the base and derived class is accessible by code outside
+ the class. Functions marked public are generally those the class uses to give information to and take information from the outside world; they are typically the interface with the class. The rest of the class should be hidden from the user using private or
+ protected data (This hidden nature and the highly focused nature of classes is known collectively as encapsulation). The syntax for public is:</p>
+<pre>public:</pre>
+<p>Everything following is public until the end of the class or another data hiding keyword is used.&nbsp;<br>
+<br>
+In general, a well-designed class will have no public fields--everything should go through the class's functions. Functions that retrieve variables are known as 'getters' and those that change values are known as 'setters'. Since the public part of the class
+ is intended for use by others, it is often sensible to put the public section at the top of the class.</p>
+<h4>protected:</h4>
+<p>Variables and functions marked protected are inherited by derived classes; however, these derived classes hide the data from code outside of any instance of the object. Keep in mind, even if you have another object of the same type as your first object,
+ the second object cannot access a protected variable in the first object. Instead, the second object will have its own variable with the same name - but not necessarily the same data. Protected is a useful level of access control for important aspects to a
+ class that must be passed on without allowing it to be accessed. The syntax is the same as that of public. specifically,</p>
+<pre>protected: </pre>
+<h4>private:</h4>
+<p>Private is the highest level of data-hiding. Not only are the functions and variables marked private not accessible by code outside the specific object in which that data appears, but private variables and functions are not inherited (in the sense that the
+ derived class cannot directly access these variables or functions). The level of data protection afforded by protected is generally more flexible than that of the private level. On the other hand, if you do not wish derived classes to access a method, declaring
+ it private is sensible.</p>
+<pre>private: </pre>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>

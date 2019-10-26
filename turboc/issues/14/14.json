@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "keyboard shortcut like ctr+f9, and alt+f9 are not working .. it opens some webpage when i press ctr+f9.. full screen does not fit to every corner of screen on laptop.. it leaves black space on both right and  left sides..",
+    "LastUpdatedDate": "2016-09-28T21:45:46.703-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-06-21T02:43:24.013-07:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "keyboard shorcut not working",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 14
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Please confirm that, you are using latest version of Turbo C++. Please download the latest version from here https://turboc.codeplex.com.\n\nIf you continue facing the same problem, please use the alternate file menu shortcut\nCtrl+F9 ->  Alt+R+Enter\n\nYou can find out more Turbo C++ shortcuts here\n[https://turboc.codeplex.com/wikipage?title=Turbo%20CPP%20Shortcuts](https://turboc.codeplex.com/wikipage?title=Turbo%20CPP%20Shortcuts)",
+      "PostedDate": "2016-08-01T10:07:08.08-07:00",
+      "Id": 200994
+    }
+  ]
+}

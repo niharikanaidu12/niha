@@ -1,0 +1,41 @@
+<div class="wikidoc">
+<h3>1.&nbsp;Write a c program to print Hello world without using any semicolon.</h3>
+<pre><code><strong>Explanation:</strong><br></code><br><code>Solution: 1<br></code><code>void main(){</code><br><code> if(printf(&quot;Hello world&quot;)){</code><br><code> }</code><br><code>}<br><br></code>Solution: 2<br>void main(){<br> while(!printf(&quot;Hello world&quot;)){<br> }<br>}<br><br>Solution: 3<br> <code>void main(){<br></code> <code>switch(printf(&quot;Hello world&quot;)){<br></code> <code>}<br></code>}</pre>
+<h3>2.&nbsp;Swap two variables without using third variable.<code></code></h3>
+<pre><strong><code>Explanation:</code><code><br></code></strong><br><code>#include&lt;stdio.h&gt;</code><br><code>int main(){</code><br><code> int a=5,b=10;</code><br><code>//process one</code><br><code> a=b&#43;a;</code><br><code> b=a-b;</code><br><code> a=a-b;</code><br><code> printf(&quot;a= %d b= %d&quot;,a,b);</code><br><br><code>//process two</code><br><code> a=5;</code><br><code> b=10;</code><br><code> a=a&#43;b-(b=a);</code><br><code> printf(&quot;\na= %d b= %d&quot;,a,b);</code><br><br><code>//process three</code><br><code> a=5;</code><br><code> b=10;</code><br><code> a=a^b;</code><br><code> b=a^b;</code><br><code> a=b^a;</code><br><code> printf(&quot;\na= %d b= %d&quot;,a,b);</code><br><br><code>//process four</code><br><code> a=5;</code><br><code> b=10;</code><br><code> a=b-~a-1;</code><br><code> b=a&#43;~b&#43;1;</code><br><code> a=a&#43;~b&#43;1;</code><br><code> printf(&quot;\na= %d b= %d&quot;,a,b);</code><br><br><code>//process five</code><br><code> a=5,</code><br><code> b=10;</code><br><code> a=b&#43;a,b=a-b,a=a-b;</code><br><code> printf(&quot;\na= %d b= %d&quot;,a,b);</code><br><code> return 0;</code><br><code>}</code></pre>
+<h3>3.&nbsp;What is dangling pointer in c?&nbsp;</h3>
+<p><strong>Dangling pointer:</strong></p>
+<p>If any pointer is pointing the memory address of any variable but after some variable has deleted from that memory location while pointer is still pointing such memory location. Such pointer is known as dangling pointer and this problem is known as dangling
+ pointer problem.</p>
+<p><strong>Initially:</strong></p>
+<p><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=turboc&DownloadId=1522401" alt="" width="393" height="170"></p>
+<p><strong>Later:</strong></p>
+<p><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=turboc&DownloadId=1522402" alt="" width="400" height="202"></p>
+<p><strong>For example:</strong></p>
+<p>What will be output of following c program?</p>
+<pre><code>#include&lt;stdio.h&gt;<br><br></code>int *call();<br>int main()<br>{<br>int *ptr;<br>ptr=call();<br>fflush(stdin);<br>printf(&quot;%d&quot;,*ptr);<br>return 0;<br>}<br>int * call()<br>{<br>int x=25;<br>&#43;&#43;x;<br>return &amp;x;<br>}<br>Output: Garbage value</pre>
+<p><br>
+<strong>Note:</strong> In some compiler you may get warning message returning address of local variable or temporary</p>
+<p><strong>Explanation:</strong> variable x is local variable. Its scope and lifetime is within the function call hence after returning address of x variable x became dead and pointer is still pointing ptr is still pointing to that location.</p>
+<p><strong>Solution of this problem:</strong> <br>
+Make the variable x is as static variable. In other word we can say a pointer whose pointing object has been deleted is called dangling pointer.</p>
+<pre><code>#include&lt;stdio.h&gt;<br></code>int *call();<br>int main()<br>{<br>int *ptr;<br>ptr=call();<br>fflush(stdin);<br>printf(&quot;%d&quot;,*ptr);<br>return 0;<br>}<br>int * call()<br>{<br>static int x=25;<br>&#43;&#43;x;<br>return &amp;x;<br>}<br>Output: 26</pre>
+<h3>&nbsp;4.&nbsp;What is wild pointer in c?</h3>
+<p><strong>Explanation:</strong><br>
+A pointer in c which has not been initialized is known as wild pointer.</p>
+<p><strong>Example:</strong></p>
+<p>What will be output of following c program?</p>
+<pre><code>int main()<br>{<br></code><code>int *ptr;</code><br><code>printf(&quot;%u\n&quot;,ptr);</code><br><code>printf(&quot;%d&quot;,*ptr);</code><br><code>return 0;</code><br><code>}</code></pre>
+<pre><code><strong>Output:</strong> Any address</code><br><code>Garbage value</code></pre>
+<p>Here ptr is wild pointer because it has not been initialized. There is difference between the NULL pointer and wild pointer. Null pointer points the base address of segment while wild pointer doesn&rsquo;t point any specific memory location.</p>
+<h3>5.&nbsp;What are merits and demerits of array in c?</h3>
+<p><strong>Merits:</strong></p>
+<p>(a) We can easily access each element of array.<br>
+(b) Not necessity to declare too many variables.<br>
+(c) Array elements are stored in continuous memory location.</p>
+<p><strong>Demerit:</strong></p>
+<p>(a) Wastage of memory space. We cannot change size of array at the run time. <br>
+(b) It can store only similar type of data.</p>
+<p>&nbsp;</p>
+<h2 style="text-align:right"><a href="https://turboc.codeplex.com/wikipage?title=C%20Programming%20Interview%20Question%202">C Programming Interview Question Part 2 &gt;&gt;</a></h2>
+</div><div class="ClearBoth"></div>

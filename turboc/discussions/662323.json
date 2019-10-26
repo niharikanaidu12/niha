@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1494936",
+    "ThreadId": "662323",
+    "Html": "Hello All,\r<br />\n<br />\nI have a old code written somewhere in 1995 in C.  I am in the process of migrating it to Windows 7 .net code. I came across some files with extension .mnu which I assume contains &quot;menu&quot; options. When I try to open the file in Notepad or Notepad++ I see some text but with many ASCII characters also. Opening in binary format shows signature starting with spaces followed MEN$. How do I read this file?\r<br />\n<br />\nI assume the code might have been developed with Turbo C long back but I am not sure.\r<br />\n<br />\n<br />\nRegards\r<br />\nNijaguna<br />\n",
+    "PostedDate": "2017-03-30T22:19:12.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

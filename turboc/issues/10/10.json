@@ -1,0 +1,51 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "when i run the turbo c++ application (downloaded from same website )it show error! \r\n",
+    "LastUpdatedDate": "2017-12-01T03:26:40.287-08:00",
+    "PlannedForRelease": "Turbo C++ 3.2",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-05-07T01:23:17.35-07:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "can't able to install turbo c ++",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1568042,
+      "FileName": "error.jpg",
+      "DownloadUrl": ".\\1568042"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Microsoft .NET Framework 4.5 Required before installing Turbo C++ 3.2 in your system. Please download Microsoft .NET Framework 4.5 form here [https://www.microsoft.com/en-us/download/details.aspx?id=42642](https://www.microsoft.com/en-us/download/details.aspx?id=42642) and try again.",
+      "PostedDate": "2016-05-11T23:24:15.663-07:00",
+      "Id": 199495
+    }
+  ]
+}

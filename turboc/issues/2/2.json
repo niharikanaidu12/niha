@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2016-09-28T21:35:36.77-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Dear All\r\nGood Evening\r\nI am novice in c programming \r\nI am trying to write a program in c to calculate average of 3 numbers by inputting numbers from keyboard\r\nProgram that i have written is as follows\r\n\r\n/*program to calculate average of numbers abc */\r\n#include <stdio.h>\r\nvoid main ()\r\n{\r\n        int a,b,c;\r\n        int avg;\r\n        printf(\"enter values of a,b,c\");\r\n        scanf(\"%d,%d,%f\",&a,&b,&c);\r\n        /*formula for average*/\r\n        avg=(a+b+c)/3;\r\n        printf(\"%d\",avg);\r\n         }\r\nPlease guide ..\r\n  ",
+    "LastUpdatedDate": "2016-09-28T21:35:36.77-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2015-12-01T06:33:08.173-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Not an Issue"
+    },
+    "Summary": "Help using Scanf function to calculate average of 3 numbers",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

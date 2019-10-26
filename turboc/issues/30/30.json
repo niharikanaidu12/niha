@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi, I am trying to declare a variable of string data type. But it gives an error undefined symbol string.\r\n\r\nHere is the snippet\r\n\r\n```\r\n#include<iostream.h>\r\n#include<string.h>\r\n\r\nint main()\r\n{\r\n     string str = \"Hello world!\";\r\n     cout<<str<<endl;\r\n     return 0;\r\n}\r\n```",
+    "LastUpdatedDate": "2017-01-08T21:59:17.3-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2017-01-08T21:56:13.643-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Unable to define STRING data type",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 30
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

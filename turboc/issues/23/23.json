@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": null,
+    "Description": "For some odd reason, I can run this program just fine in full-screen, but when I want to run it in Windowed mode, the DOSBox displays a completely green window. I checked DOSBox by launching it alone, and it runs just fine, so it seems that Turbco C++ is somehow utilizing it incorrectly.\r\n\r\nOS: Windows 10 64-bit\r\nProgram OS: 64-bit",
+    "LastUpdatedDate": "2016-10-05T13:55:47.61-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-10-02T13:02:47.053-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Green Screen in Windowed Mode",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 23
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1610916,
+      "FileName": "TurboC++_GreenScreenBug.png",
+      "DownloadUrl": ".\\1610916"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "It's really weird issue. I'm also using Windows 10 64-bit, never seen this before. Can you please tell me your System Name and Model (or Configuration if custom build PC) so I can check Turbo C++ with same configuration system.",
+      "PostedDate": "2016-10-05T09:31:39.513-07:00",
+      "Id": 204525
+    },
+    {
+      "Message": "Certainly! Thanks for taking a look at this post. I searched for a solution to this extensively, but to no avail, so I appreciate it.\n\nSystem: Toshiba Qosmio X775-Q7380\n\nIt's a gaming laptop my parents purchased for me back in 2011 as a graduation gift. It has the same specs listed [here](http://www.newegg.com/Product/Product.aspx?Item=N82E16834214490).",
+      "PostedDate": "2016-10-05T13:55:47.61-07:00",
+      "Id": 204530
+    }
+  ]
+}

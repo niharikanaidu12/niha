@@ -1,0 +1,148 @@
+<div class="wikidoc">
+<h2>Template Specialization</h2>
+<p>In many cases when working with templates, you'll write one generic version for all possible data types and leave it at that--every vector may be implemented in exactly the same way. The idea of template specialization is to override the default template
+ implementation to handle a particular type in a different way.&nbsp;</p>
+<p><br>
+For instance, while most vectors might be implemented as arrays of the given type, you might decide to save some memory and implement vectors of bools as a vector of integers with each bit corresponding to one entry in the vector. So you might have two separate
+ vector classes. The first class would look like this.</p>
+<pre>template &lt;typename T&gt;
+class vector
+{
+    // accessor functions and so forth
+    private:
+    T* vec_data;   // we'll store the data as block of dynamically allocated 
+                   // memory
+    int length;    // number of elements used 
+    int vec_size;  // actual size of vec_data
+};
+</pre>
+<p>But when it comes to bools, you might not really want to do this because most systems are going to use 16 or 32 bits for each boolean type even though all that's required is a single bit. So we might make our boolean vector look a little bit different by
+ representing the data as an array of integers whose bits we manually manipulate.&nbsp;<br>
+<br>
+To do this, we still need to specify that we're working with something akin to a template, but this time the list of template parameters will be empty:</p>
+<pre>template &lt;&gt;
+</pre>
+<p>and the class name is followed by the specialized type: class className&lt;type&gt;. In this case, the template would look like this:</p>
+<pre>template &lt;&gt;
+class vector &lt;bool&gt;
+{
+    // interface
+
+    private:
+    unsigned int *vector_data;
+    int length;
+    int size;
+};
+</pre>
+<p>Note that it would be perfectly reasonable if the specialized version of the vector class had a different interface (set of public methods) than the generic vector class--although they're both vector templates, they don't share any interface or any code.&nbsp;<br>
+<br>
+It's worth pointing out that the salient reason for the specialization in this case was to allow for a more space-efficient implementation, but you could think of other reasons why this might come in handy--for instance, if you wanted to add extra methods to
+ one templated class based on its type, but not to other templates. For instance, you might have a vector of doubles with a method that returns the non-integer component of each element although you might think prefer inheritance in this case. There isn't a
+ particular reason to prevent the existence of a vector of doubles without those extra features. If, however, you felt strongly about the issue and wanted to prevent it, you could do so using template specialization.&nbsp;<br>
+<br>
+Another time when you might want to specialize certain templates could be if you have a template type that relies on some behavior that was not implemented in a collection of classes you'd like to store in that template. For example, if you had a templated
+ sortedVector type that required the &gt; operator to be defined, and a set of classes written by someone else that didn't include any overloaded operators but did include a function for comparison, you might specialize your template to handle these classes
+ separately.</p>
+<h2>Template Partial Specialization</h2>
+<p>Partial template specialization stems from similar motives as full specialization as described above. This time, however, instead of implementing a class for one specific type, you end up implementing a template that still allows some parameterization. That
+ is, you write a template that specializes on one feature but still lets the class user choose other features as part of the template. Let's make this more concrete with an example.&nbsp;<br>
+<br>
+Going back to the idea of extending the concept of vectors so that we can have a sortedVector, let's think about how this might look: we'll need a way of making comparisons. Fine; we can just use &gt; if it's been implemented, or specialize if it hasn't. But
+ now let's say that we wanted to have pointers to objects in our sorted vector. We could sort them by the value of the pointers, just doing a standard &gt; comparison (we'll have a vector sorted from low to high):</p>
+<pre>template &lt;typename T&gt;
+class sortedVector
+{
+    public:
+    void insert (T val)
+    {
+        if ( length == vec_size )   // length is the number of elements
+        {
+            vec_size *= 2;    // we'll just ignore overflow possibility!
+            vec_data = new T[vec_size];
+        }
+        &#43;&#43;length;  // we are about to add an element
+        
+        // we'll start at the end, sliding elements back until we find the
+        // place to insert the new element
+        int pos;
+        for( pos = length; pos &gt; 0 &amp;&amp; val &gt; vec_data[pos - 1]; --pos )
+        {
+            vec_data[pos] = vec_data[pos - 1];
+        }
+        vec_data[pos] = val;
+    }
+    // other functions...
+    private:
+    T *vec_data;
+    int length;
+    int size;
+};
+</pre>
+<p>Now, notice that in the above for loop, we're making a direct comparison between elements of type T. That's OK for most things, but it would probably make more sense to have sorted on the actual object type instead of the pointer address. To do that, we'd
+ need to write code that had this line:</p>
+<pre>for( pos = length; pos &gt; 0 &amp;&amp; *val &gt; *vec_data[pos - 1]; --pos )
+</pre>
+<p>Of course, that would break for any non-pointer type. What we want to do here is use a partial specialization based on whether the type is a pointer or a non-pointer (you could get fancy and have multiple levels of pointers, but we'll stay simple).&nbsp;<br>
+<br>
+To declare a partially specialized template that handles any pointer types, we'd add this class declaration:</p>
+<pre>template &lt;typename T&gt;
+class sortedVector&lt;T *&gt;
+{
+    public:
+    // same functions as before.  Now the insert function looks like this:
+    insert( T *val )
+    {
+        if ( length == vec_size )   // length is the number of elements
+        {
+            vec_size *= 2;    // we'll just ignore overflow possibility!
+            vec_data = new T[vec_size];
+        }
+        &#43;&#43;length;  // we are about to add an element
+        
+        // we'll start at the end, sliding elements back until we find the
+        // place to insert the new element
+        int pos;
+        for( pos = length; pos &gt; 0 &amp;&amp; *val &gt; *vec_data[pos - 1]; --pos )
+        {
+            vec_data[pos] = vec_data[pos - 1];
+        }
+        vec_data[pos] = val;
+    }
+
+    private:
+    T** vec_data;
+    int length;
+    int size;
+};
+</pre>
+<p>There are a couple of syntax points to notice here. First, our template parameter list still names T as the parameter, but the declaration now has a T * after the name of the class; this tells the compiler to match a pointer of any type with this template
+ instead of the more general template. The second thing to note is that T is now the type pointed to; it is&nbsp;<strong>not</strong>&nbsp;itself a pointer. For instance, when you declare a sortedVector&lt;int *&gt;, T will refer to the int type! This makes
+ some sense if you think of it as a form of pattern matching where T matches the type if that type is followed by an asterisk. This does mean that you have to be a tad bit more careful in your implementation: note that vec_data is a T** because we need a dynamically
+ sized array made up of pointers.&nbsp;<br>
+<br>
+You might wonder if you really want your sortedVector type to work like this--after all, if you're putting them in an array of pointers, you'd expect them to be sorted by pointer type. But there's a practical reason for doing this: when you allocate memory
+ for an array of objects, the default constructor must be called to construct each object. If no default constructor exists (for instance, if every object needs some data to be created), you're stuck needing a list of pointers to objects, but you probably want
+ them to be sorted the same way the actual objects themselves would be!&nbsp;<br>
+<br>
+Note, by the way, that you can also partially specialize on template arguments--for instance, if you had a fixedVector type that allowed the user of the class to specify both a type to store and the length of the vector (possibly to avoid the cost of dynamic
+ memory allocations), it might look something like this:</p>
+<pre>template &lt;typename T, unsigned length&gt;
+class fixedVector { ... };
+</pre>
+<p>Then you could partially specialize for booleans with the following syntax</p>
+<pre>template &lt;unsigned length&gt;
+class fixedVector&lt;bool, length&gt; {...}
+</pre>
+<p>Note that since T is no longer a template parameter, it's left out of the template parameter list, leaving only length. Also note that length now shows up as part of fixedVector's name (unlike when you have a generic template declaration, where you specify
+ nothing after the name). (By the way, don't be surprised to see a template parameter that's a non-type: it's perfectly valid, and sometimes useful, to have template arguments that are integer types such as unsigned.)&nbsp;<br>
+<br>
+A final implementation detail comes up with partial specializations: how does the compiler pick which specialization to use if there are a combination of completely generic types, some partial specializations, and maybe even some full specializations? The general
+ rule of thumb is that the compiler will pick the most specific template specialization--the most specific template specialization is the one whose template arguments would be accepted by the other template declarations, but which would not accept all possible
+ arguments that other templates with the same name would accept.&nbsp;<br>
+<br>
+For instance, if you decided that you wanted a sortedVector&lt;int *&gt; that sorted by memory location, you could create a full specialization of sortedVector and if you declared a sortedVector&lt;int *&gt;, then the compiler would pick that implementation
+ over the less-specific partial specialization for pointers. It's the most specialized since only an int * matches the full specialization, not any other pointer type such as a double *, whereas int * certainly could be a parameter to either of the other templates.</p>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>

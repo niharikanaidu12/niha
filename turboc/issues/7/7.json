@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Duplicate of https://turboc.codeplex.com/workitem/4",
+    "ClosedDate": "2016-09-28T21:50:02.293-07:00",
+    "CommentCount": 2,
+    "Custom": null,
+    "Description": "Hello,\r\n         I have win 7, installed turbo c++ and run first program on it . It worked but after that my mouse did not work for turbo c++. The cursor moves but i can not click on compiler , run etc. Please someone help me solve this issue.\r\n",
+    "LastUpdatedDate": "2016-09-28T21:50:02.293-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-03-09T06:35:21.983-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Duplicate"
+    },
+    "Summary": "Mouse malfunctioning after first run",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 7
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This is happens because of Turbo C++ 3.0 a 16-bit software and I'm using DosBox to run Turbo C++ for 32&64-bit OS. DosBox is a simulating tools, specially design to run 16-bit games on 32&64-bit OS. \n\nSo, problem is that, DosBox design to operate with keyboard. When you tried to use mouse it's works for only few click.\n\nSolution of this problem is Turbo C++ shortcut. You can find out here\n[https://turboc.codeplex.com/wikipage?title=Turbo%20CPP%20Shortcuts](This is happens because of Turbo C++ 3.0 a 16-bit software and I'm using DosBox to run Turbo C++ for 32&64-bit OS. DosBox is a simulating tools, specially design to run 16-bit games on 32&64-bit OS. \n\nSo, problem is that, DosBox design to operate with keyboard. When you tried to use mouse it's works for only few click.\n\nSolution of this problem is Turbo C++ shortcut. You can find out here\nhttps://turboc.codeplex.com/wikipage?title=Turbo%20CPP%20Shortcuts)",
+      "PostedDate": "2016-03-14T21:54:19.457-07:00",
+      "Id": 197919
+    },
+    {
+      "Message": "Thx for your help",
+      "PostedDate": "2016-03-25T09:36:54.47-07:00",
+      "Id": 198185
+    }
+  ]
+}

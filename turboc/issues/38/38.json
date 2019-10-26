@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 3,
+    "Custom": null,
+    "Description": "My laptop keyboard or any other external keyboard  keys are not working in\r\nthis turbo c software while they are working on any other software like ms word,powerpoint. So pllease give me a solution onhow to repair this issue",
+    "LastUpdatedDate": "2017-10-17T22:19:44.897-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2017-02-05T03:51:48.177-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "keyboard keys problem",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 8,
+    "Id": 38
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Please solve",
+      "PostedDate": "2017-02-05T03:54:06.393-08:00",
+      "Id": 206420
+    },
+    {
+      "Message": "I have a similar issue; anyone has a solution? If so, please post it here. Thank you.",
+      "PostedDate": "2017-02-16T11:25:56.39-08:00",
+      "Id": 206658
+    },
+    {
+      "Message": "respected sir/mam\n     \n                          hello....thanks for such an great software. but from few days i m not able to work on it as such my keyboard key won't work on it..but before some months they were working correctly. kindly plz help me to overcome this problem.\n",
+      "PostedDate": "2017-02-19T06:07:42.023-08:00",
+      "Id": 206688
+    }
+  ]
+}

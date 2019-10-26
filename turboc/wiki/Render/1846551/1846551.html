@@ -1,0 +1,21 @@
+<div class="wikidoc">
+<p><strong>Question: What is the name of the &ldquo;--&gt;&rdquo; operator?</strong></p>
+<p>Here's an example:</p>
+<pre><code>#include &lt;stdio.h&gt;</code><br><code>int main()</code><br><code>{</code><br><code>&nbsp; &nbsp; &nbsp;int x = 10;</code><br><code>&nbsp; &nbsp; &nbsp;while( x --&gt; 0 ) // x goes to 0</code><br><code>&nbsp; &nbsp; &nbsp;{</code><br><code>&nbsp; &nbsp; &nbsp; &nbsp;printf(&quot;%d &quot;, x);<br></code>&nbsp; &nbsp; &nbsp;}<br>}</pre>
+<div>&nbsp;</div>
+<div>
+<hr>
+&nbsp;</div>
+<h3><strong>Answer.</strong></h3>
+<div>
+<p><code>--&gt;</code>&nbsp;is not an operator. It is in fact two separate operators,&nbsp;<code>--</code>&nbsp;and&nbsp;<code>&gt;</code>.</p>
+<p>The conditional's code decrements&nbsp;<code>x</code>, while returning&nbsp;<code>x</code>'s original (not decremented) value, and then compares the original value with&nbsp;<code>0</code>&nbsp;using the&nbsp;<code>&gt;</code>&nbsp;operator.</p>
+<p><strong>To better understand, the statement could be written as follows:</strong></p>
+<pre><code>while( (x--) &gt; 0 )</code></pre>
+</div>
+<div><strong>or</strong></div>
+<div>&nbsp;</div>
+<div>
+<pre><code>#include &lt;stdio.h&gt;</code><br><code>int main()</code><br><code>{</code><br><code>&nbsp; &nbsp; &nbsp;int x = 10;</code><br><code>&nbsp; &nbsp; &nbsp;while( (x--) &gt; 0 ) // x goes to 0</code><br><code>&nbsp; &nbsp; &nbsp;{</code><br><code>&nbsp; &nbsp; &nbsp; &nbsp;printf(&quot;%d &quot;, x);<br></code>&nbsp; &nbsp; &nbsp;}<br>}</pre>
+</div>
+</div><div class="ClearBoth"></div>

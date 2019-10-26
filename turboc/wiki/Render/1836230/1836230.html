@@ -1,0 +1,73 @@
+<div class="wikidoc">
+<h2><strong>Templated Functions</strong></h2>
+<p>C&#43;&#43; templates can be used both for classes and for functions in C&#43;&#43;. Templated functions are actually a bit easier to use than templated classes, as the compiler can often deduce the desired type from the function's argument list.&nbsp;</p>
+<p><br>
+The syntax for declaring a templated function is similar to that for a templated class:</p>
+<pre>template &lt;class type&gt; type func_name(type arg1, ...);
+</pre>
+<p>For instance, to declare a templated function to add two values together, you could use the following syntax:</p>
+<pre>template &lt;class type&gt; type add(type a, type b)
+{
+    return a &#43; b;
+}
+</pre>
+<p>Now, when you actually use the add function, you can simply treat it like any other function because the desired type is also the type given for the arguments. This means that upon compiling the code, the compiler will know what type is desired:</p>
+<pre>int x = add(1, 2);
+</pre>
+<p>will correctly deduce that &quot;type&quot; should be int. This would be the equivalent of saying:</p>
+<pre>int x = add&lt;int&gt;(1, 2);
+</pre>
+<p>where the template is explicitly instantiated by giving the type as a template parameter.&nbsp;<br>
+<br>
+On the other hand, type inference of this sort isn't always possible because it's not always feasible to guess the desired types from the arguments to the function. For instance, if you wanted a function that performed some kind of cast on the arguments, you
+ might have a template with multiple parameters:</p>
+<pre>template &lt;class type1, class type2&gt; type2 cast(type1 x)
+{
+    return (type2)x;
+}
+</pre>
+<p>Using this function without specifying the correct type for type2 would be impossible. On the other hand, it is possible to take advantage of some type inference if the template parameters are correctly ordered. In particular, if the first argument must
+ be specified and the second deduced, it is only necessary to specify the first, and the second parameter can be deduced.&nbsp;<br>
+<br>
+For instance, given the following declaration</p>
+<pre>template &lt;class rettype, class argtype&gt; rettype cast(argtype x)
+{
+    return (rettype)x;
+}
+</pre>
+<p>this function call specifies everything that is necessary to allow the compiler deduce the correct type:</p>
+<pre>cast&lt;double&gt;(10);
+</pre>
+<p>which will cast an int to a double. Note that arguments to be deduced must always follow arguments to be specified. (This is similar to the way that default arguments to functions work.)&nbsp;<br>
+<br>
+You might wonder why you cannot use type inference for classes in C&#43;&#43;. The problem is that it would be a much more complex process with classes, especially as constructors may have multiple versions that take different numbers of parameters, and not all of
+ the necessary template parameters may be used in any given constructor.</p>
+<h2>Templated Classes with Templated Functions</h2>
+<p>It is also possible to have a templated class that has a member function that is itself a template, separate from the class template. For instance,</p>
+<pre>template &lt;class type&gt; class TClass
+{
+    // constructors, etc
+    
+    template &lt;class type2&gt; type2 myFunc(type2 arg);
+};
+</pre>
+<p>The function myFunc is a templated function inside of a templated class, and when you actually define the function, you must respect this by using the template keyword twice:</p>
+<pre>template &lt;class type&gt;  // For the class
+    template &lt;class type2&gt;  // For the function
+    type2 TClass&lt;type&gt;::myFunc(type2 arg)
+    {
+        // code
+    }
+</pre>
+<p>The following attempt to combine the two is&nbsp;<strong>wrong</strong>&nbsp;and will not work:</p>
+<pre>// bad code!
+template &lt;class type, class type2&gt; type2 TClass&lt;type&gt;::myFunc(type2 arg)
+{
+    // ...
+}
+</pre>
+<p>because it suggests that the template is entirely the class template and not a function template at all.</p>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>

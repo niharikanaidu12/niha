@@ -1,0 +1,51 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "I have uninstall it and then reinstall after downloading again, but it doesn't work.\r\nPlease solve this issue as soon as possible.\r\nI have to do my college work by using Turbo C++.",
+    "LastUpdatedDate": "2016-11-22T08:55:41.507-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-07-24T02:22:31.937-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Turbo C++ Crashing in Windows 10",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 18
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1594828,
+      "FileName": "Untitled123.jpg",
+      "DownloadUrl": ".\\1594828"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Hi,\n\nI've tested Turbo C++ on Windows 10. Please provide the more details about your system configuration or send the system info report by using following commands.\n\n1. Open cmd\n2. Run command systeminfo > systeminfo.txt\n3. Find the systeminfo.txt in same path, which showing by your cmd\n\nAfter generating system report please attach report to vineetchoudhary291[at]gmail.com or in this thread. Then, I'm able to help you.",
+      "PostedDate": "2016-08-01T09:54:17.233-07:00",
+      "Id": 200992
+    }
+  ]
+}

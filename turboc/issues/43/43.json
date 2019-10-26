@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When you open turbo c++ and you want to start a new project you need to click on \"New Project...\"\r\nIt open a window that you can choose where to save your new project.\r\nHowever, I can't save the new project file. I pree the save button and nothing is happening.\r\nPlease help me!",
+    "LastUpdatedDate": "2017-03-31T04:27:46.363-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2017-03-31T04:27:46.363-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Cant save a new project file in my computer",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 43
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

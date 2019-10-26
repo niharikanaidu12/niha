@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am not able to run the program finding power of a number m raised to a power n . i am getting a error called \"declaration terminated incorrectly\". but more than 50 times i have checked there is no fault in my program . i made many changes but this error is coming constantly . So, please help, i need to run this program in my college lab .",
+    "LastUpdatedDate": "2017-03-04T08:45:40.057-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2017-03-04T08:45:39.823-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "ERROR ",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 40
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1644306,
+      "FileName": "POWER.CPP",
+      "DownloadUrl": ".\\1644306"
+    }
+  ],
+  "Comments": []
+}

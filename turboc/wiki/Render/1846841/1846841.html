@@ -1,0 +1,46 @@
+<div class="wikidoc">
+<p><strong>Question -&nbsp;Why is one loop so much slower than two loops?</strong></p>
+<p>Suppose&nbsp;<code>a1</code>,&nbsp;<code>b1</code>,&nbsp;<code>c1</code>, and&nbsp;<code>d1</code>&nbsp;point to heap memory and code has the following loop.</p>
+<pre><code>const int n=100000;
+
+for(int j=0;j&lt;n;j&#43;&#43;){
+    a1[j] &#43;= b1[j];
+    c1[j] &#43;= d1[j];
+}</code></pre>
+<p>This loop is executed 10,000 times via another outer&nbsp;<code>for</code>&nbsp;loop. To speed it up, I changed the code to:</p>
+<pre><code>for(int j=0;j&lt;n;j&#43;&#43;){
+    a1[j] &#43;= b1[j];
+}
+for(int j=0;j&lt;n;j&#43;&#43;){
+    c1[j] &#43;= d1[j];
+}</code></pre>
+<p>Compiled on MicroSoft&nbsp;Visual C&#43;&#43; 10.0&nbsp;, the <strong>first example takes 5.5&nbsp;seconds</strong> and the
+<strong>double-loop example takes only 1.9&nbsp;seconds</strong>.</p>
+<hr>
+<p>&nbsp;</p>
+<p><strong>Answer -</strong></p>
+<p>Imagine you are working on a machine where&nbsp;<code>n</code>&nbsp;was just the right value for it only to be possible to hold two of your arrays in memory at one time, but the total memory available, via disk caching, was still sufficient to hold all four.</p>
+<p>Assuming a simple LIFO caching policy, this code:</p>
+<pre><code>for(int j=0;j&lt;n;j&#43;&#43;){
+    a1[j] &#43;= b1[j];
+}
+for(int j=0;j&lt;n;j&#43;&#43;){
+    c1[j] &#43;= d1[j];
+}</code></pre>
+<p>would first cause&nbsp;<code>a1</code>&nbsp;and&nbsp;<code>b1</code>&nbsp;to be loaded into RAM and then be worked on entirely in RAM. When the second loop starts,&nbsp;<code>c1</code>&nbsp;and&nbsp;<code>d1</code>&nbsp;would then be loaded from disk into
+ RAM and operated on.</p>
+<p>the other loop</p>
+<pre><code>for(int j=0;j&lt;n;j&#43;&#43;){
+    a1[j] &#43;= b1[j];
+    c1[j] &#43;= d1[j];
+}</code></pre>
+<p>will page out two arrays and page in the other two&nbsp;<strong>every time around the loop</strong>. This would obviously be&nbsp;<strong>much</strong>&nbsp;slower.</p>
+<p>You are probably not seeing disk caching in your tests but you are probably seeing the side effects of some other form of caching.</p>
+<p>FLOP/s for different values of&nbsp;<code>n on different processor</code></p>
+<p><code><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=turboc&DownloadId=1527665" alt="" width="650" height="488"></code></p>
+<p>&nbsp;</p>
+<p><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=turboc&DownloadId=1527666" alt="" width="650" height="488"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=turboc&DownloadId=1527667" alt="" width="650" height="488"></p>
+</div><div class="ClearBoth"></div>

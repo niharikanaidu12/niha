@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "Hello,\r\n\r\nI am able to write and compile the program successfully but not able to run it. It does not give the output window. Please help asap..................",
+    "LastUpdatedDate": "2017-11-20T08:41:19.3-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-11-15T09:09:35.793-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "I am not able to run the program",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 4,
+    "Id": 25
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "first check entering of header file( #include<conio.h>)\nthen after make sure like this \n \nexample;\n \n#include<iostream.h>\n#include<conio.h>\nvoid main()\n{\n clrscr();\n cout<<\"hello world\";\n getch();\n}",
+      "PostedDate": "2016-11-20T09:13:06.547-08:00",
+      "Id": 205202
+    }
+  ]
+}

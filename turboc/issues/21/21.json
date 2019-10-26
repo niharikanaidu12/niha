@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Duplicate of this issue.Please found the solution here. \nhttps://turboc.codeplex.com/workitem/4\n",
+    "ClosedDate": "2016-09-28T21:54:51.72-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello,\r\n\r\nI am using Windows 10 on laptop. Once I click on run, I am not able to select any options after that except for typing on blue screen. Please help.",
+    "LastUpdatedDate": "2016-09-28T21:54:51.72-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-09-08T10:57:23.18-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Duplicate"
+    },
+    "Summary": "Unable to select anything after first run",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 21
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

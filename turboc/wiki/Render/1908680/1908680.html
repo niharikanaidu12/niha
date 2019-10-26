@@ -1,0 +1,20 @@
+<div class="wikidoc">
+<h1><a href="http://www.developerinsider.in/assets/pages/runturbocpp.html?run=turbocpp:~turboc.codeplex.com~http://download-codeplex.sec.s-msft.com/Download?ProjectName=turboc&DownloadId=1522082~251115.C">Click here to open this program directly in Turbo C&#43;&#43;</a>&nbsp;</h1>
+<p><br>
+C program to check Subsequence, don't confuse subsequence with substring. In our program we check if a string is a subsequence of another string. User will input two strings and we find if one of the strings is a subsequence of other. Program prints yes if
+ either first string is a subsequence of second or second is a subsequence of first. We pass smaller length string first because our function assumes first string is of smaller or equal length than the second string.<br>
+</p>
+<pre><code>/**********************************************************</code><br><code> Statement - check if a string is a subsequence of another string</code><br><code> Programmer - Vineet Choudhary</code><br><code> Written For - https://turboc.codeplex.com</code><br><code> **********************************************************/</code><br> <br><code>#include &lt;stdio.h&gt;</code><br><code>#include &lt;string.h&gt;</code><br><code>#include &lt;conio.h&gt;</code></pre>
+<pre><code>int check_subsequence (char [], char[]);</code><br> <br><code>void main () {</code><br><code> int flag;</code><br><code> char s1[1000], s2[1000];</code><br><code> clrscr();</code></pre>
+<pre><code>printf(&quot;Input first string\n&quot;);</code><br><code> gets(s1);</code></pre>
+<pre><code>printf(&quot;Input second string\n&quot;);</code><br><code> gets(s2);</code></pre>
+<pre><code>/** Passing smaller length string first */</code></pre>
+<pre><code>if (strlen(s1) &lt; strlen(s2))</code><br><code> flag = check_subsequence(s1, s2);</code><br><code> else</code><br><code> flag = check_subsequence(s2, s1);</code></pre>
+<pre><code>(flag)?printf(&quot;YES\n&quot;):printf(&quot;NO\n&quot;);</code></pre>
+<pre><code>getch();</code><br><code>}</code></pre>
+<pre><code>int check_subsequence (char a[], char b[]) {</code><br><code> int c, d;</code><br> <br><code> c = d = 0;</code><br> <br><code> while (a[c] != '\0') {</code><br><code> while ((a[c] != b[d]) &amp;&amp; b[d] != '\0') {</code><br><code> d&#43;&#43;;</code><br><code> }</code><br><code> if (b[d] == '\0')</code><br><code> break;</code><br><code> d&#43;&#43;;</code><br><code> c&#43;&#43;;</code><br><code> }</code><br><code> if (a[c] == '\0')</code><br><code> return 1;</code><br><code> else</code><br><code> return 0;</code><br><code>}</code></pre>
+<p><br>
+The logic of function is simple we keep on comparing characters of two strings, if mismatch occur then we move to next character of second string and if characters match indexes of both strings is increased by one and so on. If the first string ends then it
+ is a subsequence otherwise not.<br>
+</p>
+</div><div class="ClearBoth"></div>

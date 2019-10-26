@@ -1,0 +1,129 @@
+<div class="wikidoc">
+<p><strong>Question -&nbsp;Why is processing a sorted array faster than an unsorted array?</strong></p>
+<p>Here is a piece of <strong>Visual</strong>&nbsp;<strong>C&#43;&#43;</strong>&nbsp;code that seems very peculiar. For some strange reason, sorting the data miraculously makes the code almost six times faster.</p>
+<pre><code><span>#include</span> <span class="str">&lt;algorithm&gt;</span>
+<span>#include</span> <span class="str">&lt;ctime&gt;</span>
+<span>#include</span> <span class="str">&lt;iostream&gt;</span>
+
+<span>int</span><span> main</span><span>()</span>
+<span>{</span>
+    <span>// Generate data</span>
+    <span>const</span> <span>unsigned</span><span> arraySize </span><span>=</span> <span>32768</span><span>;</span>
+    <span>int</span><span> data</span><span>[</span><span>arraySize</span><span>];</span>
+
+    <span>for</span> <span>(</span><span>unsigned</span><span> c </span><span>=</span> <span>0</span><span>;</span><span> c </span><span>&lt;</span><span> arraySize</span><span>;</span> <span>&#43;&#43;</span><span>c</span><span>)</span><span>
+        data</span><span>[</span><span>c</span><span>]</span> <span>=</span><span> std</span><span>::</span><span>rand</span><span>()</span> <span>%</span> <span>256</span><span>;</span>
+
+    <span>// !!! With this, the next loop runs faster</span><span>
+    std</span><span>::</span><span>sort</span><span>(</span><span>data</span><span>,</span><span> data </span><span>&#43;</span><span> arraySize</span><span>);</span>
+
+    <span>// Test</span>
+    <span>clock_t</span><span> start </span><span>=</span><span> clock</span><span>();</span>
+    <span>long</span> <span>long</span><span> sum </span><span>=</span> <span>0</span><span>;</span>
+
+    <span>for</span> <span>(</span><span>unsigned</span><span> i </span><span>=</span> <span>0</span><span>;</span><span> i </span><span>&lt;</span> <span>100000</span><span>;</span> <span>&#43;&#43;</span><span>i</span><span>)</span>
+    <span>{</span>
+        <span>// Primary loop</span>
+        <span>for</span> <span>(</span><span>unsigned</span><span> c </span><span>=</span> <span>0</span><span>;</span><span> c </span><span>&lt;</span><span> arraySize</span><span>;</span> <span>&#43;&#43;</span><span>c</span><span>)</span>
+        <span>{</span>
+            <span>if</span> <span>(</span><span>data</span><span>[</span><span>c</span><span>]</span> <span>&gt;=</span> <span>128</span><span>)</span><span>
+                sum </span><span>&#43;=</span><span> data</span><span>[</span><span>c</span><span>];</span>
+        <span>}</span>
+    <span>}</span>
+
+    <span>double</span><span> elapsedTime </span><span>=</span> <span>static_cast</span><span class="str">&lt;double&gt;</span><span>(</span><span>clock</span><span>()</span> <span>-</span><span> start</span><span>)</span> <span>/</span><span> CLOCKS_PER_SEC</span><span>;</span><span>
+
+    std</span><span>::</span><span>cout </span><span>&lt;&lt;</span><span> elapsedTime </span><span>&lt;&lt;</span><span> std</span><span>::</span><span>endl</span><span>;</span><span>
+    std</span><span>::</span><span>cout </span><span>&lt;&lt;</span> <span class="str">&quot;sum = &quot;</span> <span>&lt;&lt;</span><span> sum </span><span>&lt;&lt;</span><span> std</span><span>::</span><span>endl</span><span>;</span>
+<span>}</span></code></pre>
+<ul>
+<li>Without&nbsp;<code>std::sort(data, data &#43; arraySize);</code>, the code runs in&nbsp;<strong>11.54</strong>&nbsp;seconds.
+</li><li>With the sorted data, the code runs in&nbsp;<strong>1.93</strong>&nbsp;seconds.
+</li></ul>
+<p><strong>Answer -</strong></p>
+<p>The reason why the performance improves drastically when the data is sorted is that the
+<a href="http://en.wikipedia.org/wiki/Branch_predictor" target="_blank">branch prediction</a>&nbsp;penalty is removed.</p>
+<p>Now, if we look at the code</p>
+<pre><code><span>if</span> <span>(</span><span>data</span><span>[</span><span>c</span><span>]</span> <span>&gt;=</span> <span>128</span><span>)</span><span>
+    sum </span><span>&#43;=</span><span> data</span><span>[</span><span>c</span><span>];</span></code></pre>
+<p>we can find that the meaning of this particular&nbsp;<code>if... else...</code>&nbsp;branch is to add something when a condition is satisfied. This type of branch can be easily transformed into a&nbsp;<strong>conditional move&nbsp;</strong>statement, which
+ would be compiled into a conditional move instruction:&nbsp;<code>cmovl</code>, in an&nbsp;<code>x86</code>&nbsp;system. The branch and thus the potential branch prediction penalty is removed.</p>
+<p>In&nbsp;<code>C</code>, thus&nbsp;<code>C&#43;&#43;</code>, the statement, which would compile directly (without any optimization) into the conditional move instruction in&nbsp;<code>x86</code>, is the ternary operator&nbsp;<code>... ? ... : ...</code>. So we rewrite
+ the above statement into an equivalent one:</p>
+<pre><code><span>sum </span><span>&#43;=</span><span> data</span><span>[</span><span>c</span><span>]</span> <span>&gt;=</span><span>128</span> <span>?</span><span> data</span><span>[</span><span>c</span><span>]</span> <span>:</span> <span>0</span><span>;</span></code></pre>
+<p>While maintaining readability, we can check the speedup factor.</p>
+<p>On an Intel&nbsp;<a href="http://en.wikipedia.org/wiki/Intel_Core#Core_i7" target="_blank">Core i7</a>-2600K @ 3.4GHz and Visual Studio 2010 Release Mode, the benchmark is (format copied from Mysticial):</p>
+<p><strong>x86</strong></p>
+<pre><code><span>//  Branch - Random</span><span>
+seconds </span><span>=</span> <span>8.885</span>
+
+<span>//  Branch - Sorted</span><span>
+seconds </span><span>=</span> <span>1.528</span>
+
+<span>//  Branchless - Random</span><span>
+seconds </span><span>=</span> <span>3.716</span>
+
+<span>//  Branchless - Sorted</span><span>
+seconds </span><span>=</span> <span>3.71</span></code></pre>
+<p><strong>x64</strong></p>
+<pre><code><span>//  Branch - Random</span><span>
+seconds </span><span>=</span> <span>11.302</span>
+
+<span>//  Branch - Sorted</span><span>
+ seconds </span><span>=</span> <span>1.830</span>
+
+<span>//  Branchless - Random</span><span>
+seconds </span><span>=</span> <span>2.736</span>
+
+<span>//  Branchless - Sorted</span><span>
+seconds </span><span>=</span> <span>2.737</span></code></pre>
+<p>The result is robust in multiple tests. We get great speedup when the branch result is unpredictable, but we suffer a little bit when it is predictable. In fact, when using a conditional move, the performance is the same regardless of the data pattern.</p>
+<p>Now let's look more closely by investigating at the&nbsp;<code>x86</code>&nbsp;assembly they generate. For simplicity, we use two functions&nbsp;<code>max1</code>&nbsp;and&nbsp;<code>max2</code>.</p>
+<p><code>max1</code>&nbsp;uses the conditional branch&nbsp;<code>if... else ...</code>:</p>
+<pre><code><span>int</span><span> max1</span><span>(</span><span>int</span><span> a</span><span>,</span> <span>int</span><span> b</span><span>)</span> <span>{</span>
+    <span>if</span> <span>(</span><span>a </span><span>&gt;</span><span> b</span><span>)</span>
+        <span>return</span><span> a</span><span>;</span>
+    <span>else</span>
+        <span>return</span><span> b</span><span>;</span>
+<span>}</span></code></pre>
+<p><code>max2</code>&nbsp;uses the ternary operator&nbsp;<code>... ? ... : ...</code>:</p>
+<pre><code><span>int</span><span> max2</span><span>(</span><span>int</span><span> a</span><span>,</span> <span>int</span><span> b</span><span>)</span> <span>{</span>
+    <span>return</span><span> a </span><span>&gt;</span><span> b </span><span>?</span><span> a </span><span>:</span><span> b</span><span>;</span>
+<span>}</span></code></pre>
+<p>On a x86-64 machine,&nbsp;<code>GCC -S</code>&nbsp;generates the assembly below.</p>
+<pre><code><span>:</span><span>max1
+    movl    </span><span>%</span><span>edi</span><span>,</span> <span>-</span><span>4</span><span>(%</span><span>rbp</span><span>)</span><span>
+    movl    </span><span>%</span><span>esi</span><span>,</span> <span>-</span><span>8</span><span>(%</span><span>rbp</span><span>)</span><span>
+    movl    </span><span>-</span><span>4</span><span>(%</span><span>rbp</span><span>),</span> <span>%</span><span>eax
+    cmpl    </span><span>-</span><span>8</span><span>(%</span><span>rbp</span><span>),</span> <span>%</span><span>eax
+    jle     </span><span>.</span><span>L2
+    movl    </span><span>-</span><span>4</span><span>(%</span><span>rbp</span><span>),</span> <span>%</span><span>eax
+    movl    </span><span>%</span><span>eax</span><span>,</span> <span>-</span><span>12</span><span>(%</span><span>rbp</span><span>)</span><span>
+    jmp     </span><span>.</span><span>L4
+</span><span>.</span><span>L2</span><span>:</span><span>
+    movl    </span><span>-</span><span>8</span><span>(%</span><span>rbp</span><span>),</span> <span>%</span><span>eax
+    movl    </span><span>%</span><span>eax</span><span>,</span> <span>-</span><span>12</span><span>(%</span><span>rbp</span><span>)</span>
+<span>.</span><span>L4</span><span>:</span><span>
+    movl    </span><span>-</span><span>12</span><span>(%</span><span>rbp</span><span>),</span> <span>%</span><span>eax
+    leave
+    ret
+
+</span><span>:</span><span>max2
+    movl    </span><span>%</span><span>edi</span><span>,</span> <span>-</span><span>4</span><span>(%</span><span>rbp</span><span>)</span><span>
+    movl    </span><span>%</span><span>esi</span><span>,</span> <span>-</span><span>8</span><span>(%</span><span>rbp</span><span>)</span><span>
+    movl    </span><span>-</span><span>4</span><span>(%</span><span>rbp</span><span>),</span> <span>%</span><span>eax
+    cmpl    </span><span>%</span><span>eax</span><span>,</span> <span>-</span><span>8</span><span>(%</span><span>rbp</span><span>)</span><span>
+    cmovge  </span><span>-</span><span>8</span><span>(%</span><span>rbp</span><span>),</span> <span>%</span><span>eax
+    leave
+    ret</span></code></pre>
+<p><code>max2</code>&nbsp;uses much less code due to the usage of instruction&nbsp;<code>cmovge</code>. But the real gain is that&nbsp;<code>max2</code>does not involve branch jumps,&nbsp;<code>jmp</code>, which would have a significant performance penalty
+ if the predicted result is not right.</p>
+<p>So why can a conditional move perform better?</p>
+<p>In a typical&nbsp;<code>x86</code>&nbsp;processor, the execution of an instruction is divided to several stages. Roughly, we have different hardware to deal with different stages. So we do not have to wait for one instruction to finish to start a new one.
+ This is called&nbsp;<strong><a href="http://en.wikipedia.org/wiki/Pipeline_%28computing%29" target="_blank">pipelining</a></strong>.</p>
+<p>In a branch case, the following instruction is determined by the preceding one, so we can not do pipelining. We have to either wait or predict.</p>
+<p>In a conditional move case, the execution conditional move instruction is divided into several stages, but the earlier stages like&nbsp;<code>Fetch</code>,&nbsp;<code>Decode</code>, does not depend on the result of previous instruction, only latter stages
+ need the result. So we wait a fraction of one instruction's execution time. This is why the conditional move version is slower than the branch when prediction is easy.</p>
+<p>Sometimes, some modern compilers can optimize our code to assembly with better performance, sometimes some compilers can't (the code in question is using Visual Studio's native compiler). Knowing the performance difference between branch and conditional
+ move when unpredictable can help us write code with better performance when the scenario gets so complex that the compiler can not optimize them automatically.</p>
+</div><div class="ClearBoth"></div>

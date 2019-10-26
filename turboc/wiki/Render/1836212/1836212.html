@@ -1,0 +1,126 @@
+<div class="wikidoc">
+<h2><strong>If Statements</strong></h2>
+<p>The ability to control the flow of your program, letting it make decisions on what code to execute, is valuable to the programmer. The if statement allows you to control if a program enters a section of code or not based on whether a given condition is true
+ or false. One of the important functions of the if statement is that it allows the program to select an action based upon the user's input. For example, by using an if statement to check a user entered password, your program can decide whether a user is allowed
+ access to the program.&nbsp;</p>
+<p><br>
+<br>
+Without a conditional statement such as the if statement, programs would run almost the exact same way every time. If statements allow the flow of the program to be changed, and so they allow algorithms and more interesting code.&nbsp;<br>
+<br>
+Before discussing the actual structure of the if statement, let us examine the meaning of TRUE and FALSE in computer terminology. A true statement is one that evaluates to a nonzero number. A false statement evaluates to zero. When you perform comparison with
+ the relational operators, the operator will return 1 if the comparison is true, or 0 if the comparison is false. For example, the check 0 == 2 evaluates to 0. The check 2 == 2 evaluates to a 1. If this confuses you, try to use a cout statement to output the
+ result of those various comparisons (for example cout&lt;&lt; ( 2 == 1 );)&nbsp;<br>
+<br>
+When programming, the aim of the program will often require the checking of one value stored by a variable against another value to determine whether one is larger, smaller, or equal to the other.&nbsp;<br>
+<br>
+There are a number of operators that allow these checks.&nbsp;<br>
+<br>
+Here are the relational operators, as they are known, along with examples:</p>
+<pre>&gt;     greater than              5 &gt; 4 is TRUE
+&lt;     less than                 4 &lt; 5 is TRUE
+&gt;=    greater than or equal     4 &gt;= 4 is TRUE
+&lt;=    less than or equal        3 &lt;= 4 is TRUE
+==    equal to                  5 == 5 is TRUE
+!=    not equal to              5 != 4 is TRUE
+</pre>
+<p>It is highly probable that you have seen these before, probably with slightly different symbols. They should not present any hindrance to understanding. Now that you understand TRUE and FALSE in computer terminology as well as the comparison operators, let
+ us look at the actual structure of if statements.</p>
+<h2>Basic If Statement Syntax</h2>
+<p>The structure of an if statement is as follows:</p>
+<pre>if ( TRUE )
+  Execute the next statement
+</pre>
+<p>Here is a simple example that shows the syntax:</p>
+<pre>if ( 5 &lt; 10 )
+  cout&lt;&lt;&quot;Five is now less than ten, that's a big surprise&quot;;
+</pre>
+<p>Here, we're just evaluating the statement, &quot;is five less than ten&quot;, to see if it is true or not; with any luck, it is! If you want, you can write your own full program including iostream and put this in the main function and run it to test.&nbsp;<br>
+<br>
+To have more than one statement execute after an if statement that evaluates to true, use braces, like we did with the body of a function. Anything inside braces is called a compound statement, or a block.&nbsp;<br>
+<br>
+For example:</p>
+<pre>if ( TRUE ) {
+  Execute all statements inside the braces
+}
+</pre>
+<p>I recommend always putting braces following if statements. If you do this, you never have to remember to put them in when you want more than one statement to be executed, and you make the body of the if statement more visually clear.</p>
+<h2>Else</h2>
+<p>Sometimes when the condition in an if statement evaluates to false, it would be nice to execute some code instead of the code executed when the statement evaluates to true. The &quot;else&quot; statement effectively says that whatever code after it (whether a single
+ line or code between brackets) is executed if the if statement is FALSE.&nbsp;<br>
+<br>
+It can look like this:</p>
+<pre>if ( TRUE ) {
+  // Execute these statements if TRUE
+}
+else {
+  // Execute these statements if FALSE
+}
+</pre>
+<h2>Else If</h2>
+<p>Another use of else is when there are multiple conditional statements that may all evaluate to true, yet you want only one if statement's body to execute. You can use an &quot;else if&quot; statement following an if statement and its body; that way, if the first statement
+ is true, the &quot;else if&quot; will be ignored, but if the if statement is false, it will then check the condition for the else if statement. If the if statement was true the else statement will not be checked. It is possible to use numerous else if statements to
+ ensure that only one block of code is executed.</p>
+<pre>if ( &lt;condition&gt; ) {
+  // Execute these statements if &lt;condition&gt; is TRUE
+}
+else if ( &lt;another condition&gt; ) {
+  // Execute these statements if &lt;another condition&gt; is TRUE and
+  // &lt;condition&gt; is FALSE
+}
+</pre>
+<p><br>
+<br>
+Let's look at a simple program for you to try out on your own.</p>
+<pre>#include &lt;iostream&gt;	
+
+using namespace std;
+		
+int main()                            // Most important part of the program!
+{
+  int age;                            // Need a variable...
+  
+  cout&lt;&lt;&quot;Please input your age: &quot;;    // Asks for age
+  cin&gt;&gt; age;                          // The input is put in age
+  cin.ignore();                       // Throw away enter
+  if ( age &lt; 100 ) {                  // If the age is less than 100
+     cout&lt;&lt;&quot;You are pretty young!\n&quot;; // Just to show you it works...
+  }
+  else if ( age == 100 ) {            // I use else just to show an example 
+     cout&lt;&lt;&quot;You are old\n&quot;;           // Just to show you it works...
+  }
+  else {
+    cout&lt;&lt;&quot;You are really old\n&quot;;     // Executed if no other statement is
+  }
+  cin.get();
+}
+</pre>
+<h2>More interesting conditions using boolean operators</h2>
+<p>Boolean operators allow you to create more complex conditional statements. For example, if you wish to check if a variable is both greater than five and less than ten, you could use the boolean AND to ensure both var &gt; 5 and var &lt; 10 are true. In the
+ following discussion of boolean operators, I will capitalize the boolean operators in order to distinguish them from normal English. The actual C&#43;&#43; operators of equivalent function will be described further into the tutorial - the C&#43;&#43; symbols are not: OR,
+ AND, NOT, although they are of equivalent function.&nbsp;<br>
+<br>
+When using if statements, you will often wish to check multiple different conditions. You must understand the Boolean operators OR, NOT, and AND. The boolean operators function in a similar way to the comparison operators: each returns 0 if evaluates to FALSE
+ or 1 if it evaluates to TRUE.&nbsp;<br>
+<br>
+NOT: The NOT operator accepts one input. If that input is TRUE, it returns FALSE, and if that input is FALSE, it returns TRUE. For example, NOT (1) evaluates to 0, and NOT (0) evaluates to 1. NOT (any number but zero) evaluates to 0. In C and C&#43;&#43; NOT is written
+ as !. NOT is evaluated prior to both AND and OR.&nbsp;<br>
+<br>
+AND: This is another important command. AND returns TRUE if both inputs are TRUE (if 'this' AND 'that' are true). (1) AND (0) would evaluate to zero because one of the inputs is false (both must be TRUE for it to evaluate to TRUE). (1) AND (1) evaluates to
+ 1. (any number but 0) AND (0) evaluates to 0. The AND operator is written &amp;&amp; in C&#43;&#43;. Do not be confused by thinking it checks equality between numbers: it does not. Keep in mind that the AND operator is evaluated before the OR operator.&nbsp;<br>
+<br>
+OR: Very useful is the OR statement! If either (or both) of the two values it checks are TRUE then it returns TRUE. For example, (1) OR (0) evaluates to 1. (0) OR (0) evaluates to 0. The OR is written as || in C&#43;&#43;. Those are the pipe characters. On your keyboard,
+ they may look like a stretched colon. On my computer the pipe shares its key with \. Keep in mind that OR will be evaluated after AND.&nbsp;<br>
+<br>
+It is possible to combine several boolean operators in a single statement; often you will find doing so to be of great value when creating complex expressions for if statements. What is !(1 &amp;&amp; 0)? Of course, it would be TRUE. It is true is because 1
+ &amp;&amp; 0 evaluates to 0 and !0 evaluates to TRUE (ie, 1).&nbsp;<br>
+<br>
+Try some of these - they're not too hard. If you have questions about them, feel free to stop by our forums.</p>
+<pre>A. !( 1 || 0 )         ANSWER: 0	
+B. !( 1 || 1 &amp;&amp; 0 )    ANSWER: 0 (AND is evaluated before OR)
+C. !( ( 1 || 0 ) &amp;&amp; 0 )  ANSWER: 1 (Parenthesis are useful)
+</pre>
+<p>If you find you enjoyed this section, then you might want to look more at Boolean Algebra.&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>

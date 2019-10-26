@@ -1,0 +1,60 @@
+<div class="wikidoc">
+<p><strong>Question - What are the differences between a pointer variable and a reference variable in C&#43;&#43;?</strong></p>
+<p><strong>Answer -</strong></p>
+<ol>
+<li>
+<p>A pointer can be re-assigned:</p>
+<pre><code><span>int</span><span> x </span><span>=</span> <span>5</span><span>;</span>
+<span>int</span><span> y </span><span>=</span> <span>6</span><span>;</span>
+<span>int</span> <span>*</span><span>p</span><span>;</span><span>
+p </span><span>=</span>  <span>&amp;</span><span>x</span><span>;</span><span>
+p </span><span>=</span> <span>&amp;</span><span>y</span><span>;</span>
+<span>*</span><span>p </span><span>=</span> <span>10</span><span>;</span><span>
+assert</span><span>(</span><span>x </span><span>==</span> <span>5</span><span>);</span><span>
+assert</span><span>(</span><span>y </span><span>==</span> <span>10</span><span>);</span></code></pre>
+<p>A reference cannot, and must be assigned at initialization:</p>
+<pre><code><span>int</span><span> x </span><span>=</span> <span>5</span><span>;</span>
+<span>int</span><span> y </span><span>=</span> <span>6</span><span>;</span>
+<span>int</span> <span>&amp;</span><span>r </span><span>=</span><span> x</span><span>;</span></code></pre>
+</li><li>
+<p>A pointer has its own memory address and size on the stack (4 bytes on x86), whereas a reference shares the same memory address (with the original variable) but also takes up some space on the stack. Since a reference has the same address as the original
+ variable itself, it is safe to think of a reference as another name for the same variable. Note: What a pointer points to can be on the stack or heap. Ditto a reference. My claim in this statement is not that a pointer must point to the stack. A pointer is
+ just a variable that holds a memory address. This variable is on the stack. Since a reference has its own space on the stack, and since the address is the same as the variable it references. More on&nbsp;<a href="http://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap#79936">stack
+ vs heap</a>. This implies that there is a real address of a reference that the compiler will not tell you.</p>
+<pre><code><span>int</span><span> x </span><span>=</span> <span>0</span><span>;</span>
+<span>int</span> <span>&amp;</span><span>r </span><span>=</span><span> x</span><span>;</span>
+<span>int</span> <span>*</span><span>p </span><span>=</span> <span>&amp;</span><span>x</span><span>;</span>
+<span>int</span> <span>*</span><span>p2 </span><span>=</span> <span>&amp;</span><span>r</span><span>;</span><span>
+assert</span><span>(</span><span>p </span><span>==</span><span> p2</span><span>);</span></code></pre>
+</li><li>
+<p>You can have pointers to pointers to pointers offering extra levels of indirection. Whereas references only offer one level of indirection.</p>
+<pre><code><span>int</span><span> x </span><span>=</span> <span>0</span><span>;</span>
+<span>int</span><span> y </span><span>=</span> <span>0</span><span>;</span>
+<span>int</span> <span>*</span><span>p </span><span>=</span> <span>&amp;</span><span>x</span><span>;</span>
+<span>int</span> <span>*</span><span>q </span><span>=</span> <span>&amp;</span><span>y</span><span>;</span>
+<span>int</span> <span>**</span><span>pp </span><span>=</span> <span>&amp;</span><span>p</span><span>;</span><span>
+pp </span><span>=</span> <span>&amp;</span><span>q</span><span>;</span><span>//*pp = q</span>
+<span>**</span><span>pp </span><span>=</span> <span>4</span><span>;</span><span>
+assert</span><span>(</span><span>y </span><span>==</span> <span>4</span><span>);</span><span>
+assert</span><span>(</span><span>x </span><span>==</span> <span>0</span><span>);</span></code></pre>
+</li><li>
+<p>Pointer can be assigned NULL directly, whereas reference cannot. If you try hard enough, and you know how, you can make the address of a reference NULL. Likewise, if you try hard enough you can have a reference to a pointer, and then that reference can contain
+ NULL.</p>
+<pre><code><span>int</span> <span>*</span><span>p </span><span>=</span><span> NULL</span><span>;</span>
+<span>int</span> <span>&amp;</span><span>r </span><span>=</span><span> NULL</span><span>;</span> <span>&lt;---</span><span> compiling error</span></code></pre>
+</li><li>
+<p>Pointers can iterate over an array, you can use&nbsp;<code>&#43;&#43;</code>&nbsp;to go to the next item that a pointer is pointing to, and&nbsp;<code>&#43; 4</code>&nbsp;to go to the 5th element. This is no matter what size the object is that the pointer points to.</p>
+</li><li>
+<p>A pointer needs to be dereferenced with&nbsp;<code>*</code>&nbsp;to access the memory location it points to, whereas a reference can be used directly. A pointer to a class/struct uses&nbsp;<code>-&gt;</code>&nbsp;to access it's members whereas a reference
+ uses a&nbsp;<code>.</code>.</p>
+</li><li>
+<p>A pointer is a variable that holds a memory address. Regardless of how a reference is implemented, a reference has the same memory address as the item it references.</p>
+</li><li>
+<p>References cannot be stuffed into an array, whereas pointers can be (Mentioned by user @litb)</p>
+</li><li>
+<p>Const references can be bound to temporaries. Pointers cannot (not without some indirection):</p>
+<pre><code><span>const</span> <span>int</span> <span>&amp;</span><span>x </span><span>=</span> <span>int</span><span>(</span><span>12</span><span>);</span> <span>//legal C&#43;&#43;</span>
+<span>int</span> <span>*</span><span>y </span><span>=</span> <span>&amp;</span><span>int</span><span>(</span><span>12</span><span>);</span> <span>//illegal to dereference a temporary.</span></code></pre>
+<p>This makes&nbsp;<code>const&amp;</code>&nbsp;safer for use in argument lists and so forth.</p>
+</li></ol>
+</div><div class="ClearBoth"></div>

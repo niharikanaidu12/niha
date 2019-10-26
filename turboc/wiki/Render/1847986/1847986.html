@@ -1,0 +1,289 @@
+<div class="wikidoc">
+<h2><span id="Operator_precedence">Operator precedence</span></h2>
+<p>The following is a table that lists the&nbsp;precedence&nbsp;and&nbsp;associativity&nbsp;of all the operators in the C&nbsp;and&nbsp;C&#43;&#43;&nbsp;languages.&nbsp;Operators are listed top to bottom, in descending precedence. Descending precedence refers to the
+ priority of evaluation. Operators that are in the same cell (there may be several rows of operators listed in a cell) are evaluated with the same precedence. An operator's precedence is unaffected by overloading.</p>
+<table>
+<tbody>
+<tr>
+<th>Precedence</th>
+<th>Operator</th>
+<th>Description</th>
+<th>Associativity</th>
+</tr>
+<tr>
+<th>1
+<p>&lt;small&gt;highest&lt;/small&gt;</p>
+</th>
+<td><code>::</code></td>
+<td>Scope resolution (C&#43;&#43; only) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+<td>None</td>
+</tr>
+<tr>
+<th rowspan="11">2</th>
+<td><code>&#43;&#43;</code></td>
+<td>Suffix increment</td>
+<td rowspan="11">Left-to-right</td>
+</tr>
+<tr>
+<td><code>--</code></td>
+<td>Suffix decrement</td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>Function call</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>Array subscripting</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>Element selection by reference</td>
+</tr>
+<tr>
+<td><code>-&gt;</code></td>
+<td>Element selection through pointer</td>
+</tr>
+<tr>
+<td><code>typeid()</code></td>
+<td>Run-time type information&nbsp;(C&#43;&#43; only)&nbsp;</td>
+</tr>
+<tr>
+<td><code>const_cast</code></td>
+<td>Type cast (C&#43;&#43; only)&nbsp;</td>
+</tr>
+<tr>
+<td><code>dynamic_cast</code></td>
+<td>Type cast (C&#43;&#43; only)&nbsp;</td>
+</tr>
+<tr>
+<td><code>reinterpret_cast</code></td>
+<td>Type cast (C&#43;&#43; only)</td>
+</tr>
+<tr>
+<td><code>static_cast</code></td>
+<td>Type cast (C&#43;&#43; only)&nbsp;</td>
+</tr>
+<tr>
+<th rowspan="12">3</th>
+<td><code>&#43;&#43;</code></td>
+<td>Prefix increment</td>
+<td rowspan="12">Right-to-left</td>
+</tr>
+<tr>
+<td><code>--</code></td>
+<td>Prefix decrement</td>
+</tr>
+<tr>
+<td><code>&#43;</code></td>
+<td>Unary plus</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Unary minus</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>Logical NOT</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>Bitwise NOT (One's Complement)</td>
+</tr>
+<tr>
+<td><code>(<em>type</em>)</code></td>
+<td>Type cast</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Indirection (dereference)</td>
+</tr>
+<tr>
+<td><code>&amp;</code></td>
+<td>Address-of</td>
+</tr>
+<tr>
+<td><code>sizeof</code></td>
+<td>Size-of</td>
+</tr>
+<tr>
+<td><code>new</code>,&nbsp;<code>new[]</code></td>
+<td>Dynamic memory allocation (C&#43;&#43; only)</td>
+</tr>
+<tr>
+<td><code>delete</code>,&nbsp;<code>delete[]</code></td>
+<td>Dynamic memory deallocation (C&#43;&#43; only)</td>
+</tr>
+<tr>
+<th rowspan="2">4</th>
+<td><code>.*</code></td>
+<td>Pointer to member (C&#43;&#43; only)</td>
+<td rowspan="2">Left-to-right</td>
+</tr>
+<tr>
+<td><code>-&gt;*</code></td>
+<td>Pointer to member (C&#43;&#43; only)</td>
+</tr>
+<tr>
+<th rowspan="3">5</th>
+<td><code>*</code></td>
+<td>Multiplication</td>
+<td rowspan="3">Left-to-right</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>Division</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>Modulo&nbsp;(remainder)</td>
+</tr>
+<tr>
+<th rowspan="2">6</th>
+<td><code>&#43;</code></td>
+<td>Addition</td>
+<td rowspan="2">Left-to-right</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Subtraction</td>
+</tr>
+<tr>
+<th rowspan="2">7</th>
+<td><code>&lt;&lt;</code></td>
+<td>Bitwise&nbsp;left shift</td>
+<td rowspan="2">Left-to-right</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td>Bitwise&nbsp;right shift</td>
+</tr>
+<tr>
+<th rowspan="4">8</th>
+<td><code>&lt;</code></td>
+<td>Less than</td>
+<td rowspan="4">Left-to-right</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>Less than or equal to</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>Greater than</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>Greater than or equal to</td>
+</tr>
+<tr>
+<th rowspan="2">9</th>
+<td><code>==</code></td>
+<td>Equal to</td>
+<td rowspan="2">Left-to-right</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>Not equal to</td>
+</tr>
+<tr>
+<th>10</th>
+<td><code>&amp;</code></td>
+<td>Bitwise AND</td>
+<td>Left-to-right</td>
+</tr>
+<tr>
+<th>11</th>
+<td><code>^</code></td>
+<td>Bitwise XOR (exclusive or)</td>
+<td>Left-to-right</td>
+</tr>
+<tr>
+<th>12</th>
+<td><code>|</code></td>
+<td>Bitwise OR (inclusive or)</td>
+<td>Left-to-right</td>
+</tr>
+<tr>
+<th>13</th>
+<td><code>&amp;&amp;</code></td>
+<td>Logical AND</td>
+<td>Left-to-right</td>
+</tr>
+<tr>
+<th>14</th>
+<td><code>||</code></td>
+<td>Logical OR</td>
+<td>Left-to-right</td>
+</tr>
+<tr>
+<th>15</th>
+<td><code>?:</code></td>
+<td>Ternary&nbsp;conditional&nbsp;</td>
+<td>Right-to-left</td>
+</tr>
+<tr>
+<th rowspan="11">16</th>
+<td><code>=</code></td>
+<td>Direct assignment</td>
+<td rowspan="11">Right-to-left</td>
+</tr>
+<tr>
+<td><code>&#43;=</code></td>
+<td>Assignment by sum</td>
+</tr>
+<tr>
+<td><code>-=</code></td>
+<td>Assignment by difference</td>
+</tr>
+<tr>
+<td><code>*=</code></td>
+<td>Assignment by product</td>
+</tr>
+<tr>
+<td><code>/=</code></td>
+<td>Assignment by quotient</td>
+</tr>
+<tr>
+<td><code>%=</code></td>
+<td>Assignment by remainder</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;=</code></td>
+<td>Assignment by bitwise left shift</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;=</code></td>
+<td>Assignment by bitwise right shift</td>
+</tr>
+<tr>
+<td><code>&amp;=</code></td>
+<td>Assignment by bitwise AND</td>
+</tr>
+<tr>
+<td><code>^=</code></td>
+<td>Assignment by bitwise XOR</td>
+</tr>
+<tr>
+<td><code>|=</code></td>
+<td>Assignment by bitwise OR</td>
+</tr>
+<tr>
+<th>17</th>
+<td><code>throw</code></td>
+<td>Throw operator (exceptions throwing, C&#43;&#43; only)</td>
+<td>Right-to-left</td>
+</tr>
+<tr>
+<th>18
+<p>&lt;small&gt;lowest&lt;/small&gt;</p>
+</th>
+<td><code>,</code></td>
+<td>Comma</td>
+<td>Left-to-right<br>
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+</div><div class="ClearBoth"></div>

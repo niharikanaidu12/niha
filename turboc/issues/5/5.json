@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 5,
+    "Custom": null,
+    "Description": "I know that iostream is the latest header file and iostream.h the older one but your compiler doesn't comipile iostream so plzz upgrade your compiler i am having the latest version of your compiler but still the problem comes so pzlz help",
+    "LastUpdatedDate": "2016-02-15T06:13:29.5-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-02-13T02:41:15.607-08:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "<iostream> or <iostream.h>",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 5
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "We just provide Turbo C++ IDE compatibility for Windows 7, 8, 8.1 and Windows 10 not for compiler and over version also based on IDE not on gcc compiler. So, it'll be remain iostream.h.",
+      "PostedDate": "2016-02-13T09:07:24.733-08:00",
+      "Id": 196548
+    },
+    {
+      "Message": "but in the screenshot you have shown \n\n#include<iostream>\nusing namespace std;\nint main()\n{\n       cout<<\"hello world c++\";\n       return 0;\n}\n\nand even using namespace std is not working i mean the new programs will ot work which uses iostream not iostream.h\nand i am requesting to send me that version of c++ which you have shown in the screenshot plzz plzz plzz.....\nmy email :- sharafzaz121@gmail.com",
+      "PostedDate": "2016-02-13T10:53:45.663-08:00",
+      "Id": 196549
+    },
+    {
+      "Message": "Using namespace std is only work in g++ compiler but Turbo C++ IDE uses gcc compiler. \n\nIn screenshot i just open a program which compiled by g++ compiler on my Linux Virtual Machine. ",
+      "PostedDate": "2016-02-13T22:09:23.457-08:00",
+      "Id": 196553
+    },
+    {
+      "Message": "oh!! it mean it is gcc :(",
+      "PostedDate": "2016-02-14T03:37:49.627-08:00",
+      "Id": 196556
+    },
+    {
+      "Message": "hey!!! in this compiler there is no string data type defined i have to define a string using a character (char data type)\nand \nwhat is getline command\ngetline(cin,variable);\nit is not working",
+      "PostedDate": "2016-02-15T06:13:29.5-08:00",
+      "Id": 196681
+    }
+  ]
+}

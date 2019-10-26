@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "My laptop's keyboard works properly but when I open turbo c++ I am not able to write anything, as if suddenly it has stopped working but I am able to write anywhere else like in word or chrome.",
+    "LastUpdatedDate": "2017-10-17T22:21:08.527-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2017-01-24T20:28:19.513-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "KEYBOARD ISSUE",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 9,
+    "Id": 36
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I am Facing same kind of problem...................\nCant type anything in Turbo c++\n",
+      "PostedDate": "2017-04-05T19:01:48.507-07:00",
+      "Id": 208083
+    }
+  ]
+}

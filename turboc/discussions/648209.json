@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1454107",
+    "ThreadId": "648209",
+    "Html": "Write a program that lets the user perform arithmetic operations on two numbers. Your porgram must be menu driven,allowing allowing the use to select the operations ( addition, subtraction , multiplication or division) and input the numbers. Furthermore, your program must consisit of following functions.<br />\n<ol>\n<li>\nFunction showChoice: This function shows the options to the user and explains how to enter data.<br />\n</li>\n<li>\nFunction add. This function accepts two number as arguments and returns sum.<br />\n</li>\n<li>\nFunction subtract. This function accepts two number as arguments and ns their difference.<br />\n</li>\n<li>\nFunction Multipy. This function accepts two number as arguments and returns product.<br />\n</li>\n<li>\nFunction divide. This function accepts two number as arguments and returns quotient.<br />\n</li>\n</ol>\nHelp me folks! thanks. I have an idea but. can you please give me additional knowledge?<br />\n",
+    "PostedDate": "2015-12-01T03:04:00.203-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

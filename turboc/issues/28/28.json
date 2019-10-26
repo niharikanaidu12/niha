@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have uninstalled and reinstalled again but no progress. ",
+    "LastUpdatedDate": "2016-12-30T22:54:42.55-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-12-30T22:52:35.103-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Turbo C++ crashing on my windows 7 64bit",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 28
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1626823,
+      "FileName": "systeminfo.txt",
+      "DownloadUrl": ".\\1626823"
+    },
+    {
+      "FileId": 1626824,
+      "FileName": "Untitled.jpg",
+      "DownloadUrl": ".\\1626824"
+    }
+  ],
+  "Comments": []
+}

@@ -1,0 +1,70 @@
+<div class="wikidoc">
+<p><strong>Question -&nbsp;Why isn't sizeof for a struct equal to the sum of sizeof of each member?</strong></p>
+<p><strong>Answer -</strong></p>
+<p>This is because of padding added to satisfy alignment constraints.&nbsp;<a href="http://en.wikipedia.org/wiki/Data_structure_alignment" target="_blank">Data structure alignment</a>&nbsp;impacts both performance and correctness of programs.</p>
+<p>Here's an example using typical settings for an x86 processor (all used 32 and 64 bit modes):</p>
+<pre><code>struct X
+{
+    short s; /* 2 bytes */
+             /* 2 padding bytes */
+    int   i; /* 4 bytes */
+    char  c; /* 1 byte */
+             /* 3 padding bytes */
+};
+
+struct Y
+{
+    int   i; /* 4 bytes */
+    char  c; /* 1 byte */
+             /* 1 padding byte */
+    short s; /* 2 bytes */
+};
+
+struct Z
+{
+    int   i; /* 4 bytes */
+    short s; /* 2 bytes */
+    char  c; /* 1 byte */
+             /* 1 padding byte */
+};
+
+const int sizeX = sizeof(X); /* = 12 */
+const int sizeY = sizeof(Y); /* = 8 */
+const int sizeZ = sizeof(Z); /* = 8 */</code></pre>
+<p>One can minimize the size of structures by sorting members by alignment (sorting by size suffices for that in basic types) (like structure&nbsp;<code>Z</code>&nbsp;in the example above).</p>
+<p><strong>IMPORTANT NOTE:</strong> Both the C and C&#43;&#43; standards state that structure alignment is implementation-defined. Therefore each compiler may choose to align data differently, resulting in different and incompatible data layouts. For this reason, when
+ dealing with libraries that will be used by different compilers, it is important to understand how the compilers align data. Some compilers have command-line settings and/or special&nbsp;<code>#pragma</code>&nbsp;statements to change the structure alignment
+ settings.</p>
+<p><strong>For example</strong>, a pointer by default reside on <strong>4-byte</strong> boundaries for efficiency, i.e. its address must be a multiple of 4. If the struct contains only a char and a pointer</p>
+<pre><code>struct {
+  char a;
+  void* b;
+};</code></pre>
+<p>then&nbsp;<code>b</code>&nbsp;cannot use the adderss #1 &mdash; it must be placed at #4.</p>
+<pre><code>  0   1   2   3   4   5   6   7
+&#43;---&#43;- - - - - -&#43;---------------&#43;
+| a | (unused)  | b             |
+&#43;---&#43;- - - - - -&#43;---------------&#43;<br><br><strong>In this&nbsp;case,</strong></code></pre>
+<pre><code>struct struct_type{
+    int i;
+    char ch;
+    int *p;
+    double d;
+} s;</code></pre>
+<p>the extra 7 bytes comes from 3 bytes due to alignment of&nbsp;<code>int*</code>, and 4 bytes due to alignment of&nbsp;<code>double</code>.&nbsp;</p>
+<pre><code> 0    1    2    3    4    5    6    7
+&#43;-------------------&#43;----&#43;-----------&#43;
+| i                 | ch | (unused)  |
+&#43;-------------------&#43;----&#43;-----------&#43;
+
+  8    9   10   11   12   13   14   15
+&#43;-------------------&#43;----------------&#43;
+| p                 |   (unused)     |
+&#43;-------------------&#43;----------------&#43;
+
+ 16   17   18   19   20   21   22   23
+&#43;------------------------------------&#43;
+| d                                  |
+&#43;------------------------------------&#43;</code></pre>
+<p>&nbsp;</p>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,144 @@
+<div class="wikidoc">
+<p><strong>What is Digraphs and Trigraphs?</strong></p>
+<p>In computer programming, digraphs and trigraphs are sequences of two and three characters, respectively, that appear in source code and, according to a programming language specification, should be treated as if they were single characters.</p>
+<p><strong>Why Digraphs and Trigraphs exist?</strong></p>
+<p>Various reasons exist for using digraphs and trigraphs: keyboards may not have keys to cover the entire character set of the language, input of special characters may be difficult, text editors may reserve some characters for special use and so on.</p>
+<p><strong>Trigraphs</strong> - The C preprocessor replaces all occurrences of the following nine trigraph sequences by their single-character equivalents before any other processing.</p>
+<table>
+<tbody>
+<tr>
+<th>Trigraph</th>
+<th>Equivalent</th>
+</tr>
+<tr>
+<td><code>??=</code></td>
+<td><code>#</code></td>
+</tr>
+<tr>
+<td><code>??/</code></td>
+<td><code>\</code></td>
+</tr>
+<tr>
+<td><code>??'</code></td>
+<td><code>^</code></td>
+</tr>
+<tr>
+<td><code>??(</code></td>
+<td><code>[</code></td>
+</tr>
+<tr>
+<td><code>??)</code></td>
+<td><code>]</code></td>
+</tr>
+<tr>
+<td><code>??!</code></td>
+<td><code>|</code></td>
+</tr>
+<tr>
+<td><code>??&lt;</code></td>
+<td><code>{</code></td>
+</tr>
+<tr>
+<td><code>??&gt;</code></td>
+<td><code>}</code></td>
+</tr>
+<tr>
+<td><code>??-</code></td>
+<td><code>~</code></td>
+</tr>
+</tbody>
+</table>
+<p>??? is not itself a trigraph sequence, but when followed by a character such as - it will be interpreted as ? &#43; ??-</p>
+<p><strong>Digraphs</strong> - Unlike trigraphs, digraphs are handled during tokenization, and any digraph must always represent a full token by itself, or compose the token %:%: replacing the preprocessor concatenation token ##. If a digraph sequence occurs
+ inside another token, for example a quoted string, or a character constant, it will not be replaced.</p>
+<table>
+<tbody>
+<tr>
+<th>Digraph</th>
+<th>Equivalent</th>
+</tr>
+<tr>
+<td><code>&lt;:</code></td>
+<td><code>[</code></td>
+</tr>
+<tr>
+<td><code>:&gt;</code></td>
+<td><code>]</code></td>
+</tr>
+<tr>
+<td><code>&lt;%</code></td>
+<td><code>{</code></td>
+</tr>
+<tr>
+<td><code>%&gt;</code></td>
+<td><code>}</code></td>
+</tr>
+<tr>
+<td><code>%:</code></td>
+<td><code>#</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Token</strong></p>
+<p>C&#43;&#43;&nbsp;introduces tokens. The C&#43;&#43; Standard makes this comment with regards to the term &quot;digraph&quot;:</p>
+<p>The term &quot;digraph&quot; (token consisting of two characters) is not perfectly descriptive, since one of the alternative preprocessing-tokens is %:%: and of course several primary tokens contain two characters. Nonetheless, those alternative tokens that aren&rsquo;t
+ lexical keywords are colloquially known as &quot;digraphs&quot;.</p>
+<table>
+<tbody>
+<tr>
+<th>Token</th>
+<th>Equivalent</th>
+</tr>
+<tr>
+<td><code>%:%:</code></td>
+<td><code>##</code></td>
+</tr>
+<tr>
+<td><code>compl</code></td>
+<td><code>~</code></td>
+</tr>
+<tr>
+<td><code>not</code></td>
+<td><code>!</code></td>
+</tr>
+<tr>
+<td><code>bitand</code></td>
+<td><code>&amp;</code></td>
+</tr>
+<tr>
+<td><code>bitor</code></td>
+<td><code>|</code></td>
+</tr>
+<tr>
+<td><code>and</code></td>
+<td><code>&amp;&amp;</code></td>
+</tr>
+<tr>
+<td><code>or</code></td>
+<td><code>||</code></td>
+</tr>
+<tr>
+<td><code>xor</code></td>
+<td><code>^</code></td>
+</tr>
+<tr>
+<td><code>and_eq</code></td>
+<td><code>&amp;=</code></td>
+</tr>
+<tr>
+<td><code>or_eq</code></td>
+<td><code>|=</code></td>
+</tr>
+<tr>
+<td><code>xor_eq</code></td>
+<td><code>^=</code></td>
+</tr>
+<tr>
+<td><code>not_eq</code></td>
+<td><code>!=</code></td>
+</tr>
+</tbody>
+</table>
+<p>As a note, %:%: is treated as a single token, rather than two occurrences of %:.</p>
+<h3><a href="https://turboc.codeplex.com/wikipage?title=Q%26A">Read C/C&#43;&#43; Interview Question</a></h3>
+</div><div class="ClearBoth"></div>

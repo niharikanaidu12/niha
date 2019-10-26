@@ -1,0 +1,62 @@
+<div class="wikidoc">
+<h2><strong>Tamplates</strong></h2>
+<p>What's better than having several classes that do the same thing to different datatypes? One class that lets you choose which datatype it acts on.</p>
+<p><font color="#009900">Templates</font>&nbsp;are a way of making your classes more abstract by letting you define the behavior of the class without actually knowing what datatype will be handled by the operations of the class. In essence, this is what is
+ known as&nbsp;<font color="#009900">generic programming</font>; this term is a useful way to think about templates because it helps remind the programmer that a templated class does not depend on the datatype (or types) it deals with. To a large degree, a
+ templated class is more focused on the algorithmic thought rather than the specific nuances of a single datatype. Templates can be used in conjunction with abstract datatypes in order to allow them to handle any type of data. For example, you could make a
+ templated stack class that can handle a stack of any datatype, rather than having to create a stack class for every different datatype for which you want the stack to function. The ability to have a single class that can handle several different datatypes
+ means the code is easier to maintain, and it makes classes more reusable.</p>
+<p>The basic syntax for declaring a templated class is as follows:</p>
+<pre>template &lt;class a_type&gt; class a_class {...};</pre>
+<p>The keyword 'class' above simply means that the identifier a_type will stand for a datatype. NB: a_type is not a keyword; it is an identifier that during the execution of the program will represent a single datatype. For example, you could, when defining
+ variables in the class, use the following line:</p>
+<pre>a_type a_var;</pre>
+<p>and when the programmer defines which datatype 'a_type' is to be when the program instantiates a particular instance of a_class, a_var will be of that type.</p>
+<p>When defining a function as a member of a templated class, it is necessary to define it as a templated function:</p>
+<pre>template&lt;class a_type&gt; void a_class&lt;a_type&gt;::a_function(){...}
+               </pre>
+<p>When declaring an instance of a templated class, the syntax is as follows:</p>
+<pre>a_class&lt;int&gt; an_example_class;
+              </pre>
+<p>An instantiated object of a templated class is called a&nbsp;<font color="#009900">specialization</font>; the term specialization is useful to remember because it reminds us that the original class is a generic class, whereas a specific instantiation of
+ a class is specialized for a single datatype (although it is possible to template multiple types).</p>
+<p>Usually when writing code it is easiest to precede from concrete to abstract; therefore, it is easier to write a class for a specific datatype and then proceed to a templated - generic - class. For that brevity is the soul of wit, this example will be brief
+ and therefore of little practical application.</p>
+<p>We will define the first class to act only on integers.</p>
+<pre>class calc
+{
+  public:
+    int multiply(int x, int y);
+    int add(int x, int y);
+ };
+int calc::multiply(int x, int y)
+{
+  return x*y;
+}
+int calc::add(int x, int y)
+{
+  return x&#43;y;
+}</pre>
+<p>We now have a perfectly harmless little class that functions perfectly well for integers; but what if we decided we wanted a generic class that would work equally well for floating point numbers? We would use a template.</p>
+<pre>template &lt;class A_Type&gt; class calc
+{
+  public:
+    A_Type multiply(A_Type x, A_Type y);
+    A_Type add(A_Type x, A_Type y);
+};
+template &lt;class A_Type&gt; A_Type calc&lt;A_Type&gt;::multiply(A_Type x,A_Type y)
+{
+  return x*y;
+}
+template &lt;class A_Type&gt; A_Type calc&lt;A_Type&gt;::add(A_Type x, A_Type y)
+{
+  return x&#43;y;
+}</pre>
+<p>To understand the templated class, just think about replacing the identifier A_Type everywhere it appears, except as part of the template or class definition, with the keyword int. It would be the same as the above class; now when you instantiate an&nbsp;<br>
+object of class calc you can choose which datatype the class will handle.</p>
+<pre>calc &lt;double&gt; a_calc_class;</pre>
+<p>Templates are handy for making your programs more generic and allowing your code to be reused later.</p>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": null,
+    "Description": "I have already installed turbo c++ software and when i open the turbo c++ program the blue editor appears, but when i try to type a program it doesn't get anything typed . Pl solve the problem as early as possible  ",
+    "LastUpdatedDate": "2017-04-05T18:48:27.41-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-10-19T23:54:08.5-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Problem of typing program in turbo c++",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 4,
+    "Id": 24
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "same problem in win10",
+      "PostedDate": "2017-01-06T06:00:28.717-08:00",
+      "Id": 205888
+    },
+    {
+      "Message": "same problem with me..................it used to work fine but after after some days i am facing this issue\nmaybe reinstalling may solve the issue\n",
+      "PostedDate": "2017-01-13T10:02:56.407-08:00",
+      "Id": 206021
+    }
+  ]
+}

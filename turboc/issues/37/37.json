@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When i tried to install Turbo C++ 3.2, get the error message: \"Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue\". \r\n\r\nThe OS in my PC is Windows XP, and microsoft mentions that Microsoft .NET Framework 4.5.2 (Offline Installer) is for Windows Vista SP2, Windows 7 SP1, Windows 8, Windows 8.1, Windows Server 2008 SP2, Windows Server 2008 R2 SP1, Windows Server 2012 and Windows Server 2012 R2.\r\n\r\nWindows XP does not figure in the list of OS given above.\r\n\r\nSo is there a lower version of Microsoft .NET framework to install, or should I go ahead with 4.5.2?\r\n\r\nRegards\r\n-Sathyadev",
+    "LastUpdatedDate": "2017-04-15T08:39:25.793-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2017-01-26T11:56:00.373-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Should Microsoft .NET Framework be installed on Windows XP machine to run Turbo C++ 3.2?",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 37
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1632358,
+      "FileName": "error_message.JPG",
+      "DownloadUrl": ".\\1632358"
+    }
+  ],
+  "Comments": []
+}

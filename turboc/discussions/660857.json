@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1491465",
+    "ThreadId": "660857",
+    "Html": "We have c++ installed on the server,and there are 15 clients accessing server at the same time.Some systems function well without hanging while some systems just hang. \r<br />\nThe server is on windows server 2012.Is it the  problem of c++ on network or network issue?we tried increasing the ram size,but did not got desired results.Please help as my students have to finish their portions.\r<br />\n<br />\nthanks <br />\n",
+    "PostedDate": "2017-01-22T03:19:36.443-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

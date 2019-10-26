@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1491148",
+    "ThreadId": "660707",
+    "Html": "I wanted to install Turbo C++ for the language that I am using with my Win 7 (Hungarian) but failed. The installation wizzard does not allow any selection of language code, it installs the system with the English keyboard layout, and as a consequence it is useless for me. Can somebody suggest a way of solving this problem? \r<br />\nIncidentally the install config file lists a lot of language codes, and the install ini file even contains the dialoge texts of such choices, suggesting that the selection of installation parameters once was part of the install process. <br />\n",
+    "PostedDate": "2017-01-15T10:23:11.777-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

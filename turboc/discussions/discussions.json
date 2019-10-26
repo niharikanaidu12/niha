@@ -1,0 +1,87 @@
+[
+  {
+    "Id": "648098",
+    "Title": "Create a class circle, that have the one data member radius; and have a methods SetRadius that set the value of the radius and another method that compute the area of circle; then in your main program access the method and display the area of the circle.",
+    "LatestDate": "2015-11-27T07:26:01.237-08:00"
+  },
+  {
+    "Id": "648209",
+    "Title": "help me please :) thanks",
+    "LatestDate": "2015-12-01T03:04:00.203-08:00"
+  },
+  {
+    "Id": "652559",
+    "Title": "Full Screen Turbo C++ On Windows 10",
+    "LatestDate": "2016-05-04T10:48:52.877-07:00"
+  },
+  {
+    "Id": "652653",
+    "Title": "working in background",
+    "LatestDate": "2016-03-17T22:41:54.347-07:00"
+  },
+  {
+    "Id": "652720",
+    "Title": "Turbo C++ peculiar issue",
+    "LatestDate": "2016-04-29T05:31:55.7-07:00"
+  },
+  {
+    "Id": "655022",
+    "Title": "Turbo c++ installation",
+    "LatestDate": "2016-05-27T20:07:09.277-07:00"
+  },
+  {
+    "Id": "657735",
+    "Title": "New to C++ and Turbo",
+    "LatestDate": "2016-09-07T02:53:09.867-07:00"
+  },
+  {
+    "Id": "659897",
+    "Title": "a way to regulate the text entered by the user within the boundaries set by \"\\xdb\"",
+    "LatestDate": "2016-12-03T07:04:49.033-08:00"
+  },
+  {
+    "Id": "660707",
+    "Title": "Installing Turbo C++ for other than the default language",
+    "LatestDate": "2017-01-15T10:23:11.777-08:00"
+  },
+  {
+    "Id": "660857",
+    "Title": "C++ hangs when working in thin client",
+    "LatestDate": "2017-01-22T03:19:36.443-08:00"
+  },
+  {
+    "Id": "660965",
+    "Title": "Should Microsoft .NET Framework be installed on Windows XP machine to run Turbo C++ 3.2?",
+    "LatestDate": "2017-01-26T11:54:31.903-08:00"
+  },
+  {
+    "Id": "661142",
+    "Title": "Cannot find header file",
+    "LatestDate": "2017-02-04T07:48:41.487-08:00"
+  },
+  {
+    "Id": "661225",
+    "Title": "How to Update Turbo C++ from 3.2 to 4.5 ",
+    "LatestDate": "2017-02-08T09:55:14.47-08:00"
+  },
+  {
+    "Id": "661533",
+    "Title": "keyboard not working",
+    "LatestDate": "2017-02-23T06:57:33.483-08:00"
+  },
+  {
+    "Id": "661638",
+    "Title": "C and Assembler",
+    "LatestDate": "2017-02-28T10:45:39.96-08:00"
+  },
+  {
+    "Id": "662254",
+    "Title": "Generating Unique Key (Finger Print) for a Computer for Licensing Purposes",
+    "LatestDate": "2017-03-28T01:07:58.463-07:00"
+  },
+  {
+    "Id": "662323",
+    "Title": ".mnu files isssue",
+    "LatestDate": "2017-03-30T22:19:12.363-07:00"
+  }
+]

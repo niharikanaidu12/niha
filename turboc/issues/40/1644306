@@ -1,0 +1,52 @@
+#include<iostream.h>
+#include<conio.h>
+#include<math.h>
+void main()
+{
+double power (double m, int n=2);
+clrscr();
+cout<<endl<<endl<<endl;
+int choice,m,n;
+double result;
+do
+{
+cout<<"\n\t choices \n\n";
+cout<<"\t 1) Only value of M \n";
+cout<<"\t 2)Value for both M and N \n";
+cout<<"\t 3)Quit\n";
+cout<<"\t Enter your choice:";
+cin>>choice;
+cout<<endl<<endl;
+switch(choice)
+{
+case 1:
+cout<<"Enter value for M:";
+cin>>m;
+result = power(m);
+cout<<"Power function when default argument is used="<<result;
+break;
+case 2:
+cout<<"Enter vale for M and N:";
+cin>>m>>n;
+result = power(m,n);
+cout<<"Power function when actual argument is used="<<result;
+break;
+case 3:
+goto out;
+default:
+cout<<"Entered value is invalid choice try again";
+}
+}while(choice != 3);
+out:{};
+}
+double power(double m,int n);
+{
+double pow=1,k=0;
+for(int i=0;i<n;i++)
+{
+pow = pow*m;
+};
+getch();
+return(pow);
+}
+

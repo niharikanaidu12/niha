@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "I have windows 10 pro. \r\nWhile using turbo c++.\r\nFirst program runs and execute properly.But after going back to code.\r\nMy mouse or touch pad gets stuck. Its stop working In MS-DOS only.\r\nAfter exiting MS-DOS and restarting turbo C++ my mouse starts working. But only after executing first program and going back to code .mouse stop working.Only my keyboard stay working.\r\nPlease suggest...What to do..",
+    "LastUpdatedDate": "2016-02-10T21:32:32.29-08:00",
+    "PlannedForRelease": "Turbo C++ 3.2",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-02-10T06:37:31.843-08:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Mouse issue",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 4
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This is happens because of Turbo C++ 3.0 a 16-bit software and I'm using DosBox to run Turbo C++ for 32&64-bit OS. DosBox is a simulating tools, specially design to run 16-bit games on 32&64-bit OS. \n\nSo, problem is that, DosBox design to operate with keyboard. When you tried to use mouse it's works for only few click.\n\nSolution of this problem is Turbo C++ shortcut. You can find out here\n[https://turboc.codeplex.com/wikipage?title=Turbo%20CPP%20Shortcuts](https://turboc.codeplex.com/wikipage?title=Turbo%20CPP%20Shortcuts)",
+      "PostedDate": "2016-02-10T21:31:25.147-08:00",
+      "Id": 196455
+    }
+  ]
+}

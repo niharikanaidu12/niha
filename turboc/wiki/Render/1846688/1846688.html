@@ -1,0 +1,7 @@
+<div class="wikidoc">
+<p><strong>Question -&nbsp;What is the difference between #include &lt;filename&gt; and #include &ldquo;filename&rdquo;?</strong></p>
+<p><strong>Answer -</strong></p>
+<p>The difference is in the location where the preprocessor searches for the included file.</p>
+<p>For&nbsp;<code>#include &quot;filename&quot;</code>&nbsp;the preprocessor searches in the same directory as the file containing the directive. This method is normally used to include programmer-defined header files.</p>
+<p>For&nbsp;<code>#include &lt;filename&gt;</code>&nbsp;the preprocessor searches in an implementation dependent manner, normally in search directories pre-designated by the compiler/IDE. This method is normally used to include standard library header files.</p>
+</div><div class="ClearBoth"></div>

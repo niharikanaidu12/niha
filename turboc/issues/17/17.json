@@ -1,0 +1,51 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "turbo C++ is working normally \r\nbut when im trying to open it in full screen mode it is always crashing.\r\n\r\n",
+    "LastUpdatedDate": "2016-09-28T21:52:51.397-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-07-18T08:23:32.313-07:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Crashing in full screen mode in windows 10",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 17
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1591899,
+      "FileName": "Screenshot (20).png",
+      "DownloadUrl": ".\\1591899"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Full screen mode only works If graphics card available in your system with minimum memory requirements for DosBox based on your OS",
+      "PostedDate": "2016-08-01T10:02:02.73-07:00",
+      "Id": 200993
+    }
+  ]
+}

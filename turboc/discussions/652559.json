@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1466967",
+    "ThreadId": "652559",
+    "Html": "Now I'm using Windows 10 Pro 64-bit ....<br />\n<br />\nMy PC configuration is -------<br />\n<ul>\n<li>i) Processor - Intel Core i3-3220 CPU @ 3.30GHz 3.30 GHz</li>\n<li>ii) Ram - 4.00 GB</li>\n<li>iii) Motherboard - Gigabyte H61M-WW</li>\n<li>iv) Monitor - Samsung</li>\n<li>V) Display Screen Resolution - 1360 by 768, True Colour (32 bit), 60 Hertz</li>\n<li>\nvi) Graphics Card - 2 GB NVIDIA GeForce GT 610<br />\n</li>\n</ul>\nWhen I'm full screen Turbo C++ 3.2 then back side not full screen...<br />\n<br />\nSo, how can I make  Turbo C++ 3.2 full screen on my PC???<br />\n<br />\nThanking You.....<br />\n<img src=\"https://lh3.googleusercontent.com/XwBKLQYqmkNEyoSA81IDJH4dcoX6AznUvTXSWNnvYvRi6rF-gj-3G0a12nn2UAjhhKcXnrPy7RUGye-ILaZyYx43omKALnq7bILhikSgP-Pddlz71ojzlDESUBHdvhQMe1ksHoWahF-77oOqwxJEmaEIuaUthPYN2fi5QWkIhjKVpNzsZFcmWQotFRR-Uox0k_VBdsVSlnlbOE0rT5htlGNEM3C-ufz9VFrhNtyeKDecZfv4EAynbkGpBf_uoNepF9tpvxN44g2xS5jET1BFNNNiQ0rHfkru3prhnuhUZeu8g_oW-10a_hFEensG62rsI8VgsOiiwicDJgmxpD97Y_8vVRyalnCr77pfYKBEQ2SMXHIoYa49VRYUbsjkmkgbOxLg7tLijn5Xm__64aEl_6akXk2scZHuzhUKGNUB1ZkE9RVSc2dTWxbSB5yOpLHSVFp7bjfHJj8mDR1SG_cYvFlaS1fR7N4y8NWjggJKzYazQ4pgnwEwZw0J_n7MFbhHilsPNIzIL-mPBYiTm49y98AW6-QmvcoFptxQUzVvfimzWrWI0LPpUc0qZcCe6FvBVv-9=w558-h315-no\" alt=\"Image\" /><br />\n",
+    "PostedDate": "2016-03-16T01:45:20.117-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472185",
+    "ThreadId": "652559",
+    "Html": "hey sahinoor\r<br />\njust press alt+enter to switch to full screen.\r<br />\nhoping your problem get resolved.\r<br />\nhitman<br />\n",
+    "PostedDate": "2016-05-02T10:02:59.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472435",
+    "ThreadId": "652559",
+    "Html": "<strong>Alt + Enter is shortcut to switch between full screen and window mode.</strong>\r<br />\n<br />\nYou can read more shortcut here -&gt;\r<br />\n<a href=\"https://turboc.codeplex.com/wikipage?title=Turbo%20CPP%20Shortcuts\" rel=\"nofollow\">https://turboc.codeplex.com/wikipage?title=Turbo%20CPP%20Shortcuts</a>\r<br />\nor\r<br />\n<a href=\"http://www.developerinsider.in/turbo-c-shortcuts/\" rel=\"nofollow\">http://www.developerinsider.in/turbo-c-shortcuts/</a><br />\n",
+    "PostedDate": "2016-05-04T10:48:52.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

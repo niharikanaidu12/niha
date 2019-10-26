@@ -1,0 +1,57 @@
+<div class="wikidoc">
+<h2><strong>Command Line Arguments</strong></h2>
+<p>In C it is possible to accept command line arguments. Command-line arguments are given after the name of a program in command-line operating systems like DOS or Linux, and are passed in to the program from the operating system. To use command line arguments
+ in your program, you must first understand the full declaration of the main function, which previously has accepted no arguments. In fact, main can actually accept two arguments: one argument is number of command line arguments, and the other argument is a
+ full list of all of the command line arguments.&nbsp;</p>
+<p><br>
+The full declaration of main looks like this:</p>
+<pre>int main ( int argc, char *argv[] )
+</pre>
+<p>The integer, argc is the&nbsp;<strong>arg</strong>ument&nbsp;<strong>c</strong>ount. It is the number of arguments passed into the program from the command line, including the name of the program.&nbsp;<br>
+<br>
+The array of character pointers is the listing of all the arguments. argv[0] is the name of the program, or an empty string if the name is not available. After that, every element number less than argc is a command line argument. You can use each argv element
+ just like a string, or use argv as a two dimensional array. argv[argc] is a null pointer.&nbsp;<br>
+<br>
+How could this be used? Almost any program that wants its parameters to be set when it is executed would use this. One common use is to write a function that takes the name of a file and outputs the entire text of it onto the screen.</p>
+<pre>#include &lt;stdio.h&gt;
+
+int main ( int argc, char *argv[] )
+{
+    if ( argc != 2 ) /* argc should be 2 for correct execution */
+    {
+        /* We print argv[0] assuming it is the program name */
+        printf( &quot;usage: %s filename&quot;, argv[0] );
+    }
+    else 
+    {
+        // We assume argv[1] is a filename to open
+        FILE *file = fopen( argv[1], &quot;r&quot; );
+
+        /* fopen returns 0, the NULL pointer, on failure */
+        if ( file == 0 )
+        {
+            printf( &quot;Could not open file\n&quot; );
+        }
+        else 
+        {
+            int x;
+            /* read one character at a time from file, stopping at EOF, which
+               indicates the end of the file.  Note that the idiom of &quot;assign
+               to a variable, check the value&quot; used below works because
+               the assignment statement evaluates to the value assigned. */
+            while  ( ( x = fgetc( file ) ) != EOF )
+            {
+                printf( &quot;%c&quot;, x );
+            }
+            fclose( file );
+        }
+    }
+}
+</pre>
+<p>This program is fairly short, but it incorporates the full version of main and even performs a useful function. It first checks to ensure the user added the second argument, theoretically a file name. The program then checks to see if the file is valid by
+ trying to open it. This is a standard operation, and if it results in the file being opened, then the return value of fopen will be a valid FILE*; otherwise, it will be 0, the NULL pointer. After that, we just execute a loop to print out one character at a
+ time from the file.&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>

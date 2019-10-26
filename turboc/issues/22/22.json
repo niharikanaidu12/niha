@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Duplicate of this issues https://turboc.codeplex.com/workitem/6 ",
+    "ClosedDate": "2016-09-28T21:40:06.537-07:00",
+    "CommentCount": 2,
+    "Custom": null,
+    "Description": "\r\n\r\nsome keys are not working that are important for programming \" \"{}\\ \" and many more plz look \r\n",
+    "LastUpdatedDate": "2016-09-28T21:40:06.537-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2016-09-26T10:45:54.73-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Duplicate"
+    },
+    "Summary": "keys not working",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Please provide your system configuration and keyboard layout (physical + windows).",
+      "PostedDate": "2016-09-28T21:32:17.183-07:00",
+      "Id": 204401
+    },
+    {
+      "Message": "Duplicate of this issues [https://turboc.codeplex.com/workitem/6](https://turboc.codeplex.com/workitem/6) \n\nPlease up-vote the existing issue rather than creating a new one.\n\nThanks",
+      "PostedDate": "2016-09-28T21:39:55.787-07:00",
+      "Id": 204403
+    }
+  ]
+}

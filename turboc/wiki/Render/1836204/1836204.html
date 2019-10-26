@@ -1,0 +1,188 @@
+<div class="wikidoc">
+<h2>What is a String?</h2>
+<p>Note that along with C-style strings, which are arrays, there are also string literals, such as &quot;this&quot;. In reality, both of these string types are merely just collections of characters sitting next to each other in memory. The only difference is that you
+ cannot modify string literals, whereas you can modify arrays. Functions that take a C-style string will be just as happy to accept string literals unless they modify the string (in which case your program will crash). Some things that might look like strings
+ are not strings; in particular, a character enclosed in single quotes, like this, 'a', is not a string. It's a single character, which can be assigned to a specific location in a string, but which cannot be treated as a string. (Remember how arrays act like
+ pointers when passed into functions? Characters don't, so if you pass a single character into a function, it won't work; the function is expecting a char*, not a char.)&nbsp;</p>
+<p><br>
+To recap: strings are arrays of chars. String literals are words surrounded by double quotation marks.</p>
+<pre>&quot;This is a static string&quot;
+</pre>
+<p>Remember that special sauce mentioned above? Well, it turns out that C-style strings are always terminated with a null character, literally a '\0' character (with the value of 0), so to declare a string of 49 letters, you need to account for it by adding
+ an extra character, so you would want to say:</p>
+<pre>char string[50];
+</pre>
+<p>This would declare a string with a length of 50 characters. Do not forget that arrays begin at zero, not 1 for the index number. In addition, we've accounted for the extra with a null character, literally a '\0' character. It's important to remember that
+ there will be an extra character on the end on a string, just like there is always a period at the end of a sentence. Since this string terminator is unprintable, it is not counted as a letter, but it still takes up a space. Technically, in a fifty char array
+ you could only hold 49 letters and one null character at the end to terminate the string.&nbsp;<br>
+<br>
+Note that something like</p>
+<pre>char *my_string; 
+</pre>
+<p>can also be used as a string. If you have read the tutorial on pointers, you can do something such as:</p>
+<pre>arry = malloc( sizeof(*arry) * 256 );
+</pre>
+<p>which allows you to access arry just as if it were an array. To free the memory you allocated, just use free:&nbsp;<br>
+<br>
+For example:</p>
+<pre>free ( arry ); 
+</pre>
+<h2>Using Strings</h2>
+<p>Strings are useful for holding all types of long input. If you want the user to input his or her name, you must use a string. Using scanf() to input a string works, but it will terminate the string after it reads the first space, and moreover, because scanf
+ doesn't know how big the array is, it can lead to &quot;buffer overflows&quot; when the user inputs a string that is longer than the size of the string (which acts as an input &quot;buffer&quot;).&nbsp;<br>
+<br>
+There are several approaches to handling this problem, but probably the simplest and safest is to use the fgets function, which is declared in stdio.h.&nbsp;<br>
+<br>
+The prototype for the fgets function is:</p>
+<pre>char *fgets (char *str, int size, FILE* file);
+</pre>
+<p>There are a few new things here. First of all, let's clear up the questions about that funky FILE* pointer. The reason this exists is because fgets is supposed to be able to read from any file on disk, not just from the user's keyboard (or other &quot;standard
+ input&quot; device). For the time being, whenever we call fgets, we'll just pass in a variable called stdin, defined in stdio.h, which refers to &quot;<strong>st</strong>an<strong>d</strong>ard&nbsp;<strong>in</strong>put&quot;. This effectively tells the program to read
+ from the keyboard. The other two arguments to fgets, str and size, are simply the place to store the data read from the input and the size of the char*, str. Finally, fgets returns str whenever it successfully read from the input.&nbsp;<br>
+<br>
+When fgets actually reads input from the user, it will read up to size - 1 characters and then place the null terminator after the last character it read. fgets will read input until it either has no more room to store the data or until the user hits enter.
+ Notice that fgets may fill up the entire space allocated for str, but it will never return a non-null terminated string to you.&nbsp;<br>
+<br>
+Let's look at an example of using fgets, and then we'll talk about some pitfalls to watch out for.&nbsp;<br>
+<br>
+For a example:</p>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    /* A nice long string */
+    char string[256];                               
+
+    printf( &quot;Please enter a long string: &quot; );
+
+    /* notice stdin being passed in */
+    fgets ( string, 256, stdin );           
+
+    printf( &quot;You entered a very long string, %s&quot;, string );
+
+    getchar();
+}
+</pre>
+<p>Remember that you are actually passing the address of the array when you pass string because arrays do not require an address operator (&amp;) to be used to pass their addresses, so the values in the array string are modified.&nbsp;<br>
+<br>
+The one thing to watch out for when using fgets is that it will include the newline character ('\n') when it reads input unless there isn't room in the string to store it. This means that you may need to manually remove the input. One way to do this would be
+ to search the string for a newline and then replace it with the null terminator. What would this look like? See if you can figure out a way to do it before looking below:</p>
+<pre>char input[256];
+int i;
+
+fgets( input, 256, stdin );
+
+for ( i = 0; i &lt; 256; i&#43;&#43; )
+{
+    if ( input[i] == '\n' )
+    {
+        input[i] = '\0';
+        break;
+    }
+}
+
+</pre>
+<p>Here, we just loop through the input until we come to a newline, and when we do, we replace it with the null terminator. Notice that if the input is less than 256 characters long, the user must have hit enter, which would have included the newline character
+ in the string!</p>
+<h2>Manipulating C strings using string.h</h2>
+<p>string.h is a header file that contains many functions for manipulating strings. One of these is the string comparison function.</p>
+<pre>int strcmp ( const char *s1, const char *s2 );
+</pre>
+<p>strcmp will accept two strings. It will return an integer. This integer will either be:</p>
+<pre>Negative if s1 is less than s2.
+Zero if s1 and s2 are equal.
+Positive if s1 is greater than s2.
+</pre>
+<p>Strcmp performs a case sensitive comparison; if the strings are the same except for a difference in cAse, then they're countered as being different. Strcmp also passes the address of the character array to the function to allow it to be accessed.</p>
+<pre>char *strcat ( char *dest, const char *src );
+</pre>
+<p>strcat is short for &quot;string concatenate&quot;; concatenate is a fancy word that means to add to the end, or append. It adds the second string to the first string. It returns a pointer to the concatenated string. Beware this function; it assumes that dest is large
+ enough to hold the entire contents of src as well as its own contents.</p>
+<pre>char *strcpy ( char *dest, const char *src );
+</pre>
+<p>strcpy is short for string copy, which means it copies the entire contents of src into dest. The contents of dest after strcpy will be exactly the same as src such that strcmp ( dest, src ) will return 0.</p>
+<pre>size_t strlen ( const char *s );
+</pre>
+<p>strlen will return the length of a string, minus the terminating character ('\0'). The size_t is nothing to worry about. Just treat it as an integer that cannot be negative, which is what it actually is. (The type size_t is just a way to indicate that the
+ value is intended for use as a size of something.)&nbsp;<br>
+<br>
+Here is a small program using many of the previously described functions:</p>
+<pre>#include &lt;stdio.h&gt;    /* stdin, printf, and fgets */
+#include &lt;string.h&gt;   /* for all the new-fangled string functions */
+
+/* this function is designed to remove the newline from the end of a string
+entered using fgets.  Note that since we make this into its own function, we
+could easily choose a better technique for removing the newline.  Aren't
+functions great? */
+void strip_newline( char *str, int size )
+{
+    int i;
+
+    /* remove the null terminator */
+    for (  i = 0; i &lt; size; &#43;&#43;i )
+    {
+        if ( str[i] == '\n' )
+        {
+            str[i] = '\0';
+
+            /* we're done, so just exit the function by returning */
+            return;   
+        }
+    }
+    /* if we get all the way to here, there must not have been a newline! */
+}
+
+int main()
+{
+    char name[50];
+    char lastname[50];
+    char fullname[100]; /* Big enough to hold both name and lastname */
+
+    printf( &quot;Please enter your name: &quot; );
+    fgets( name, 50, stdin );
+
+    /* see definition above */
+    strip_newline( name, 50 );
+
+    /* strcmp returns zero when the two strings are equal */
+    if ( strcmp ( name, &quot;Alex&quot; ) == 0 ) 
+    {
+        printf( &quot;That's my name too.\n&quot; );
+    }
+    else                                     
+    {
+        printf( &quot;That's not my name.\n&quot; );
+    }
+    // Find the length of your name
+    printf( &quot;Your name is %d letters long&quot;, strlen ( name ) );
+    printf( &quot;Enter your last name: &quot; );
+    fgets( lastname, 50, stdin );
+    strip_newline( lastname, 50 );
+    fullname[0] = '\0';            
+    /* strcat will look for the \0 and add the second string starting at
+       that location */
+    strcat( fullname, name );     /* Copy name into full name */
+    strcat( fullname, &quot; &quot; );      /* Separate the names by a space */
+    strcat( fullname, lastname ); /* Copy lastname onto the end of fullname */
+    printf( &quot;Your full name is %s\n&quot;,fullname );
+
+    getchar();
+
+    return 0;
+}
+</pre>
+<h2>Safe Programming</h2>
+<p>The above string functions all rely on the existence of a null terminator at the end of a string. This isn't always a safe bet. Moreover, some of them, noticeably strcat, rely on the fact that the destination string can hold the entire string being appended
+ onto the end. Although it might seem like you'll never make that sort of mistake, historically, problems based on accidentally writing off the end of an array in a function like strcat, have been&nbsp;a major problem.&nbsp;<br>
+<br>
+Fortunately, in their infinite wisdom, the designers of C have included functions designed to help you avoid these issues. Similar to the way that fgets takes the maximum number of characters that fit into the buffer, there are string functions that take an
+ additional argument to indicate the length of the destination buffer. For instance, the strcpy function has an analogous strncpy function</p>
+<pre>char *strncpy ( char *dest, const char *src, size_t len );
+</pre>
+<p>which will only copy len bytes from src to dest (len should be less than the size of dest or the write could still go beyond the bounds of the array). Unfortunately, strncpy can lead to one niggling issue: it doesn't guarantee that dest will have a null
+ terminator attached to it (this might happen if the string src is longer than dest). You can avoid this problem by using strlen to get the length of src and make sure it will fit in dest. Of course, if you were going to do that, then you probably don't need
+ strncpy in the first place, right? Wrong. Now it forces you to pay attention to this issue, which is a big part of the battle.&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>

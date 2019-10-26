@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "when i start work on the software after a certain time my laptop mouse doesn't work only on the software and after close this software mouse start to work, what i do",
+    "LastUpdatedDate": "2017-07-10T02:27:24.813-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "turboc",
+    "ReportedDate": "2017-01-14T01:48:47.923-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "MOUSE DOSN'T WORK",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 3,
+    "Id": 32
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "yep! same issue,... i'm facing,.. help pls!",
+      "PostedDate": "2017-01-22T05:49:25.45-08:00",
+      "Id": 206148
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+<div class="wikidoc">
+<h2><strong>Preprocessor</strong></h2>
+<p>The C preprocessor modifies a source code file before handing it over to the compiler. You're most likely used to using the preprocessor to include files directly into other files, or #define constants, but the preprocessor can also be used to create &quot;inlined&quot;
+ code using macros expanded at compile time and to prevent code from being compiled twice.&nbsp;</p>
+<p><br>
+There are essentially three uses of the preprocessor--directives, constants, and macros. Directives are commands that tell the preprocessor to skip part of a file, include another file, or define a constant or macro. Directives always begin with a sharp sign
+ (#) and for readability should be placed flush to the left of the page. All other uses of the preprocessor involve processing #define'd constants or macros. Typically, constants and macros are written in ALL CAPS to indicate they are special (as we will see).</p>
+<h2>Header Files</h2>
+<p>The #include directive tells the preprocessor to grab the text of a file and place it directly into the current file. Typically, such statements are placed at the top of a program--hence the name &quot;header file&quot; for files thus included.</p>
+<h2>Constants</h2>
+<p>If we write</p>
+<pre>#define [identifier name] [value]
+</pre>
+<p>whenever [identifier name] shows up in the file, it will be replaced by [value].&nbsp;<br>
+<br>
+If you are defining a constant in terms of a mathematical expression, it is wise to surround the entire value in parentheses:</p>
+<pre>#define PI_PLUS_ONE (3.14 &#43; 1)
+</pre>
+<p>By doing so, you avoid the possibility that an order of operations issue will destroy the meaning of your constant:</p>
+<pre>x = PI_PLUS_ONE * 5;
+</pre>
+<p>Without parentheses, the above would be converted to</p>
+<pre>x = 3.14 &#43; 1 * 5;
+</pre>
+<p>which would result in 1 * 5 being evaluated before the addition, not after. Oops!&nbsp;<br>
+<br>
+It is also possible to write simply</p>
+<pre>#define [identifier name]
+</pre>
+<p>which defines [identifier name] without giving it a value. This can be useful in conjunction with another set of directives that allow conditional compilation.</p>
+<h2>Conditional Compilation</h2>
+<p>There are a whole set of options that can be used to determine whether the preprocessor will remove lines of code before handing the file to the compiler. They include #if, #elif, #else, #ifdef, and #ifndef. An #if or #if/#elif/#else block or a #ifdef or
+ #ifndef block must be terminated with a closing #endif.&nbsp;<br>
+<br>
+The #if directive takes a numerical argument that evaluates to true if it's non-zero. If its argument is false, then code until the closing #else, #elif, of #endif will be excluded.</p>
+<h3>Commenting out Code</h3>
+<p>Conditional compilation is a particularly useful way to comment out a block of code that contains multi-line comments (which cannot be nested).</p>
+<pre>#if 0
+/* comment ...
+*/
+
+// code
+
+/* comment */
+#endif
+</pre>
+<h3>Include Guards</h3>
+<p>Another common problem is that a header file is required in multiple other header files that are later included into a source code file, with the result often being that variables, structs, classes or functions appear to be defined multiple times (once for
+ each time the header file is included). This can result in a lot of compile-time headaches. Fortunately, the preprocessor provides an easy technique for ensuring that any given file is included once and only once.&nbsp;<br>
+<br>
+By using the #ifndef directive, you can include a block of text only if a particular expression is undefined; then, within the header file, you can define the expression. This ensures that the code in the #ifndef is included only the first time the file is
+ loaded.</p>
+<pre>#ifndef _FILE_NAME_H_
+#define _FILE_NAME_H_
+
+/* code */
+
+#endif // #ifndef _FILE_NAME_H_
+</pre>
+<p>Notice that it's not necessary to actually give a value to the expression _FILE_NAME_H_. It's sufficient to include the line &quot;#define _FILE_NAME_H_&quot; to make it &quot;defined&quot;. (Note that there is an&nbsp;<strong>n</strong>&nbsp;in #ifndef--it stands for &quot;if not
+ defined&quot;).&nbsp;<br>
+<br>
+A similar tactic can be used for defining specific constants, such as NULL:</p>
+<pre>#ifndef NULL
+#define NULL (void *)0
+#endif // #ifndef NULL
+</pre>
+<p>Notice that it's useful to comment which conditional statement a particular #endif terminates. This is particularly true because preprocessor directives are rarely indented, so it can be hard to follow the flow of execution.&nbsp;<br>
+<br>
+On many compilers, the&nbsp;#pragma once&nbsp;directive can be used intead of include guards.</p>
+<h2>Macros</h2>
+<p>The other major use of the preprocessor is to define macros. The advantage of a macro is that it can be type-neutral (this can also be a disadvantage, of course), and it's inlined directly into the code, so there isn't any function call overhead. (Note that
+ in C&#43;&#43;, it's possible to get around both of these issues with templated functions and the inline keyword.)&nbsp;<br>
+<br>
+A macro definition is usually of the following form:</p>
+<pre>#define MACRO_NAME(arg1, arg2, ...) [code to expand to]
+</pre>
+<p>For instance, a simple increment macro might look like this:</p>
+<pre>#define INCREMENT(x) x&#43;&#43;
+</pre>
+<p>They look a lot like function calls, but they're not so simple. There are actually a couple of tricky points when it comes to working with macros. First, remember that the exact text of the macro argument is &quot;pasted in&quot; to the macro. For instance, if you
+ wrote something like this:</p>
+<pre>#define MULT(x, y) x * y
+</pre>
+<p>and then wrote</p>
+<pre>int z = MULT(3 &#43; 2, 4 &#43; 2);
+</pre>
+<p>what value do you expect z to end up with? The obvious answer, 30, is wrong! That's because what happens when the macro MULT expands is that it looks like this:</p>
+<pre>int z = 3 &#43; 2 * 4 &#43; 2;    // 2 * 4 will be evaluated first!
+</pre>
+<p>So z would end up with the value 13! This is almost certainly not what you want to happen. The way to avoid it is to force the arguments themselves to be evaluated before the rest of the macro body. You can do this by surrounding them by parentheses in the
+ macro definition:</p>
+<pre>#define MULT(x, y) (x) * (y)
+// now MULT(3 &#43; 2, 4 &#43; 2) will expand to (3 &#43; 2) * (4 &#43; 2)
+</pre>
+<p>But this isn't the only gotcha! It is also generally a good idea to surround the macro's code in parentheses if you expect it to return a value. Otherwise, you can get similar problems as when you define a constant. For instance, the following macro, which
+ adds 5 to a given argument, has problems when embedded within a larger statement:</p>
+<pre>#define ADD_FIVE(a) (a) &#43; 5
+
+int x = ADD_FIVE(3) * 3;
+// this expands to (3) &#43; 5 * 3, so 5 * 3 is evaluated first
+// Now x is 18, not 24!
+</pre>
+<p>To fix this, you generally want to surround the whole macro body with parentheses to prevent the surrounding context from affecting the macro body.</p>
+<pre>#define ADD_FIVE(a) ((a) &#43; 5)
+
+int x = ADD_FIVE(3) * 3;
+</pre>
+<p>On the other hand, if you have a multiline macro that you are using for its side effects, rather than to compute a value, you probably want to wrap it within curly braces so you don't have problems when using it following an if statement.</p>
+<pre>// We use a trick involving exclusive-or to swap two variables
+#define SWAP(a, b)  a ^= b; b ^= a; a ^= b; 
+
+int x = 10;
+int y = 5;
+
+// works OK
+SWAP(x, y);
+
+// What happens now?
+if(x &lt; 0)
+    SWAP(x, y);
+</pre>
+<p>When SWAP is expanded in the second example, only the first statement, a ^= b, is governed by the conditional; the other two statements will always execute. What we really meant was that all of the statements should be grouped together, which we can enforce
+ using curly braces:</p>
+<pre>#define SWAP(a, b)  {a ^= b; b ^= a; a ^= b;} 
+</pre>
+<p>Now, there is still a bit more to our story! What if you write code like so:</p>
+<pre>#define SWAP(a, b)  { a ^= b; b ^= a; a ^= b; }
+
+int x = 10;
+int y = 5;
+int z = 4;
+
+// What happens now?
+if(x &lt; 0)
+    SWAP(x, y);
+else
+    SWAP(x, z); 
+</pre>
+<p>Then it will not compile because semicolon after the closing curly brace will break the flow between if and else. The solution? Use a do-while loop:</p>
+<pre>#define SWAP(a, b)  do { a ^= b; b ^= a; a ^= b; } while ( 0 )
+
+int x = 10;
+int y = 5;
+int z = 4;
+
+// What happens now?
+if(x &lt; 0)
+    SWAP(x, y);
+else
+    SWAP(x, z); 
+</pre>
+<p>Now the semi-colon doesn't break anything because it is part of the expression. (By the way, note that we didn't surround the arguments in parentheses because we don't expect anyone to pass an expression into swap!)</p>
+<h3>More Gotchas</h3>
+<p>By now, you've probably realized why people don't really like using macros. They're dangerous, they're picky, and they're just not that safe. Perhaps the most irritating problem with macros is that you don't want to pass arguments with &quot;side effects&quot; to
+ macros. By side effects, I mean any expression that does something besides evaluate to a value. For instance, &#43;&#43;x evaluates to x&#43;1, but it also increments x. This increment operation is a side effect.&nbsp;<br>
+<br>
+The problem with side effects is that macros don't evaluate their arguments; they just paste them into the macro text when performing the substitution. So something like</p>
+<pre>#define MAX(a, b) ((a) &lt; (b) ? (b) : (a))
+int x = 5, y = 10;
+int z = MAX(x&#43;&#43;, y&#43;&#43;);
+</pre>
+<p>will end up looking like this:</p>
+<pre>int z = (x&#43;&#43; &lt; y&#43;&#43; ? y&#43;&#43; : x&#43;&#43;)
+</pre>
+<p>The problem here is that y&#43;&#43; ends up being evaluated twice! The nasty consequence is that after this expression, y will have a value of 12 rather than the expected 11. This can be a real pain to debug!</p>
+<h2>Multiline macros</h2>
+<p>Until now, we've seen only short, one line macros (possibly taking advantage of the semicolon to put multiple statements on one line.) It turns out that by using a the &quot;\&quot; to indicate a line continuation, we can write our macros across multiple lines to
+ make them a bit more readable.&nbsp;<br>
+<br>
+For instance, we could rewrite swap as</p>
+<pre>#define SWAP(a, b)  {                   \
+                        a ^= b;         \
+                        b ^= a;         \ 
+                        a ^= b;         \
+                    } 
+</pre>
+<p>Notice that you&nbsp;<strong>do not</strong>&nbsp;need a slash at the end of the last line! The slash tells the preprocessor that the macro continues to the next line, not that the line is a continuation from a previous line.&nbsp;<br>
+<br>
+Aside from readability, writing multi-line macros may make it more obvious that you need to use curly braces to surround the body because it's more clear that multiple effects are happening at once.</p>
+<h2>Advanced Macro Tricks</h2>
+<p>In addition to simple substitution, the preprocessor can also perform a bit of extra work on macro arguments, such as turning them into strings or pasting them together.</p>
+<h3>Pasting Tokens</h3>
+<p>Each argument passed to a macro is a token, and sometimes it might be expedient to paste arguments together to form a new token. This could come in handy if you have a complicated structure and you'd like to debug your program by printing out different fields.
+ Instead of writing out the whole structure each time, you might use a macro to pass in the field of the structure to print.&nbsp;<br>
+<br>
+To paste tokens in a macro, use ## between the two things to paste together.&nbsp;<br>
+<br>
+For instance</p>
+<pre>#define BUILD_FIELD(field) my_struct.inner_struct.union_a.##field
+</pre>
+<p>Now, when used with a particular field name, it will expand to something like</p>
+<pre>my_struct.inner_struct.union_a.field1
+</pre>
+<p>The tokens are literally pasted together.</p>
+<h3>String-izing Tokens</h3>
+<p>Another potentially useful macro option is to turn a token into a string containing the literal text of the token. This might be useful for printing out the token. The syntax is simple--simply prefix the token with a pound sign (#).</p>
+<pre>#define PRINT_TOKEN(token) printf(#token &quot; is %d&quot;, token)
+</pre>
+<p>For instance, PRINT_TOKEN(foo) would expand to</p>
+<pre>printf(&quot;&lt;foo&gt;&quot; &quot; is %d&quot; &lt;foo&gt;)
+</pre>
+<p>(Note that in C, string literals next to each other are concatenated, so something like &quot;token&quot; &quot; is &quot; &quot; this &quot; will effectively become &quot;token is this&quot;. This can be useful for formatting printf statements.)&nbsp;<br>
+<br>
+For instance, you might use it to print the value of an expression as well as the expression itself (for debugging purposes).</p>
+<pre>PRINT_TOKEN(x &#43; y);<br><br><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source code and an active message board.&quot;&nbsp;</strong></pre>
+</div><div class="ClearBoth"></div>

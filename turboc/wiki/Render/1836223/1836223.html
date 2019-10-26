@@ -1,0 +1,36 @@
+<div class="wikidoc">
+<h2><strong>Inline Functions</strong></h2>
+<p>Although you've already learned about basic&nbsp;functions&nbsp;in c&#43;&#43;, there is more: the inline function. Inline functions are not always important, but it is good to understand them. The basic idea is to save time at a cost in space. Inline functions
+ are a lot like a placeholder. Once you define an inline function, using the 'inline' keyword, whenever you call that function the compiler will replace the function call with the actual code from the function.&nbsp;</p>
+<p><br>
+<br>
+How does this make the program go faster? Simple, function calls are simply more time consuming than writing all of the code without functions. To go through your program and replace a function you have used 100 times with the code from the function would be
+ time consuming not too bright. Of course, by using the inline function to replace the function calls with code you will also greatly increase the size of your program.&nbsp;<br>
+<br>
+Using the inline keyword is simple, just put it before the name of a function. Then, when you use that function, pretend it is a non-inline function.&nbsp;<br>
+</p>
+<h2>Example Inline Function</h2>
+<pre>#include &lt;iostream&gt;
+
+using namespace std;
+
+inline void hello()
+{ 
+  cout&lt;&lt;&quot;hello&quot;;
+}
+int main()
+{
+  hello(); //Call it like a normal function...
+  cin.get();
+}
+</pre>
+<p>However, once the program is compiled, the call to hello(); will be replaced by the code making up the function.&nbsp;<br>
+<br>
+A WORD OF WARNING: Inline functions are very good for saving time, but if you use them too often or with large functions you will have a tremendously large program. Sometimes large programs are actually less efficient, and therefore they will run more slowly
+ than before. Inline functions are best for small functions that are called often.&nbsp;<br>
+<br>
+Finally, note that the compiler may choose, in its infinite wisdom, to ignore your attempt to inline a function. So if you do make a mistake and inline a monster fifty-line function that gets called thousands of times, the compiler may ignore you.&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>&quot;Tutorial from&nbsp;<a href="http://www.cprogramming.com/" target="_blank">http://www.cprogramming.com</a>&nbsp;by Alexander Allain. Cprogramming.com serves programming audiences with tutorials and articles on programming, along with free source
+ code and an active message board.&quot;&nbsp;</strong></p>
+</div><div class="ClearBoth"></div>
